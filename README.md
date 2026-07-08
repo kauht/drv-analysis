@@ -1,6 +1,6 @@
 # drv-analysis
 
-A suite of tools for analyzing Windows drivers for BYOVD (Bring-Your-Own-Vulnerable-Driver) exploitation primitives. Designed to identify drivers with exploitable IOCTLs, physical memory access capabilities, and other kernel-level attack surfaces.
+Windows driver vulnerability research toolkit. Analyzes drivers for BYOVD (Bring-Your-Own-Vulnerable-Driver) exploitation primitives including exploitable IOCTLs, physical memory access, and kernel-level attack surfaces.
 
 ## drvinspect
 
