@@ -17,6 +17,8 @@ vm/
 *.md
 !README.md
 !DRIVER_HUNTING_GUIDE.md
+!VENDOR_TARGETS.md
+!tools/vendor_downloader.md
 
 # Large sample files and binaries
 samples/
