@@ -1,0 +1,11 @@
+{
+  "extracted_hashes": [
+    "0fd8b87d79828282a2b24c0680ecf6717c3bc284582af552ecea8d2e79c91b4b",
+    "11bd2c9f8a8c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3"
+  ],
+  "metadata": {
+    "last_updated": "2026-07-08",
+    "total_unique_drivers": 2,
+    "notes": "Track SHA256 hashes of all drivers analyzed to avoid re-processing"
+  }
+}

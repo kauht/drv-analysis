@@ -1,0 +1,65 @@
+{
+  "checked_websites": [
+    {
+      "domain": "colorful.cn",
+      "vendor": "Colorful (AIB - GPU/Mobo)",
+      "product": "iGameCenter",
+      "status": "productive",
+      "drivers_found": 3,
+      "notes": "Inno Setup installer. Found: AMDRyzenMasterDriver.sys (v2.6.0.0, v1.7.0.0), WinRing0x64.sys, FE_H24.sys, IGAME_DNA.sys/IGAME_DNAS.sys",
+      "extraction_method": "innoextract",
+      "date_checked": "2026-07-08"
+    }
+  ],
+  "not_checked": [
+    {
+      "domain": "evga.com",
+      "vendor": "EVGA",
+      "product": "Precision XOC",
+      "notes": "GPU/chipset overclocking - likely similar to Colorful iGameCenter",
+      "priority": "high"
+    },
+    {
+      "domain": "msi.com",
+      "vendor": "MSI",
+      "product": "Afterburner",
+      "notes": "GPU/chipset utilities, widely used",
+      "priority": "high"
+    },
+    {
+      "domain": "asus.com",
+      "vendor": "ASUS",
+      "product": "GPU Tweak / ROG utilities",
+      "notes": "Gaming-focused overclocking",
+      "priority": "high"
+    },
+    {
+      "domain": "gigabyte.com",
+      "vendor": "Gigabyte",
+      "product": "OC Guru / RGB Fusion",
+      "notes": "RGB Fusion likely spam (ignore), OC Guru may have drivers",
+      "priority": "medium"
+    },
+    {
+      "domain": "intel.com",
+      "vendor": "Intel",
+      "product": "XTU (Extreme Tuning Utility)",
+      "notes": "CPU overclocking, older but may have variants",
+      "priority": "high"
+    },
+    {
+      "domain": "amd.com",
+      "vendor": "AMD",
+      "product": "Ryzen Master (various versions)",
+      "notes": "May have undocumented versions beyond what's in LOLDrivers",
+      "priority": "medium"
+    }
+  ],
+  "metadata": {
+    "last_updated": "2026-07-08",
+    "total_checked": 1,
+    "total_pending": 6,
+    "goal": "30 driver candidates",
+    "notes": "Track websites we've already reviewed to avoid duplicate effort"
+  }
+}
