@@ -1,0 +1,109 @@
+C:\Users\macin\Desktop\vuln\tools\drveye\drivertool\pe_analyzer.py:261: UserWarning: PKCS#7 certificates could not be parsed as DER, falling back to parsing as BER. In the future, this may become an exception. Error details: ValueError: error parsing asn1 value: ParseError { kind: UnknownDefinedBy, location: ["ContentInfo::content", "SignedData::content_info", "ContentInfo::content"] }
+  certs = pkcs7_mod.load_der_pkcs7_certificates(pkcs7_der)
+[36m╔═════════════════════════════════════════╗
+║   DrvEye  Windows Driver Rev&Analysis   ║
+║   [2mCredit:[0m[36m @0xDbgMan                     ║
+╚═════════════════════════════════════════╝[0m
+[*] Analysis started: HEVD.sys
+[*] SHA-256  : 6921c9194c79b7996e03a28cb5f60c74b8e1fb5ec0a506383ebfa2090c16f57e
+[*] imphash  : f26d0b110873a1c7d8c4f08fbeab89c5
+[*] Architecture: x86 | Kernel Driver: Yes
+[*] Image Base: 0x400000 | Imports: 18 | Sections: 6
+[*] Mitigations ON : DYNAMIC_BASE, NX_COMPAT, GS_COOKIE
+[33m[!][0m Mitigations OFF: HIGH_ENTROPY_VA, FORCE_INTEGRITY, NO_SEH, GUARD_CF  [HVCI:NO]
+
+[*] ─── Authenticode Signature ───
+[33m[!][0m   Status    : crypto OK · anchor UNTRUSTED [no-ms-root] · SELF-SIGNED
+[*]   Primary   : SHA1 [✓]  signed by HackSysTeam
+[*]              → HackSysTeam
+[33m[!][0m   Timestamp : none
+[*]   Anchor    : —  [NOT kernel-trusted]
+[33m[!][0m   HVCI Prereqs: none (no WHQL/EV/page-hashes)
+[*]   Org       : HackSys Team
+[*]   Serial    : 4E872CB53821ECA8434E8C0DBB692947
+[*]   Key       : RSA-2048
+[*]   Valid     : 2019-06-28 → 2029-06-28
+[*]   Thumbprint: a3a2d3c9c36cbe4b3a9a9a0cec7638f9e7c8c784
+
+[*] Scanning imports...
+
+[33m[!][0m ─── LOAD VERDICT: WILL NOT LOAD on any supported config ───
+  [31mDefault Win10/11         : WILL NOT LOAD[0m
+      • 32-bit driver cannot load on 64-bit Windows
+      • Self-signed — not accepted without test-signing
+      • Primary signature is SHA-1, timestamped after 2015-07-29 cutoff, and no modern nested signature — rejected on Win10 1903+
+  [31mSecure Boot + DSE        : WILL NOT LOAD[0m
+      • 32-bit driver cannot load on 64-bit Windows
+      • Self-signed — not accepted without test-signing
+      • Primary signature is SHA-1, timestamped after 2015-07-29 cutoff, and no modern nested signature — rejected on Win10 1903+
+  [31mHVCI / Memory Integrity  : WILL NOT LOAD[0m
+      • 32-bit driver cannot load on 64-bit Windows
+      • Self-signed — not accepted without test-signing
+      • Primary signature is SHA-1, timestamped after 2015-07-29 cutoff, and no modern nested signature — rejected on Win10 1903+
+  [31mTest-signing mode        : WILL NOT LOAD[0m
+      • 32-bit driver cannot load on 64-bit Windows
+  [31mS Mode                   : WILL NOT LOAD[0m
+      • 32-bit driver cannot load on 64-bit Windows
+      • No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+      • No Authenticode page hashes (Secured-Core requires per-page integrity)
+
+  [31mAll blockers found:[0m
+    [31m[BLOCKED][0m 32-bit driver cannot load on 64-bit Windows
+    [31m[BLOCKED][0m Chain not kernel-trusted
+    [31m[BLOCKED][0m FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+    [31m[BLOCKED][0m No Authenticode page hashes (Secured-Core requires per-page integrity)
+    [31m[BLOCKED][0m No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+    [31m[BLOCKED][0m Primary signature is SHA-1, timestamped after 2015-07-29 cutoff, and no modern nested signature — rejected on Win10 1903+
+    [31m[BLOCKED][0m Self-signed — not accepted without test-signing
+
+  [37mPasses:[0m
+    [37m[PASS][0m Any valid signature accepted under test-signing
+    [37m[PASS][0m Signature crypto + PE hash OK
+    [37m[PASS][0m Signed
+
+  [37mConfidence:[0m live MS trust list NOT loaded — using built-in kernel-root snapshot (run --live-check for ground truth)
+    Static checks cover signature crypto, PE hash, chain anchor, HVCI prereqs, and MS block list.
+    Not checked: live OCSP/CRL revocation, current WDAC policy, local test-signing / DSE state, page-hash integrity.
+
+[*] imports Function:
+  [*] IoCreateDevice, ZwCreateFile, ZwWriteFile
+[*] Detected IOCTL codes (13):
+    0x6168573E  @0x44743B  (OUT_DIRECT, FILE_READ_DATA)  → port I/O  bugs=arbitrary-rw
+    0x6E55205D  @0x4474E6  (IN_DIRECT, FILE_ANY_ACCESS)  → port I/O  [!] any-user  bugs=arbitrary-rw
+    0x13525CED9  @0x4474E6  (IN_DIRECT, FILE_READ_WRITE)  → port I/O  bugs=arbitrary-rw
+    0xBAD0B0B0  @0x44572E  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)
+    0x6148205D  @0x446A56  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x6E49205D  @?  (IN_DIRECT, FILE_ANY_ACCESS)  [!] any-user
+    0x6C65483E  @?  (OUT_DIRECT, FILE_READ_DATA)
+    0x7845205D  @0x447364  (IN_DIRECT, FILE_ANY_ACCESS)  → port I/O  [!] any-user  bugs=arbitrary-rw
+    0x6D614E3E  @?  (OUT_DIRECT, FILE_READ_DATA)
+    0x6568573E  @?  (OUT_DIRECT, FILE_READ_DATA)
+    0x6C61563E  @0x447C2C  (OUT_DIRECT, FILE_READ_DATA)  → port I/O  bugs=arbitrary-rw
+    0x6C61433E  @?  (OUT_DIRECT, FILE_READ_DATA)
+    0x7245205D  @?  (IN_DIRECT, FILE_ANY_ACCESS)  [!] any-user
+
+[!] Device Access Security:
+    Creation API   : IoCreateDevice
+    Secure Open    : No
+    Exclusive      : No
+    SDDL           : None (default permissive ACL)
+    Symlink        : \DosDevices\HackSysExtremeVulnerableDriver  [user-accessible]
+    Symlink        : \??\C:\Windows\System32\HEVD.log  [user-accessible]
+    Issues (5):
+      [!] Uses Iocreatedevice
+      [*] No File Device Secure Open
+      [*] Not Exclusive
+      [*] Has Symlinks
+      [!] No Sddl
+
+[*] ─── Device Names & Symbolic Links (3) ───
+    [*] \Device\HackSysExtremeVulnerableDriver (kernel-only)
+    [+] \DosDevices\HackSysExtremeVulnerableDriver (user-accessible)  →  CreateFile("\\.\HackSysExtremeVulnerableDriver")
+    [+] \??\C:\Windows\System32\HEVD.log (user-accessible)  →  CreateFile("\\.\C:\Windows\System32\HEVD.log")
+
+[+] ─── User-Mode Accessible Devices (1) ───
+    [+] \\.\HackSysExtremeVulnerableDriver  →  \Device\HackSysExtremeVulnerableDriver
+
+[*] ─── Registry References (1) ───
+    (keys/values the driver reads — device name may be loaded here at runtime)
+    [r] RegistryValue:SymbolicLink

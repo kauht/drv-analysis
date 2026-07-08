@@ -1,0 +1,124 @@
+C:\Users\macin\Desktop\vuln\tools\drveye\drivertool\pe_analyzer.py:261: UserWarning: PKCS#7 certificates could not be parsed as DER, falling back to parsing as BER. In the future, this may become an exception. Error details: ValueError: error parsing asn1 value: ParseError { kind: UnknownDefinedBy, location: ["ContentInfo::content", "SignedData::content_info", "ContentInfo::content"] }
+  certs = pkcs7_mod.load_der_pkcs7_certificates(pkcs7_der)
+[36m╔═════════════════════════════════════════╗
+║   DrvEye  Windows Driver Rev&Analysis   ║
+║   [2mCredit:[0m[36m @0xDbgMan                     ║
+╚═════════════════════════════════════════╝[0m
+[*] Analysis started: WinRing0x64.sys
+[*] SHA-256  : 11bd2c9f9e2397c9a16e0990e4ed2cf0679498fe0fd418a3dfdac60b5c160ee5
+[*] imphash  : d41fa95d4642dc981f10de36f4dc8cd7
+[*] Architecture: x64 | Kernel Driver: Yes
+[*] Image Base: 0x10000 | Imports: 12 | Sections: 6
+[*] VersionInfo: OriginalFilename: WinRing0.sys | CompanyName: OpenLibSys.org | FileVersion: 1.2.0.5 | FileDescription: WinRing0
+[*] Mitigations ON : none
+[33m[!][0m Mitigations OFF: HIGH_ENTROPY_VA, DYNAMIC_BASE, FORCE_INTEGRITY, NX_COMPAT, NO_SEH, GUARD_CF, GS_COOKIE  [HVCI:NO]
+
+[*] ─── Authenticode Signature ───
+[1m[+][0m   Status    : crypto OK · anchor [ms-root-referenced] · cert expired (grandfathered by TS 2008-07-26)
+[*]   Primary   : SHA1 [✓]  signed by GlobalSign Time Stamping Authority
+[*]              → GlobalSign RootSign Partners CA
+[*]   Timestamp : 2008-07-26  [verified]  via Noriyuki MIYAZAKI
+[*]   Anchor    : Microsoft Code Verification Root  [kernel-trusted]
+[33m[!][0m   HVCI Prereqs: none (no WHQL/EV/page-hashes)
+[*]   Org       : GlobalSign
+[*]   Serial    : 400000000011092EB8295
+[*]   Key       : RSA-2048
+[*]   Valid     : 2007-02-05 → 2014-01-27
+[*]   Thumbprint: 8c4eb0708e6ec754f47b2d788089132ecbcc9b01
+[*]   Chain (6 certs):
+[*]     [0] Noriyuki MIYAZAKI [EXPIRED]
+[*]         Issuer: GlobalSign ObjectSign CA
+[*]         Serial: 1000000000115372421A8
+[*]         Valid : 2007-09-24 → 2008-09-24
+[*]     [1] GlobalSign RootSign Partners CA [CA] [EXPIRED]
+[*]         Issuer: GlobalSign Root CA
+[*]         Serial: 40000000000F97FAA2E1E
+[*]         Valid : 2003-12-16 → 2014-01-27
+[*]     [2] GlobalSign Primary Object Publishing CA [CA] [EXPIRED]
+[*]         Issuer: GlobalSign Root CA
+[*]         Serial: 4000000000108D9611CD6
+[*]         Valid : 1999-01-28 → 2014-01-27
+[*]     [3] GlobalSign Time Stamping Authority [EXPIRED]
+[*]         Issuer: GlobalSign RootSign Partners CA
+[*]         Serial: 400000000011092EB8295
+[*]         Valid : 2007-02-05 → 2014-01-27
+[*]     [4] GlobalSign ObjectSign CA [CA] [EXPIRED]
+[*]         Issuer: GlobalSign Primary Object Publishing CA
+[*]         Serial: 4000000000108D9612448
+[*]         Valid : 2004-01-22 → 2014-01-27
+[*]     [5] GlobalSign Root CA [CA] [EXPIRED]
+[*]         Issuer: Microsoft Code Verification Root
+[*]         Serial: 610B7F6B000000000019
+[*]         Valid : 2006-05-23 → 2016-05-23
+
+[*] Scanning imports...
+
+[1m[+][0m ─── LOAD VERDICT: WILL LOAD (blocked only under HVCI) ───
+  [37mDefault Win10/11         : WILL LOAD[0m
+  [37mSecure Boot + DSE        : WILL LOAD[0m
+  [31mHVCI / Memory Integrity  : WILL NOT LOAD[0m
+      • FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+      • W+X section present (HVCI forbids RWX)
+  [37mTest-signing mode        : WILL LOAD[0m
+  [31mS Mode                   : WILL NOT LOAD[0m
+      • No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+      • No Authenticode page hashes (Secured-Core requires per-page integrity)
+
+  [31mAll blockers found:[0m
+    [31m[BLOCKED][0m FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+    [31m[BLOCKED][0m No Authenticode page hashes (Secured-Core requires per-page integrity)
+    [31m[BLOCKED][0m No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+    [31m[BLOCKED][0m W+X section present (HVCI forbids RWX)
+
+  [37mPasses:[0m
+    [37m[PASS][0m Any valid signature accepted under test-signing
+    [37m[PASS][0m Chain anchored (ms-root-referenced)
+    [37m[PASS][0m SHA-1 grandfathered (timestamped before 2015-07-29 kernel cutoff)
+    [37m[PASS][0m Signature crypto + PE hash OK
+    [37m[PASS][0m Signed
+    [37m[PASS][0m Signed 2008-07-26 (pre-expiry) — cert expiry ignored by Windows
+
+  [37mConfidence:[0m live MS trust list NOT loaded — using built-in kernel-root snapshot (run --live-check for ground truth)
+    Static checks cover signature crypto, PE hash, chain anchor, HVCI prereqs, and MS block list.
+    Not checked: live OCSP/CRL revocation, current WDAC policy, local test-signing / DSE state, page-hash integrity.
+
+[*] imports Function:
+  [!] MmMapIoSpace
+  [*] IoCreateDevice
+[*] Detected IOCTL codes (12):
+    0x9C402000  @0x1122B  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!PHYS MAP]  [!] any-user
+    0x9C402004  @0x11213  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!PHYS MAP]  [!] any-user
+    0x9C402084  @0x111F6  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!PHYS MAP]  [!] any-user
+    0x9C402088  @0x111D9  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!PHYS MAP]  [!] any-user
+    0x9C40208C  @0x111BC  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!PHYS MAP]  [!] any-user
+    0x9C402090  @0x111B6  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!PHYS MAP]  [!] any-user
+    0x9C4060C4  @0x11189  (BUFFERED, FILE_READ_DATA)  → phys mem map  [!!PHYS MAP]
+    0x9C406104  @0x113B4  (BUFFERED, FILE_READ_DATA)  → phys mem map  [!!HW ACCESS]  bugs=arbitrary-rw  [UNGATED-sink]
+    0x9C406144  @0x11342  (BUFFERED, FILE_READ_DATA)
+    0x9C40A0C8  @0x11310  (BUFFERED, FILE_WRITE_DATA)  → port I/O  bugs=arbitrary-rw
+    0x9C40A108  @0x11303  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)
+    0x9C40A148  @0x112A5  (BUFFERED, FILE_WRITE_DATA)  bugs=double-fetch
+
+[!] Device Access Security:
+    Creation API   : IoCreateDevice
+    Secure Open    : No
+    Exclusive      : No
+    SDDL           : None (default permissive ACL)
+    Symlink        : \DosDevices\WinRing0_1_2_0  [user-accessible]
+    Issues (5):
+      [!] Uses Iocreatedevice
+      [*] No File Device Secure Open
+      [*] Not Exclusive
+      [*] Has Symlinks
+      [!] No Sddl
+
+[*] ─── Device Names & Symbolic Links (2) ───
+    [*] \Device\WinRing0_1_2_0 (kernel-only)
+    [+] \DosDevices\WinRing0_1_2_0 (user-accessible)  →  CreateFile("\\.\WinRing0_1_2_0")
+
+[+] ─── User-Mode Accessible Devices (1) ───
+    [+] \\.\WinRing0_1_2_0  →  \Device\WinRing0_1_2_0
+
+[*] ─── Registry References (1) ───
+    (keys/values the driver reads — device name may be loaded here at runtime)
+    [r] RegistryValue:SymbolicLink

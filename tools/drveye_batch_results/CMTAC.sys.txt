@@ -1,0 +1,125 @@
+C:\Users\macin\Desktop\vuln\tools\drveye\drivertool\pe_analyzer.py:261: UserWarning: PKCS#7 certificates could not be parsed as DER, falling back to parsing as BER. In the future, this may become an exception. Error details: ValueError: error parsing asn1 value: ParseError { kind: UnknownDefinedBy, location: ["ContentInfo::content", "SignedData::content_info", "ContentInfo::content"] }
+  certs = pkcs7_mod.load_der_pkcs7_certificates(pkcs7_der)
+[36m╔═════════════════════════════════════════╗
+║   DrvEye  Windows Driver Rev&Analysis   ║
+║   [2mCredit:[0m[36m @0xDbgMan                     ║
+╚═════════════════════════════════════════╝[0m
+[*] Analysis started: CMTAC.sys
+[*] SHA-256  : 83986d972914a60e76772ce93c2809cedbd224ca9a4fcb8f13c86e49af40fbe9
+[*] imphash  : 091bc6555de78d03f6555bc4a224e895
+[*] Architecture: x64 | Kernel Driver: Yes
+[*] Image Base: 0x140000000 | Imports: 103 | Sections: 9
+[*] VersionInfo: OriginalFilename: CMTAC.sys | CompanyName: Cooler Master Technology | FileVersion: 10.0.0019.11832 | FileDescription: Cooler Master Technology MH670 Driver
+[*] Mitigations ON : HIGH_ENTROPY_VA, DYNAMIC_BASE, NX_COMPAT, GS_COOKIE
+[33m[!][0m Mitigations OFF: FORCE_INTEGRITY, NO_SEH, GUARD_CF  [HVCI:NO]
+
+[*] ─── Authenticode Signature ───
+[1m[+][0m   Status    : crypto OK · anchor [ms-root-referenced] · cert expired (grandfathered by TS 2019-08-19)
+[*]   Primary   : SHA256 [✓]  signed by Microsoft Windows Hardware Compatibility Publisher
+[*]              → Microsoft Windows Third Party Component CA 2012
+[*]   Nested    : SHA256 [✓]
+[*]   Nested    : SHA256 [✓]
+[*]   Timestamp : 2019-08-19  [verified]  (RFC3161)
+[*]   Anchor    : Microsoft Root Certificate Authority 2010  [kernel-trusted]
+[*]   HVCI Prereqs: WHQL EKU
+[*]   Org       : Microsoft Corporation
+[*]   Serial    : 33000000857F83DC2A6CA979B8000000000085
+[*]   Key       : RSA-2048
+[*]   Valid     : 2019-06-05 → 2020-06-03
+[*]   Thumbprint: 2ba2aecc0109c312674793ffc1fe03f757b75b21
+[*]   Chain (2 certs):
+[*]     [0] Microsoft Windows Hardware Compatibility Publisher [CodeSign] [EXPIRED]
+[*]         Issuer: Microsoft Windows Third Party Component CA 2012
+[*]         Serial: 33000000857F83DC2A6CA979B8000000000085
+[*]         Valid : 2019-06-05 → 2020-06-03
+[*]     [1] Microsoft Windows Third Party Component CA 2012 [CA]
+[*]         Issuer: Microsoft Root Certificate Authority 2010
+[*]         Serial: 610BAAC1000000000009
+[*]         Valid : 2012-04-18 → 2027-04-18
+
+[*] Scanning imports...
+
+[1m[+][0m ─── LOAD VERDICT: WILL LOAD (blocked only under HVCI) ───
+  [37mDefault Win10/11         : WILL LOAD[0m
+  [37mSecure Boot + DSE        : WILL LOAD[0m
+  [31mHVCI / Memory Integrity  : WILL NOT LOAD[0m
+      • FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+  [37mTest-signing mode        : WILL LOAD[0m
+  [31mS Mode                   : WILL NOT LOAD[0m
+      • No Authenticode page hashes (Secured-Core requires per-page integrity)
+
+  [31mAll blockers found:[0m
+    [31m[BLOCKED][0m FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+    [31m[BLOCKED][0m No Authenticode page hashes (Secured-Core requires per-page integrity)
+
+  [37mPasses:[0m
+    [37m[PASS][0m Any valid signature accepted under test-signing
+    [37m[PASS][0m Chain anchored (ms-root-referenced)
+    [37m[PASS][0m Signature crypto + PE hash OK
+    [37m[PASS][0m Signed
+    [37m[PASS][0m Signed 2019-08-19 (pre-expiry) — cert expiry ignored by Windows
+    [37m[PASS][0m WHQL attestation EKU present
+    [37m[PASS][0m WHQL attestation EKU present (Secured-Core ready)
+
+  [37mConfidence:[0m live MS trust list NOT loaded — using built-in kernel-root snapshot (run --live-check for ground truth)
+    Static checks cover signature crypto, PE hash, chain anchor, HVCI prereqs, and MS block list.
+    Not checked: live OCSP/CRL revocation, current WDAC policy, local test-signing / DSE state, page-hash integrity.
+
+[*] imports Function:
+  [!] MmMapLockedPagesSpecifyCache
+  [*] ZwCreateFile, ZwSetValueKey
+[*] Detected IOCTL codes (26):
+    0x49656E69  @0x140010DE3  (IN_DIRECT, FILE_READ_DATA)  → stub (no observable calls)
+    0x756E6547  @0x140010DD7  (NEITHER, FILE_READ_DATA)  → stub (no observable calls)  [!] raw ptr — no probe  bugs=missing-probe
+    0x4086232B  @?  (NEITHER, FILE_ANY_ACCESS)  [!] raw ptr — no probe  [!] any-user
+    0x46493031  @0x14000A9A6  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x46493033  @0x14000B0BE  (NEITHER, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] raw ptr — no probe  [!] any-user  bugs=missing-probe
+    0x49493031  @0x14000EF25  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x49493032  @0x14000F149  (OUT_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x80000001  @?  (IN_DIRECT, FILE_ANY_ACCESS)  [!] any-user
+    0x001D6000  @0x140367840  (BUFFERED, FILE_READ_DATA)  bugs=double-fetch
+    0x001D6004  @0x140367825  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)
+    0x001D600C  @0x14036780A  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)
+    0x001D6010  @0x1403677EF  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001D6018  @0x1403677AE  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001D6028  @0x140367985  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001D6034  @0x14036794B  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001D6058  @0x1403678FD  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)
+    0x80000005  @0x14036793E  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x001DA02C  @0x140367B11  (BUFFERED, FILE_WRITE_DATA)  bugs=double-fetch,length-bounded
+    0x001DA030  @0x140367AE4  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)
+    0x001DA03C  @0x140367ACE  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)
+    0x001DA040  @0x140367A83  (BUFFERED, FILE_WRITE_DATA)  bugs=double-fetch
+    0x001DA044  @0x140367A5A  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001DA050  @0x140367C94  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)
+    0x001DA054  @0x140367CB6  (BUFFERED, FILE_WRITE_DATA)  → trivial (completes IRP only)  bugs=double-fetch
+    0x5433A5A2  @?  (OUT_DIRECT, FILE_WRITE_DATA)
+    0x002B1100  @?  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user
+
+[*] Exploit Primitives:
+    0x756E6547 (stub (no observable calls)): arbitrary-read, arbitrary-write
+
+[!] Device Access Security:
+    Creation API   : Unknown
+    Secure Open    : No
+    Exclusive      : No
+    SDDL           : None (default permissive ACL)
+    Symlink        : DeviceInterface:{3D0DAAE8-86B7-47A3-9F90-507E9EDBC433}  [user-accessible]
+    Symlink        : DeviceInterface:{35CE36A6-01C6-4067-B195-1BB65DCB553A}  [user-accessible]
+    Issues (2):
+      [*] Has Symlinks
+      [*] Device Interface No Security
+
+[*] ─── Device Names & Symbolic Links (5) ───
+    [~] \Callback\StreamEngineAddr%p (format template — constructed at runtime)
+    [~] \Callback\AudioHalAddr%p (format template — constructed at runtime)
+    [~] \Callback\CyclicControlAddr%p (format template — constructed at runtime)
+    [*] DeviceInterface:{3D0DAAE8-86B7-47A3-9F90-507E9EDBC433} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{35CE36A6-01C6-4067-B195-1BB65DCB553A} (device interface GUID — use SetupDiGetClassDevs)
+
+[*] ─── Registry References (4) ───
+    (keys/values the driver reads — device name may be loaded here at runtime)
+    [r] Registry:\Registry\Machine\SYSTEM\CurrentControlSet\Enum\%s\%s\%s
+    [r] Registry:\Registry\Machine\Enum\%s\%s\%s
+    [r] Registry:\Registry\Machine\SYSTEM\CurrentControlSet\Enum\%s\%s
+    [r] Registry:\Registry\Machine\Enum\%s\%s

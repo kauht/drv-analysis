@@ -1,0 +1,85 @@
+C:\Users\macin\Desktop\vuln\tools\drveye\drivertool\pe_analyzer.py:261: UserWarning: PKCS#7 certificates could not be parsed as DER, falling back to parsing as BER. In the future, this may become an exception. Error details: ValueError: error parsing asn1 value: ParseError { kind: UnknownDefinedBy, location: ["ContentInfo::content", "SignedData::content_info", "ContentInfo::content"] }
+  certs = pkcs7_mod.load_der_pkcs7_certificates(pkcs7_der)
+[36m╔═════════════════════════════════════════╗
+║   DrvEye  Windows Driver Rev&Analysis   ║
+║   [2mCredit:[0m[36m @0xDbgMan                     ║
+╚═════════════════════════════════════════╝[0m
+[*] Analysis started: FrameViewKMD.sys
+[*] SHA-256  : c5b85f36aeaac9dcf813d504ec18d50bd4de93f886230faf09c3b78cb59e9dd2
+[*] imphash  : d26d6dd1b6b75b8e082fb831f459e1d8
+[*] Architecture: x64 | Kernel Driver: Yes
+[*] Image Base: 0x140000000 | Imports: 24 | Sections: 7
+[*] Mitigations ON : HIGH_ENTROPY_VA, DYNAMIC_BASE, NX_COMPAT, GUARD_CF, GS_COOKIE
+[33m[!][0m Mitigations OFF: FORCE_INTEGRITY, NO_SEH  [HVCI:NO]
+
+[*] ─── Authenticode Signature ───
+[33m[!][0m   Status    : crypto OK · anchor UNTRUSTED [no-ms-root] · cert expired (grandfathered by TS 2025-01-30)
+[*]   Primary   : SHA256 [✓]  signed by NVIDIA Corporation
+[*]              → DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1
+[*]   Timestamp : 2025-01-30  [verified]  (RFC3161)
+[*]   Anchor    : —  [NOT kernel-trusted]
+[33m[!][0m   HVCI Prereqs: none (no WHQL/EV/page-hashes)
+[*]   Org       : NVIDIA Corporation
+[*]   Serial    : 636AFB1DA06CA9791388B36E258D048
+[*]   Key       : RSA-3072
+[*]   Valid     : 2022-10-17 → 2025-10-15
+[*]   Thumbprint: 9ea06f2f21dccf7e67afa4dfa1bcd49681ecd509
+[*]   Chain (2 certs):
+[*]     [0] DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1 [CA] [CodeSign]
+[*]         Issuer: DigiCert Trusted Root G4
+[*]         Serial: 8AD40B260D29C4C9F5ECDA9BD93AED9
+[*]         Valid : 2021-04-29 → 2036-04-28
+[*]     [1] NVIDIA Corporation [CodeSign] [EXPIRED]
+[*]         Issuer: DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1
+[*]         Serial: 636AFB1DA06CA9791388B36E258D048
+[*]         Valid : 2022-10-17 → 2025-10-15
+
+[*] Scanning imports...
+
+[33m[!][0m ─── LOAD VERDICT: WILL LOAD only under test-signing ───
+  [31mDefault Win10/11         : WILL NOT LOAD[0m
+      • Chain does not anchor to a kernel-trusted root (no-ms-root)
+  [31mSecure Boot + DSE        : WILL NOT LOAD[0m
+      • Chain does not anchor to a kernel-trusted root (no-ms-root)
+  [31mHVCI / Memory Integrity  : WILL NOT LOAD[0m
+      • Chain does not anchor to a kernel-trusted root (no-ms-root)
+      • FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+  [37mTest-signing mode        : WILL LOAD[0m
+  [31mS Mode                   : WILL NOT LOAD[0m
+      • No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+      • No Authenticode page hashes (Secured-Core requires per-page integrity)
+      • Chain not kernel-trusted
+
+  [31mAll blockers found:[0m
+    [31m[BLOCKED][0m Chain does not anchor to a kernel-trusted root (no-ms-root)
+    [31m[BLOCKED][0m Chain not kernel-trusted
+    [31m[BLOCKED][0m FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+    [31m[BLOCKED][0m No Authenticode page hashes (Secured-Core requires per-page integrity)
+    [31m[BLOCKED][0m No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+
+  [37mPasses:[0m
+    [37m[PASS][0m Any valid signature accepted under test-signing
+    [37m[PASS][0m Signature crypto + PE hash OK
+    [37m[PASS][0m Signed
+
+  [37mConfidence:[0m live MS trust list NOT loaded — using built-in kernel-root snapshot (run --live-check for ground truth)
+    Static checks cover signature crypto, PE hash, chain anchor, HVCI prereqs, and MS block list.
+    Not checked: live OCSP/CRL revocation, current WDAC policy, local test-signing / DSE state, page-hash integrity.
+
+[*] imports Function:
+  [*] IoCreateDevice, EtwUnregister
+
+[!] Device Access Security:
+    Creation API   : IoCreateDevice
+    Secure Open    : No
+    Exclusive      : No
+    SDDL           : None (default permissive ACL)
+    Issues (4):
+      [!] Uses Iocreatedevice
+      [*] No File Device Secure Open
+      [*] Not Exclusive
+      [!] No Sddl
+
+[*] ─── Device Names & Symbolic Links (0) ───
+[33m[!][0m     No device names recovered (may be runtime-constructed or obfuscated)
+    Hint: pass --device NAME to set the symbolic-link manually

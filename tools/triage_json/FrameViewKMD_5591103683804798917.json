@@ -1,0 +1,667 @@
+{
+  "file": "samples\\pny\\extracted\\FrameView\\bin\\FrameViewKMD.sys",
+  "sha256": "c5b85f36aeaac9dcf813d504ec18d50bd4de93f886230faf09c3b78cb59e9dd2",
+  "imphash": "d26d6dd1b6b75b8e082fb831f459e1d8",
+  "arch": "x64",
+  "version": {},
+  "security": {
+    "HIGH_ENTROPY_VA": true,
+    "DYNAMIC_BASE": true,
+    "FORCE_INTEGRITY": false,
+    "NX_COMPAT": true,
+    "NO_SEH": false,
+    "GUARD_CF": true,
+    "GS_COOKIE": true,
+    "HVCI_COMPATIBLE": false
+  },
+  "certificate": {
+    "signed": true,
+    "win_cert_revision": "0x0200",
+    "win_cert_type": 2,
+    "cert_count": 2,
+    "certificates": [
+      {
+        "subject_cn": "DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1",
+        "subject_org": "DigiCert, Inc.",
+        "issuer_cn": "DigiCert Trusted Root G4",
+        "issuer_org": "DigiCert Inc",
+        "serial": "8ad40b260d29c4c9f5ecda9bd93aed9",
+        "not_before": "2021-04-29T00:00:00+00:00",
+        "not_after": "2036-04-28T23:59:59+00:00",
+        "expired": false,
+        "not_yet_valid": false,
+        "self_signed": false,
+        "key_type": "RSA",
+        "key_size": 4096,
+        "thumbprint_sha1": "7b0f360b775f76c94a12ca48445aa2d2a875701c",
+        "thumbprint_sha256": "46011ede1c147eb2bc731a539b7c047b7ee93e48b9d3c3ba710ce132bbdfac6b",
+        "eku": [
+          "1.3.6.1.5.5.7.3.3"
+        ],
+        "has_code_signing_eku": true,
+        "signature_hash_algorithm": "sha384",
+        "is_ca": true
+      },
+      {
+        "subject_cn": "NVIDIA Corporation",
+        "subject_org": "NVIDIA Corporation",
+        "issuer_cn": "DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1",
+        "issuer_org": "DigiCert, Inc.",
+        "serial": "636afb1da06ca9791388b36e258d048",
+        "not_before": "2022-10-17T00:00:00+00:00",
+        "not_after": "2025-10-15T23:59:59+00:00",
+        "expired": true,
+        "not_yet_valid": false,
+        "self_signed": false,
+        "key_type": "RSA",
+        "key_size": 3072,
+        "thumbprint_sha1": "9ea06f2f21dccf7e67afa4dfa1bcd49681ecd509",
+        "thumbprint_sha256": "b9bf5b26be25d2cc58b2e7541d27e6e6b7ee2134f7ed8bc0d66ef3da6afcbd58",
+        "eku": [
+          "1.3.6.1.5.5.7.3.3"
+        ],
+        "has_code_signing_eku": true,
+        "signature_hash_algorithm": "sha256",
+        "is_ca": false
+      }
+    ],
+    "signer_cn": "NVIDIA Corporation",
+    "signer_org": "NVIDIA Corporation",
+    "signer_serial": "636afb1da06ca9791388b36e258d048",
+    "signer_issuer": "DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1",
+    "signer_expired": true,
+    "signer_self_signed": false,
+    "signer_key_type": "RSA",
+    "signer_key_size": 3072,
+    "signer_not_after": "2025-10-15T23:59:59+00:00",
+    "signer_thumbprint": "9ea06f2f21dccf7e67afa4dfa1bcd49681ecd509",
+    "signature_valid": true,
+    "signature_error": "",
+    "pe_hash_match": true,
+    "pe_hash_expected": "91877e5078f06ef6c00f93dea51187b0f030b69e3dc5061a15a399fbca609452",
+    "pe_hash_actual": "91877e5078f06ef6c00f93dea51187b0f030b69e3dc5061a15a399fbca609452",
+    "pe_hash_algorithm": "sha256",
+    "nested_signatures": [],
+    "chain_anchor": {
+      "kind": "no-ms-root",
+      "matched_thumbprint": "",
+      "matched_name": "",
+      "trusted_for_kernel": false
+    },
+    "signing_time": null,
+    "countersig_time": "2025-01-30T17:28:27Z",
+    "countersig_source": "rfc3161",
+    "timestamp_valid": true,
+    "timestamp_binding_ok": true,
+    "timestamp_source": "rfc3161",
+    "timestamp_error": "",
+    "page_hashes_present": false,
+    "page_hashes_algorithm": "",
+    "has_whql_eku": false,
+    "has_ev_cert": false,
+    "eku_propagation_ok": true,
+    "eku_broken_cert_cn": ""
+  },
+  "device_names": [],
+  "load_verdict": {
+    "can_load": "False",
+    "blockers": [
+      "Kernel Trust Anchor",
+      "Expired + No Timestamp",
+      "HVCI",
+      "Timestamp"
+    ],
+    "passes": [
+      "Secure Boot"
+    ]
+  },
+  "exploit_chains": [],
+  "attack_surface_score": 12,
+  "attack_risk": "MINIMAL",
+  "device_access": {
+    "create_api": "IoCreateDevice",
+    "secure_open": false,
+    "exclusive": false,
+    "sddl": null,
+    "symlinks": [],
+    "issues": [
+      "uses_IoCreateDevice",
+      "no_FILE_DEVICE_SECURE_OPEN",
+      "not_exclusive",
+      "no_sddl"
+    ]
+  },
+  "ioctls": [],
+  "findings": [
+    {
+      "title": "Dangerous import: IoCreateDevice",
+      "severity": "MEDIUM",
+      "description": "Creates device object \u2014 check if SecurityDescriptor is NULL",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "IoCreateDevice"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Dangerous import: EtwUnregister",
+      "severity": "MEDIUM",
+      "description": "Unregisters ETW provider",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "EtwUnregister"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Dangerous import: ExAllocatePoolWithTag",
+      "severity": "LOW",
+      "description": "Pool allocation \u2014 check for size validation",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "ExAllocatePoolWithTag"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "WDF (Windows Driver Framework) driver detected",
+      "severity": "INFO",
+      "description": "Driver uses WDF framework (detected imports: WdfVersionBind). IOCTL dispatch uses EvtIoDeviceControl callback via WdfIoQueueCreate rather than DriverObject->MajorFunction[].",
+      "location": "Import Table",
+      "details": {
+        "wdf_imports": "WdfVersionBind"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Hardcoded address: 0x2080000",
+      "severity": "MEDIUM",
+      "description": "Hardcoded page-aligned address found. May be a physical memory address used with MmMapIoSpace or similar.",
+      "location": "0x140001C53",
+      "details": {
+        "address": "0x2080000"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Missing mitigation: Signature enforcement (FORCE_INTEGRITY)",
+      "severity": "MEDIUM",
+      "description": "Signature enforcement (FORCE_INTEGRITY) is not enabled. Driver can load without a valid Authenticode signature.",
+      "location": "PE DllCharacteristics / LoadConfig",
+      "details": {
+        "mitigation": "Signature enforcement (FORCE_INTEGRITY)",
+        "flag": "FORCE_INTEGRITY"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Driver is NOT HVCI-compatible",
+      "severity": "HIGH",
+      "description": "Driver fails HVCI checks (missing FORCE_INTEGRITY or has W+X sections). Cannot load in HVCI-enabled environments without policy bypass.",
+      "location": "PE headers",
+      "details": {
+        "hvci": "incompatible"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Kernel write gadgets found (8 instances)",
+      "severity": "HIGH",
+      "description": "Multiple 'mov [reg+offset], reg' patterns in driver code. If the register is derived from user input (e.g., IOCTL buffer), this is an arbitrary kernel memory write primitive.",
+      "location": "Code section",
+      "details": {
+        "gadgets": "0x140001000: mov qword ptr [rsp + 8], rbx; 0x140001013: mov qword ptr [rcx], rax; 0x140001050: mov qword ptr [rsp + 8], rbx; 0x1400010A0: mov qword ptr [rsp + 0x10], rbx"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Hidden function with purpose 'etw disable' at 0x140001696",
+      "severity": "HIGH",
+      "description": "Function at 0x140001696 performs 'etw disable' but is not reachable via the normal DriverEntry \u2192 MajorFunction call graph.  It may be invoked via a timer, DPC, work item, or kernel callback \u2014 a hidden secondary attack path.",
+      "location": "0x140001696",
+      "details": {
+        "purpose": "etw disable",
+        "function": "0x140001696"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Hidden function with purpose 'etw register' at 0x14000170C",
+      "severity": "HIGH",
+      "description": "Function at 0x14000170C performs 'etw register' but is not reachable via the normal DriverEntry \u2192 MajorFunction call graph.  It may be invoked via a timer, DPC, work item, or kernel callback \u2014 a hidden secondary attack path.",
+      "location": "0x14000170C",
+      "details": {
+        "purpose": "etw register",
+        "function": "0x14000170C"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Hidden function with purpose 'etw register' at 0x140001934",
+      "severity": "HIGH",
+      "description": "Function at 0x140001934 performs 'etw register' but is not reachable via the normal DriverEntry \u2192 MajorFunction call graph.  It may be invoked via a timer, DPC, work item, or kernel callback \u2014 a hidden secondary attack path.",
+      "location": "0x140001934",
+      "details": {
+        "purpose": "etw register",
+        "function": "0x140001934"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Hidden function with purpose 'etw disable' at 0x14000194E",
+      "severity": "HIGH",
+      "description": "Function at 0x14000194E performs 'etw disable' but is not reachable via the normal DriverEntry \u2192 MajorFunction call graph.  It may be invoked via a timer, DPC, work item, or kernel callback \u2014 a hidden secondary attack path.",
+      "location": "0x14000194E",
+      "details": {
+        "purpose": "etw disable",
+        "function": "0x14000194E"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "No PreviousMode / RequestorMode check detected",
+      "severity": "HIGH",
+      "description": "Driver does not import ExGetPreviousMode or KeGetPreviousMode and no inline KTHREAD.PreviousMode read was found. Without checking PreviousMode, a kernel-mode caller could be impersonated, or user-mode requests may bypass validation. IOCTLs should verify RequestorMode == UserMode before trusting input.",
+      "location": "Import Table / DriverEntry",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "IoCreateDevice without FILE_DEVICE_SECURE_OPEN",
+      "severity": "HIGH",
+      "description": "Driver uses IoCreateDevice instead of IoCreateDeviceSecure and FILE_DEVICE_SECURE_OPEN flag was not detected. Without this flag, the device object inherits permissive default security, allowing any user to open a handle. Use IoCreateDeviceSecure with an SDDL string to restrict access.",
+      "location": "Import Table / DriverEntry",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "No SDDL security descriptor found",
+      "severity": "MEDIUM",
+      "description": "No SDDL security descriptor string detected in the binary. Drivers should apply SDDL-based ACLs to their device objects to control which users/groups can open handles.",
+      "location": "Binary strings",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "Driver has Authenticode signature",
+      "severity": "INFO",
+      "description": "PE contains a WIN_CERTIFICATE structure with embedded signature.",
+      "location": "PE Security Directory",
+      "details": {
+        "revision": "0x0200",
+        "cert_count": "2"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Signed by: NVIDIA Corporation",
+      "severity": "INFO",
+      "description": "Subject: NVIDIA Corporation (NVIDIA Corporation)\nIssuer: DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1\nSerial: 636afb1da06ca9791388b36e258d048\nKey: RSA 3072-bit\nValid until: 2025-10-15T23:59:59+00:00",
+      "location": "Authenticode Certificate",
+      "details": {
+        "signer_cn": "NVIDIA Corporation",
+        "signer_org": "NVIDIA Corporation",
+        "issuer": "DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1",
+        "serial": "636afb1da06ca9791388b36e258d048",
+        "thumbprint": "9ea06f2f21dccf7e67afa4dfa1bcd49681ecd509"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Signing certificate EXPIRED (valid until 2025-10-15T23:59:59+00:00)",
+      "severity": "HIGH",
+      "description": "The code-signing certificate has expired. While drivers with a valid timestamp counter-signature remain valid after expiry, an expired cert without a timestamp means the signature is no longer trusted. This is also common in BYOVD \u2014 old vulnerable drivers with expired certs that were signed before revocation.",
+      "location": "Authenticode Certificate",
+      "details": {
+        "not_after": "2025-10-15T23:59:59+00:00"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "No Microsoft certificate in signing chain",
+      "severity": "MEDIUM",
+      "description": "The certificate chain does not include any Microsoft-issued certificate. Since July 2021, new kernel-mode drivers must be submitted to Microsoft's Hardware Dev Center portal for signing. Drivers without Microsoft in the chain are either legacy (pre-2021), cross-signed with a now-expired cert, or test-signed.",
+      "location": "Certificate Chain",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "No timestamp countersignature detected",
+      "severity": "MEDIUM",
+      "description": "The Authenticode signature has no countersignature timestamp. Without a timestamp, the signature becomes invalid after the signing certificate expires. Timestamped signatures remain valid indefinitely. This affects driver loadability.",
+      "location": "Authenticode Certificate",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "PKCS#7 signature verifies cryptographically",
+      "severity": "INFO",
+      "description": "The primary Authenticode PKCS#7 signature was verified against the signer certificate's public key.",
+      "location": "Authenticode Certificate",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "Authenticode PE hash matches (binary not tampered)",
+      "severity": "INFO",
+      "description": "Recomputed sha256 hash of the PE image matches the value embedded in SpcIndirectDataContent.",
+      "location": "Authenticode Signature",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "Chain does not terminate at a Windows kernel-trusted root",
+      "severity": "HIGH",
+      "description": "The certificate chain does not chain up to any root present in the Windows kernel trust store (20 known roots checked by thumbprint). Unless a missing intermediate can be supplied by the OS at load time, Windows will not accept this driver.",
+      "location": "Certificate Chain",
+      "details": {
+        "anchor_kind": "no-ms-root"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Load may fail: Expired certificate without timestamp",
+      "severity": "HIGH",
+      "description": "The signing certificate has expired and no countersignature timestamp was detected. Without a timestamp proving the driver was signed before expiry, Windows may reject the signature.",
+      "location": "Signature Policy",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "HVCI incompatible: missing FORCE_INTEGRITY flag",
+      "severity": "HIGH",
+      "description": "This driver is NOT compatible with Hypervisor-protected Code Integrity (HVCI / Memory Integrity). On systems with HVCI enabled, Windows will BLOCK this driver from loading. Issues: missing FORCE_INTEGRITY flag.",
+      "location": "PE Headers / Sections",
+      "details": {
+        "force_integrity": "False",
+        "has_wx_sections": "False"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Driver architecture: x64",
+      "severity": "INFO",
+      "description": "64-bit driver \u2014 loads on x64 Windows",
+      "location": "PE Header",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "Load compatibility: BLOCKED \u2014 4 issue(s) prevent loading",
+      "severity": "HIGH",
+      "description": "  [BLOCKED] Kernel Trust Anchor: Chain does not terminate at a Windows kernel trust root (no-ms-root)\n  [BLOCKED] Expired + No Timestamp: Expired cert without countersignature timestamp\n  [BLOCKED] HVCI: Blocked when Memory Integrity is ON (missing FORCE_INTEGRITY flag)\n  [PASS] Secure Boot: Compatible (signed driver)\n  [BLOCKED] Timestamp: Expired cert + no timestamp = signature rejected",
+      "location": "Load Policy Analysis",
+      "details": {
+        "can_load": "False",
+        "blockers": [
+          "Kernel Trust Anchor",
+          "Expired + No Timestamp",
+          "HVCI",
+          "Timestamp"
+        ],
+        "passes": [
+          "Secure Boot"
+        ],
+        "matrix": {
+          "default": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "Chain does not anchor to a kernel-trusted root (no-ms-root)"
+            ],
+            "passes": [
+              "Signed",
+              "Signature crypto + PE hash OK"
+            ]
+          },
+          "secure_boot": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "Chain does not anchor to a kernel-trusted root (no-ms-root)"
+            ],
+            "passes": [
+              "Signed",
+              "Signature crypto + PE hash OK"
+            ]
+          },
+          "hvci": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "Chain does not anchor to a kernel-trusted root (no-ms-root)",
+              "FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)"
+            ],
+            "passes": [
+              "Signed",
+              "Signature crypto + PE hash OK"
+            ]
+          },
+          "test_signing": {
+            "verdict": "WILL_LOAD",
+            "blockers": [],
+            "passes": [
+              "Any valid signature accepted under test-signing"
+            ]
+          },
+          "s_mode": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "No WHQL attestation EKU \u2014 S Mode / Secured-Core require WHQL-signed drivers",
+              "No Authenticode page hashes (Secured-Core requires per-page integrity)",
+              "Chain not kernel-trusted"
+            ],
+            "passes": []
+          }
+        }
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Device Access Security Audit",
+      "severity": "HIGH",
+      "description": "Uses IoCreateDevice (not IoCreateDeviceSecure); Missing FILE_DEVICE_SECURE_OPEN flag; Device is not exclusive (multiple handles allowed); No SDDL security descriptor \u2014 default permissive ACL",
+      "location": "DriverEntry",
+      "details": {
+        "create_api": "IoCreateDevice",
+        "secure_open": "False",
+        "exclusive": "False",
+        "device_type": "unknown",
+        "sddl": "none",
+        "symlinks": [],
+        "create_checks": [],
+        "issues": [
+          "uses_IoCreateDevice",
+          "no_FILE_DEVICE_SECURE_OPEN",
+          "not_exclusive",
+          "no_sddl"
+        ]
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ETW control imports: EtwUnregister",
+      "severity": "HIGH",
+      "description": "Driver imports ETW control APIs (EtwUnregister). These can disable ETW trace providers that EDR products rely on for kernel telemetry.",
+      "location": "Import Table",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP/JOP gadgets found: 437 total (misc: 161, reg-control: 101, memory-read: 83, memory-write: 65, stack-pivot: 17, jmp-reg: 10)",
+      "severity": "MEDIUM",
+      "description": "Found 437 usable ROP/JOP gadgets in executable sections. Since many drivers lack ASLR, these gadgets are at predictable addresses and can be chained for kernel exploitation.\n\nTop gadgets by type:\n  [stack-pivot] (17 found):\n    0x140001043: pop rsp ; and al, 0x30 ; add rsp, 0x20 ; pop rdi ; ret\n    0x140001265: xchg dword ptr [rcx], eax ; add byte ptr [rax], al ; add rsp, 0x48 ; ret\n    0x140001263: add al, ch ; xchg dword ptr [rcx], eax ; add byte ptr [rax], al ; add rsp, 0x48 ; ret\n  [memory-write] (65 found):\n    0x1400011B6: mov dword ptr [rax], ecx ; add rsp, 0x20 ; pop rbx ; ret\n    0x1400011B5: mov qword ptr [rax], rcx ; add rsp, 0x20 ; pop rbx ; ret\n    0x1400011B2: mov byte ptr [rax + 8], bl ; mov qword ptr [rax], rcx ; add rsp, 0x20 ; pop rbx ; ret\n  [memory-read] (83 found):\n    0x140001042: mov ebx, dword ptr [rsp + 0x30] ; add rsp, 0x20 ; pop rdi ; ret\n    0x140001041: mov rbx, qword ptr [rsp + 0x30] ; add rsp, 0x20 ; pop rdi ; ret\n    0x140001040: ret ; mov rbx, qword ptr [rsp + 0x30] ; add rsp, 0x20 ; pop rdi ; ret\n  [reg-control] (101 found):\n    0x14000104A: pop rdi ; ret\n    0x140001047: add esp, 0x20 ; pop rdi ; ret\n    0x140001046: add rsp, 0x20 ; pop rdi ; ret\n  [jmp-reg] (10 found):\n    0x140001F4E: add byte ptr [rax], al ; jmp rax\n    0x140001F4C: add byte ptr [rax], al ; add byte ptr [rax], al ; jmp rax\n    0x140001F4A: test byte ptr [rax], al ; add byte ptr [rax], al ; add byte ptr [rax], al ; jmp rax",
+      "location": "Executable sections",
+      "details": {
+        "total_gadgets": "437",
+        "by_type": {
+          "stack-pivot": 17,
+          "reg-control": 101,
+          "memory-read": 83,
+          "memory-write": 65,
+          "jmp-reg": 10,
+          "misc": 161
+        }
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: mov dword ptr [rax], ecx ; add rsp, 0x20 ; pop rbx ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x1400011B6 (4 insns). Type: memory-write. Bytes: 89084883c4205bc3",
+      "location": "0x1400011B6",
+      "details": {
+        "type": "memory-write",
+        "asm": "mov dword ptr [rax], ecx ; add rsp, 0x20 ; pop rbx ; ret",
+        "bytes": "89084883c4205bc3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: mov qword ptr [rax], rcx ; add rsp, 0x20 ; pop rbx ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x1400011B5 (4 insns). Type: memory-write. Bytes: 4889084883c4205bc3",
+      "location": "0x1400011B5",
+      "details": {
+        "type": "memory-write",
+        "asm": "mov qword ptr [rax], rcx ; add rsp, 0x20 ; pop rbx ; ret",
+        "bytes": "4889084883c4205bc3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: mov byte ptr [rax + 8], bl ; mov qword ptr [rax], rcx ; add rsp, 0x20 ; pop rbx ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x1400011B2 (5 insns). Type: memory-write. Bytes: 8858084889084883c4205bc3",
+      "location": "0x1400011B2",
+      "details": {
+        "type": "memory-write",
+        "asm": "mov byte ptr [rax + 8], bl ; mov qword ptr [rax], rcx ; add rsp, 0x20 ; pop rbx ; ret",
+        "bytes": "8858084889084883c4205bc3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: add byte ptr [rax], al ; mov byte ptr [rax + 8], bl ; mov qword ptr [rax], rcx ; add rsp, 0x20 ; pop rbx ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x1400011B0 (6 insns). Type: memory-write. Bytes: 00008858084889084883c4205bc3",
+      "location": "0x1400011B0",
+      "details": {
+        "type": "memory-write",
+        "asm": "add byte ptr [rax], al ; mov byte ptr [rax + 8], bl ; mov qword ptr [rax], rcx ; add rsp, 0x20 ; pop rbx ; ret",
+        "bytes": "00008858084889084883c4205bc3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: or eax, 0x1f8e ; mov byte ptr [rax + 8], bl ; mov qword ptr [rax], rcx ; add rsp, 0x20 ; pop rbx ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x1400011AD (6 insns). Type: memory-write. Bytes: 0d8e1f00008858084889084883c4205bc3",
+      "location": "0x1400011AD",
+      "details": {
+        "type": "memory-write",
+        "asm": "or eax, 0x1f8e ; mov byte ptr [rax + 8], bl ; mov qword ptr [rax], rcx ; add rsp, 0x20 ; pop rbx ; ret",
+        "bytes": "0d8e1f00008858084889084883c4205bc3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: pop rsp ; and al, 0x30 ; add rsp, 0x20 ; pop rdi ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001043 (5 insns). Type: stack-pivot. Bytes: 5c24304883c4205fc3",
+      "location": "0x140001043",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "pop rsp ; and al, 0x30 ; add rsp, 0x20 ; pop rdi ; ret",
+        "bytes": "5c24304883c4205fc3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: xchg dword ptr [rcx], eax ; add byte ptr [rax], al ; add rsp, 0x48 ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001265 (4 insns). Type: stack-pivot. Bytes: 870100004883c448c3",
+      "location": "0x140001265",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "xchg dword ptr [rcx], eax ; add byte ptr [rax], al ; add rsp, 0x48 ; ret",
+        "bytes": "870100004883c448c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: add al, ch ; xchg dword ptr [rcx], eax ; add byte ptr [rax], al ; add rsp, 0x48 ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001263 (5 insns). Type: stack-pivot. Bytes: 00e8870100004883c448c3",
+      "location": "0x140001263",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "add al, ch ; xchg dword ptr [rcx], eax ; add byte ptr [rax], al ; add rsp, 0x48 ; ret",
+        "bytes": "00e8870100004883c448c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: pop rsp ; and al, 0x20 ; call qword ptr [rip + 0x1cb6] ; add rsp, 0x30 ; pop rbx ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x1400013E1 (6 insns). Type: stack-pivot. Bytes: 5c2420ff15b61c00004883c4305bc3",
+      "location": "0x1400013E1",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "pop rsp ; and al, 0x20 ; call qword ptr [rip + 0x1cb6] ; add rsp, 0x30 ; pop rbx ; ret",
+        "bytes": "5c2420ff15b61c00004883c4305bc3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: pop rsp ; and al, 0x30 ; mov rsi, qword ptr [rsp + 0x38] ; add rsp, 0x20 ; pop rdi ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001582 (6 insns). Type: stack-pivot. Bytes: 5c2430488b7424384883c4205fc3",
+      "location": "0x140001582",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "pop rsp ; and al, 0x30 ; mov rsi, qword ptr [rsp + 0x38] ; add rsp, 0x20 ; pop rdi ; ret",
+        "bytes": "5c2430488b7424384883c4205fc3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Attack Surface Score: 12/100 [MINIMAL]",
+      "severity": "INFO",
+      "description": "Minimal attack surface \u2014 well-hardened driver\n\nScore breakdown:\n  IOCTL Exposure    : 0/20\n  Exploit Primitives: 0/25  (none)\n  Missing Mitigations: 4/15\n  Certificate Issues : 10/10\n  Dangerous Imports  : 0/10",
+      "location": "Overall Assessment",
+      "details": {
+        "score": "12",
+        "risk": "MINIMAL",
+        "primitives": [],
+        "ioctl_count": "0",
+        "method_neither_count": "0"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "YARA match: RDMSR_WRMSR_Opcodes",
+      "severity": "HIGH",
+      "description": "YARA rule 'RDMSR_WRMSR_Opcodes' matched. Strings: ['$rdmsr', '$wrmsr']",
+      "location": "Binary content",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "YARA match: IO_Port_Opcodes",
+      "severity": "HIGH",
+      "description": "YARA rule 'IO_Port_Opcodes' matched. Strings: ['$inb', '$outb', '$ind']",
+      "location": "Binary content",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "YARA match: CLI_STI_Opcodes",
+      "severity": "HIGH",
+      "description": "YARA rule 'CLI_STI_Opcodes' matched. Strings: ['$cli', '$sti']",
+      "location": "Binary content",
+      "details": {},
+      "ioctl_code": null
+    }
+  ]
+}

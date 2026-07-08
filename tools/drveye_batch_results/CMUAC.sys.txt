@@ -1,0 +1,98 @@
+[36m╔═════════════════════════════════════════╗
+║   DrvEye  Windows Driver Rev&Analysis   ║
+║   [2mCredit:[0m[36m @0xDbgMan                     ║
+╚═════════════════════════════════════════╝[0m
+[*] Analysis started: CMUAC.sys
+[*] SHA-256  : 2f75117ccbb5b0e6435de4807ed8e38ee5d8a947fcaf2d2d393a0e45ade3d414
+[*] imphash  : 91b83daf74750d31e381b2ae10fdfbd4
+[*] Architecture: x64 | Kernel Driver: Yes
+[*] Image Base: 0x140000000 | Imports: 97 | Sections: 9
+[*] VersionInfo: OriginalFilename: CMUAC.sys | CompanyName: C-MEDIA | FileVersion: 7.0.0015.8345 | FileDescription: C-MEDIA USB Audio Class 1.0 and 2.0 Device Driver Driver
+[*] Mitigations ON : HIGH_ENTROPY_VA, DYNAMIC_BASE, NX_COMPAT, GS_COOKIE
+[33m[!][0m Mitigations OFF: FORCE_INTEGRITY, NO_SEH, GUARD_CF  [HVCI:NO]
+[33m[!][0m Certificate: UNSIGNED — no Authenticode signature found
+[*] Scanning imports...
+
+[33m[!][0m ─── LOAD VERDICT: WILL NOT LOAD on any supported config ───
+  [31mDefault Win10/11         : WILL NOT LOAD[0m
+      • Driver is not signed
+  [31mSecure Boot + DSE        : WILL NOT LOAD[0m
+      • Driver is not signed
+  [31mHVCI / Memory Integrity  : WILL NOT LOAD[0m
+      • Driver is not signed
+      • FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+      • W+X section present (HVCI forbids RWX)
+  [31mTest-signing mode        : WILL NOT LOAD[0m
+      • Unsigned — test-signing still needs any signature
+  [31mS Mode                   : WILL NOT LOAD[0m
+      • Unsigned
+      • No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+      • No Authenticode page hashes (Secured-Core requires per-page integrity)
+
+  [31mAll blockers found:[0m
+    [31m[BLOCKED][0m Chain not kernel-trusted
+    [31m[BLOCKED][0m Driver is not signed
+    [31m[BLOCKED][0m FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+    [31m[BLOCKED][0m No Authenticode page hashes (Secured-Core requires per-page integrity)
+    [31m[BLOCKED][0m No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+    [31m[BLOCKED][0m Unsigned
+    [31m[BLOCKED][0m Unsigned — test-signing still needs any signature
+    [31m[BLOCKED][0m W+X section present (HVCI forbids RWX)
+
+  [37mConfidence:[0m live MS trust list NOT loaded — using built-in kernel-root snapshot (run --live-check for ground truth)
+    Static checks cover signature crypto, PE hash, chain anchor, HVCI prereqs, and MS block list.
+    Not checked: live OCSP/CRL revocation, current WDAC policy, local test-signing / DSE state, page-hash integrity.
+
+[*] imports Function:
+  [!] MmMapLockedPagesSpecifyCache
+  [*] ZwCreateFile, MmGetSystemRoutineAddress, ZwSetValueKey
+[*] Detected IOCTL codes (22):
+    0x4086232B  @?  (NEITHER, FILE_ANY_ACCESS)  [!] raw ptr — no probe  [!] any-user
+    0x80000001  @?  (IN_DIRECT, FILE_ANY_ACCESS)  [!] any-user
+    0x49656E69  @0x14004C2BB  (IN_DIRECT, FILE_READ_DATA)  → stub (no observable calls)
+    0x756E6547  @0x14004C2C3  (NEITHER, FILE_READ_DATA)  → stub (no observable calls)  [!] raw ptr — no probe  bugs=missing-probe
+    0x001D6000  @0x14006D83C  (BUFFERED, FILE_READ_DATA)  bugs=double-fetch
+    0x001D6004  @0x14006D821  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)
+    0x001D600C  @0x14006D806  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)
+    0x001D6010  @0x14006D7EB  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001D6018  @0x14006D7AA  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001D6028  @0x14006D981  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001D6034  @0x14006D947  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001D6058  @0x14006D8F9  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)
+    0x80000005  @0x14006D93A  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x001DA02C  @0x14006DB0D  (BUFFERED, FILE_WRITE_DATA)  bugs=double-fetch,length-bounded
+    0x001DA030  @0x14006DAE0  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)
+    0x001DA03C  @0x14006DACA  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)
+    0x001DA040  @0x14006DA7F  (BUFFERED, FILE_WRITE_DATA)  bugs=double-fetch
+    0x001DA044  @0x14006DA56  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001DA050  @0x14006DC90  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)
+    0x001DA054  @0x14006DCB2  (BUFFERED, FILE_WRITE_DATA)  → trivial (completes IRP only)  bugs=double-fetch
+    0x5433A5A2  @?  (OUT_DIRECT, FILE_WRITE_DATA)
+    0x002B1100  @?  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user
+
+[!] Device Access Security:
+    Creation API   : Unknown
+    Secure Open    : No
+    Exclusive      : No
+    SDDL           : None (default permissive ACL)
+    Symlink        : DeviceInterface:{BDFA06FC-8872-482C-8070-8BB3C6ADA6F4}  [user-accessible]
+    Symlink        : DeviceInterface:{579E2538-B7B6-4987-8761-7D34578F1753}  [user-accessible]
+    Issues (2):
+      [*] Has Symlinks
+      [*] Device Interface No Security
+
+[*] ─── Device Names & Symbolic Links (5) ───
+    [~] \Callback\StreamEngineAddr%p (format template — constructed at runtime)
+    [~] \Callback\AudioHalAddr%p (format template — constructed at runtime)
+    [~] \Callback\CyclicControlAddr%p (format template — constructed at runtime)
+    [*] DeviceInterface:{BDFA06FC-8872-482C-8070-8BB3C6ADA6F4} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{579E2538-B7B6-4987-8761-7D34578F1753} (device interface GUID — use SetupDiGetClassDevs)
+
+[*] ─── Registry References (6) ───
+    (keys/values the driver reads — device name may be loaded here at runtime)
+    [r] Registry:\Registry\Machine\SYSTEM\CurrentControlSet\Enum
+    [r] Registry:\Registry\Machine\SYSTEM\CurrentControlSet\Enum\%s\%s\%s
+    [r] Registry:\Registry\Machine\Enum\%s\%s\%s
+    [r] Registry:\Registry\Machine\SYSTEM\CurrentControlSet\Enum\%s\%s
+    [r] Registry:\Registry\Machine\Enum\%s\%s
+    [r] Registry:\Registry\Machine\Software\Wow6432Node\Creative Tech\Sound Blaster Cinema 2

@@ -1,0 +1,1552 @@
+{
+  "file": "samples\\HEVD\\driver\\vulnerable\\x64\\HEVD.sys",
+  "sha256": "bfa54bf396e0453c36afeb1b3a7a04e855532464440aa6b428e0a6308c8818f2",
+  "imphash": "c46ea2e651fd5f7f716c8867c6d13594",
+  "arch": "x64",
+  "version": {},
+  "security": {
+    "HIGH_ENTROPY_VA": true,
+    "DYNAMIC_BASE": true,
+    "FORCE_INTEGRITY": false,
+    "NX_COMPAT": true,
+    "NO_SEH": false,
+    "GUARD_CF": false,
+    "GS_COOKIE": true,
+    "HVCI_COMPATIBLE": false
+  },
+  "certificate": {
+    "signed": true,
+    "win_cert_revision": "0x0200",
+    "win_cert_type": 2,
+    "cert_count": 1,
+    "certificates": [
+      {
+        "subject_cn": "HackSysTeam",
+        "subject_org": "HackSys Team",
+        "issuer_cn": "HackSysTeam",
+        "issuer_org": "HackSys Team",
+        "serial": "4e872cb53821eca8434e8c0dbb692947",
+        "not_before": "2019-06-28T15:09:31+00:00",
+        "not_after": "2029-06-28T15:19:31+00:00",
+        "expired": false,
+        "not_yet_valid": false,
+        "self_signed": true,
+        "key_type": "RSA",
+        "key_size": 2048,
+        "thumbprint_sha1": "a3a2d3c9c36cbe4b3a9a9a0cec7638f9e7c8c784",
+        "thumbprint_sha256": "cc858984845bc53c6452544db68731a7e2ff22d97cd49963a9821ebbd6cc2864",
+        "eku": [
+          "1.3.6.1.5.5.7.3.3"
+        ],
+        "has_code_signing_eku": true,
+        "signature_hash_algorithm": "sha256",
+        "is_ca": false
+      }
+    ],
+    "signer_cn": "HackSysTeam",
+    "signer_org": "HackSys Team",
+    "signer_serial": "4e872cb53821eca8434e8c0dbb692947",
+    "signer_issuer": "HackSysTeam",
+    "signer_expired": false,
+    "signer_self_signed": true,
+    "signer_key_type": "RSA",
+    "signer_key_size": 2048,
+    "signer_not_after": "2029-06-28T15:19:31+00:00",
+    "signer_thumbprint": "a3a2d3c9c36cbe4b3a9a9a0cec7638f9e7c8c784",
+    "signature_valid": true,
+    "signature_error": "",
+    "pe_hash_match": true,
+    "pe_hash_expected": "ec8adf57a6cc5e252c23c50bc8934d384067dd91",
+    "pe_hash_actual": "ec8adf57a6cc5e252c23c50bc8934d384067dd91",
+    "pe_hash_algorithm": "sha1",
+    "nested_signatures": [],
+    "chain_anchor": {
+      "kind": "no-ms-root",
+      "matched_thumbprint": "",
+      "matched_name": "",
+      "trusted_for_kernel": false
+    },
+    "signing_time": null,
+    "countersig_time": null,
+    "countersig_source": "",
+    "timestamp_valid": null,
+    "timestamp_binding_ok": false,
+    "timestamp_source": "",
+    "timestamp_error": "no unauth attrs",
+    "page_hashes_present": false,
+    "page_hashes_algorithm": "",
+    "has_whql_eku": false,
+    "has_ev_cert": false,
+    "eku_propagation_ok": true,
+    "eku_broken_cert_cn": ""
+  },
+  "device_names": [
+    "\\Device\\HackSysExtremeVulnerableDriver",
+    "\\DosDevices\\HackSysExtremeVulnerableDriver",
+    "\\??\\C:\\Windows\\System32\\HEVD.log"
+  ],
+  "load_verdict": {
+    "can_load": "False",
+    "blockers": [
+      "Kernel Trust Anchor",
+      "Self-Signed",
+      "HVCI",
+      "Secure Boot"
+    ],
+    "passes": []
+  },
+  "exploit_chains": [],
+  "attack_surface_score": 40,
+  "attack_risk": "MEDIUM",
+  "device_access": {
+    "create_api": "IoCreateDevice",
+    "secure_open": false,
+    "exclusive": false,
+    "sddl": null,
+    "symlinks": [
+      "\\DosDevices\\HackSysExtremeVulnerableDriver",
+      "\\??\\C:\\Windows\\System32\\HEVD.log"
+    ],
+    "issues": [
+      "uses_IoCreateDevice",
+      "no_FILE_DEVICE_SECURE_OPEN",
+      "not_exclusive",
+      "has_symlinks",
+      "no_sddl"
+    ]
+  },
+  "ioctls": [
+    {
+      "code": "0x00222003",
+      "method": "METHOD_NEITHER",
+      "access": "FILE_ANY_ACCESS",
+      "purpose": "",
+      "primitives": [],
+      "bug_classes": [],
+      "struct_fields": [],
+      "behavior": {
+        "api_calls": [
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExFreePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx"
+        ],
+        "categories": [
+          "POOL",
+          "VALIDATION",
+          "OTHER"
+        ],
+        "security_checks": [
+          "Returns STATUS_INVALID_PARAMETER",
+          "Buffer probing (ProbeForRead/Write)"
+        ],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "inline_ops": []
+      }
+    },
+    {
+      "code": "0x00222023",
+      "method": "METHOD_NEITHER",
+      "access": "FILE_ANY_ACCESS",
+      "purpose": "file write",
+      "primitives": [],
+      "bug_classes": [],
+      "struct_fields": [],
+      "behavior": {
+        "api_calls": [
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExFreePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "RtlInitUnicodeString",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ZwCreateFile",
+          "ZwWriteFile",
+          "ZwClose",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExFreePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForWrite",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExFreePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExFreePoolWithTag",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExFreePoolWithTag",
+          "DbgPrintEx"
+        ],
+        "categories": [
+          "POOL",
+          "OBJECT",
+          "FILE",
+          "VALIDATION",
+          "OTHER"
+        ],
+        "security_checks": [
+          "Buffer probing (ProbeForRead/Write)"
+        ],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "inline_ops": []
+      }
+    },
+    {
+      "code": "0x0022203F",
+      "method": "METHOD_NEITHER",
+      "access": "FILE_ANY_ACCESS",
+      "purpose": "",
+      "primitives": [],
+      "bug_classes": [],
+      "struct_fields": [],
+      "behavior": {
+        "api_calls": [
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForWrite",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExFreePoolWithTag",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExFreePoolWithTag",
+          "ExFreePoolWithTag",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForWrite",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForWrite",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx"
+        ],
+        "categories": [
+          "POOL",
+          "VALIDATION",
+          "OTHER"
+        ],
+        "security_checks": [
+          "Buffer probing (ProbeForRead/Write)"
+        ],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "inline_ops": []
+      }
+    },
+    {
+      "code": "0x0022205B",
+      "method": "METHOD_NEITHER",
+      "access": "FILE_ANY_ACCESS",
+      "purpose": "trivial (completes IRP only)",
+      "primitives": [],
+      "bug_classes": [
+        "missing-probe"
+      ],
+      "struct_fields": [],
+      "behavior": {
+        "api_calls": [
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "IofCompleteRequest"
+        ],
+        "categories": [
+          "OTHER",
+          "IRP"
+        ],
+        "security_checks": [],
+        "risk_factors": [],
+        "inline_ops": []
+      }
+    },
+    {
+      "code": "0xBAD0B0B0",
+      "method": "METHOD_BUFFERED",
+      "access": "FILE_WRITE_DATA",
+      "purpose": "",
+      "primitives": [],
+      "bug_classes": [],
+      "struct_fields": [],
+      "behavior": {
+        "api_calls": [
+          "DbgPrintEx"
+        ],
+        "categories": [
+          "OTHER"
+        ],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "inline_ops": []
+      }
+    }
+  ],
+  "findings": [
+    {
+      "title": "Dangerous import: IoCreateDevice",
+      "severity": "MEDIUM",
+      "description": "Creates device object \u2014 check if SecurityDescriptor is NULL",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "IoCreateDevice"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Dangerous import: IoCreateSymbolicLink",
+      "severity": "LOW",
+      "description": "Creates symbolic link \u2014 check accessibility",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "IoCreateSymbolicLink"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Dangerous import: IoDeleteSymbolicLink",
+      "severity": "LOW",
+      "description": "Deletes symbolic link \u2014 racy deletion enables stale-link hijack",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "IoDeleteSymbolicLink"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Dangerous import: ExAllocatePoolWithTag",
+      "severity": "LOW",
+      "description": "Pool allocation \u2014 check for size validation",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "ExAllocatePoolWithTag"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Dangerous import: ZwCreateFile",
+      "severity": "MEDIUM",
+      "description": "Kernel-mode file operations",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "ZwCreateFile"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Dangerous import: ZwWriteFile",
+      "severity": "MEDIUM",
+      "description": "Kernel-mode file write",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "ZwWriteFile"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Device name found: \\Device\\HackSysExtremeVulnerableDriver",
+      "severity": "LOW",
+      "description": "Kernel device object found",
+      "location": "String References",
+      "details": {
+        "device_name": "\\Device\\HackSysExtremeVulnerableDriver",
+        "user_accessible": "False"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Device name found: \\DosDevices\\HackSysExtremeVulnerableDriver",
+      "severity": "MEDIUM",
+      "description": "User-accessible device via symbolic link",
+      "location": "String References",
+      "details": {
+        "device_name": "\\DosDevices\\HackSysExtremeVulnerableDriver",
+        "user_accessible": "True"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Device name found: \\??\\C:\\Windows\\System32\\HEVD.log",
+      "severity": "MEDIUM",
+      "description": "User-accessible device via symbolic link",
+      "location": "String References",
+      "details": {
+        "device_name": "\\??\\C:\\Windows\\System32\\HEVD.log",
+        "user_accessible": "True"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "IOCTL code: 0x00222003",
+      "severity": "HIGH",
+      "description": "Method: METHOD_NEITHER, Access: FILE_ANY_ACCESS",
+      "location": "0x1400850D8",
+      "details": {
+        "ioctl_code": "0x00222003",
+        "method": "METHOD_NEITHER",
+        "handler": "0x14008522F"
+      },
+      "ioctl_code": "0x00222003"
+    },
+    {
+      "title": "IOCTL code: 0x00222023",
+      "severity": "HIGH",
+      "description": "Method: METHOD_NEITHER, Access: FILE_ANY_ACCESS",
+      "location": "0x140085292",
+      "details": {
+        "ioctl_code": "0x00222023",
+        "method": "METHOD_NEITHER",
+        "handler": "0x1400853B1"
+      },
+      "ioctl_code": "0x00222023"
+    },
+    {
+      "title": "IOCTL code: 0x0022203F",
+      "severity": "HIGH",
+      "description": "Method: METHOD_NEITHER, Access: FILE_ANY_ACCESS",
+      "location": "0x140085428",
+      "details": {
+        "ioctl_code": "0x0022203F",
+        "method": "METHOD_NEITHER",
+        "handler": "0x140085547"
+      },
+      "ioctl_code": "0x0022203F"
+    },
+    {
+      "title": "IOCTL code: 0x0022205B",
+      "severity": "HIGH",
+      "description": "Method: METHOD_NEITHER, Access: FILE_ANY_ACCESS",
+      "location": "0x1400855AA",
+      "details": {
+        "ioctl_code": "0x0022205B",
+        "method": "METHOD_NEITHER",
+        "handler": "0x1400856E4"
+      },
+      "ioctl_code": "0x0022205B"
+    },
+    {
+      "title": "IOCTL code: 0xBAD0B0B0",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_BUFFERED, Access: FILE_WRITE_DATA",
+      "location": "0x140086C69",
+      "details": {
+        "ioctl_code": "0xBAD0B0B0",
+        "method": "METHOD_BUFFERED",
+        "handler": "0x140086C88"
+      },
+      "ioctl_code": "0xBAD0B0B0"
+    },
+    {
+      "title": "Missing mitigation: Signature enforcement (FORCE_INTEGRITY)",
+      "severity": "MEDIUM",
+      "description": "Signature enforcement (FORCE_INTEGRITY) is not enabled. Driver can load without a valid Authenticode signature.",
+      "location": "PE DllCharacteristics / LoadConfig",
+      "details": {
+        "mitigation": "Signature enforcement (FORCE_INTEGRITY)",
+        "flag": "FORCE_INTEGRITY"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Missing mitigation: Control Flow Guard (/guard:cf)",
+      "severity": "MEDIUM",
+      "description": "Control Flow Guard (/guard:cf) is not enabled. Indirect calls unvalidated \u2014 control-flow hijacking easier.",
+      "location": "PE DllCharacteristics / LoadConfig",
+      "details": {
+        "mitigation": "Control Flow Guard (/guard:cf)",
+        "flag": "GUARD_CF"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Driver is NOT HVCI-compatible",
+      "severity": "HIGH",
+      "description": "Driver fails HVCI checks (missing FORCE_INTEGRITY or has W+X sections). Cannot load in HVCI-enabled environments without policy bypass.",
+      "location": "PE headers",
+      "details": {
+        "hvci": "incompatible"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Kernel write gadgets found (6 instances)",
+      "severity": "HIGH",
+      "description": "Multiple 'mov [reg+offset], reg' patterns in driver code. If the register is derived from user input (e.g., IOCTL buffer), this is an arbitrary kernel memory write primitive.",
+      "location": "Code section",
+      "details": {
+        "gadgets": "0x140001013: mov qword ptr [rax + 8], rbx; 0x140001017: mov qword ptr [rax + 0x10], rbp; 0x14000101B: mov qword ptr [rax + 0x18], rsi; 0x14000101F: mov qword ptr [rax + 0x20], rdi"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Hidden function with purpose 'file write' at 0x140086960",
+      "severity": "HIGH",
+      "description": "Function at 0x140086960 performs 'file write' but is not reachable via the normal DriverEntry \u2192 MajorFunction call graph.  It may be invoked via a timer, DPC, work item, or kernel callback \u2014 a hidden secondary attack path.",
+      "location": "0x140086960",
+      "details": {
+        "purpose": "file write",
+        "function": "0x140086960"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "No PreviousMode / RequestorMode check detected",
+      "severity": "HIGH",
+      "description": "Driver does not import ExGetPreviousMode or KeGetPreviousMode and no inline KTHREAD.PreviousMode read was found. Without checking PreviousMode, a kernel-mode caller could be impersonated, or user-mode requests may bypass validation. IOCTLs should verify RequestorMode == UserMode before trusting input.",
+      "location": "Import Table / DriverEntry",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "IOCTL handlers missing InputBufferLength validation",
+      "severity": "HIGH",
+      "description": "The following IOCTL handlers do not appear to validate InputBufferLength before processing the buffer: 0xBAD0B0B0. Without size checks, a short buffer could cause pool overread or out-of-bounds writes.",
+      "location": "IOCTL handlers",
+      "details": {
+        "ioctls": [
+          "0xBAD0B0B0"
+        ]
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "IOCTL handlers missing NULL buffer check",
+      "severity": "MEDIUM",
+      "description": "These IOCTL handlers may not check for NULL SystemBuffer before dereferencing: 0xBAD0B0B0. A zero-length IOCTL request can result in SystemBuffer=NULL, causing a kernel NULL-pointer dereference (BSOD).",
+      "location": "IOCTL handlers",
+      "details": {
+        "ioctls": [
+          "0xBAD0B0B0"
+        ]
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "No privilege check APIs imported",
+      "severity": "MEDIUM",
+      "description": "Driver handles IOCTLs but does not import SeSinglePrivilegeCheck, SePrivilegeCheck, or SeAccessCheck. Sensitive operations should verify caller privileges beyond just device handle access rights.",
+      "location": "Import Table",
+      "details": {
+        "checked_apis": [
+          "SeAccessCheck",
+          "SeFastTraverseCheck",
+          "SePrivilegeCheck",
+          "SeSinglePrivilegeCheck"
+        ]
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "IoCreateDevice without FILE_DEVICE_SECURE_OPEN",
+      "severity": "HIGH",
+      "description": "Driver uses IoCreateDevice instead of IoCreateDeviceSecure and FILE_DEVICE_SECURE_OPEN flag was not detected. Without this flag, the device object inherits permissive default security, allowing any user to open a handle. Use IoCreateDeviceSecure with an SDDL string to restrict access.",
+      "location": "Import Table / DriverEntry",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "No SDDL security descriptor found",
+      "severity": "MEDIUM",
+      "description": "No SDDL security descriptor string detected in the binary. Drivers should apply SDDL-based ACLs to their device objects to control which users/groups can open handles.",
+      "location": "Binary strings",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "Driver has Authenticode signature",
+      "severity": "INFO",
+      "description": "PE contains a WIN_CERTIFICATE structure with embedded signature.",
+      "location": "PE Security Directory",
+      "details": {
+        "revision": "0x0200",
+        "cert_count": "1"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Signed by: HackSysTeam",
+      "severity": "INFO",
+      "description": "Subject: HackSysTeam (HackSys Team)\nIssuer: HackSysTeam\nSerial: 4e872cb53821eca8434e8c0dbb692947\nKey: RSA 2048-bit\nValid until: 2029-06-28T15:19:31+00:00",
+      "location": "Authenticode Certificate",
+      "details": {
+        "signer_cn": "HackSysTeam",
+        "signer_org": "HackSys Team",
+        "issuer": "HackSysTeam",
+        "serial": "4e872cb53821eca8434e8c0dbb692947",
+        "thumbprint": "a3a2d3c9c36cbe4b3a9a9a0cec7638f9e7c8c784"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Driver signed with SELF-SIGNED certificate",
+      "severity": "CRITICAL",
+      "description": "The signing certificate is self-signed (issuer == subject). Self-signed drivers have no trust chain and cannot be verified by the OS certificate store. This requires test-signing mode to be enabled, which is a significant security downgrade. Malware often uses self-signed certs.",
+      "location": "Authenticode Certificate",
+      "details": {
+        "signer_cn": "HackSysTeam"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "No timestamp countersignature detected",
+      "severity": "MEDIUM",
+      "description": "The Authenticode signature has no countersignature timestamp. Without a timestamp, the signature becomes invalid after the signing certificate expires. Timestamped signatures remain valid indefinitely. This affects driver loadability.",
+      "location": "Authenticode Certificate",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "PKCS#7 signature verifies cryptographically",
+      "severity": "INFO",
+      "description": "The primary Authenticode PKCS#7 signature was verified against the signer certificate's public key.",
+      "location": "Authenticode Certificate",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "Authenticode PE hash matches (binary not tampered)",
+      "severity": "INFO",
+      "description": "Recomputed sha1 hash of the PE image matches the value embedded in SpcIndirectDataContent.",
+      "location": "Authenticode Signature",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "Chain does not terminate at a Windows kernel-trusted root",
+      "severity": "HIGH",
+      "description": "The certificate chain does not chain up to any root present in the Windows kernel trust store (20 known roots checked by thumbprint). Unless a missing intermediate can be supplied by the OS at load time, Windows will not accept this driver.",
+      "location": "Certificate Chain",
+      "details": {
+        "anchor_kind": "no-ms-root"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Load restricted: Self-signed certificate",
+      "severity": "HIGH",
+      "description": "This driver is self-signed. It will only load on Windows with test-signing mode enabled (bcdedit /set testsigning on). A watermark appears on the desktop when test-signing is active.",
+      "location": "Signature Policy",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "HVCI incompatible: missing FORCE_INTEGRITY flag",
+      "severity": "HIGH",
+      "description": "This driver is NOT compatible with Hypervisor-protected Code Integrity (HVCI / Memory Integrity). On systems with HVCI enabled, Windows will BLOCK this driver from loading. Issues: missing FORCE_INTEGRITY flag.",
+      "location": "PE Headers / Sections",
+      "details": {
+        "force_integrity": "False",
+        "has_wx_sections": "False"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Driver architecture: x64",
+      "severity": "INFO",
+      "description": "64-bit driver \u2014 loads on x64 Windows",
+      "location": "PE Header",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "Load compatibility: BLOCKED \u2014 4 issue(s) prevent loading",
+      "severity": "HIGH",
+      "description": "  [BLOCKED] Kernel Trust Anchor: Chain does not terminate at a Windows kernel trust root (no-ms-root)\n  [BLOCKED] Self-Signed: Self-signed drivers require test-signing mode\n  [BLOCKED] HVCI: Blocked when Memory Integrity is ON (missing FORCE_INTEGRITY flag)\n  [BLOCKED] Secure Boot: Blocked when Secure Boot is enabled",
+      "location": "Load Policy Analysis",
+      "details": {
+        "can_load": "False",
+        "blockers": [
+          "Kernel Trust Anchor",
+          "Self-Signed",
+          "HVCI",
+          "Secure Boot"
+        ],
+        "passes": [],
+        "matrix": {
+          "default": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "Self-signed \u2014 not accepted without test-signing",
+              "Primary signature is SHA-1, timestamped after 2015-07-29 cutoff, and no modern nested signature \u2014 rejected on Win10 1903+"
+            ],
+            "passes": [
+              "Signed",
+              "Signature crypto + PE hash OK"
+            ]
+          },
+          "secure_boot": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "Self-signed \u2014 not accepted without test-signing",
+              "Primary signature is SHA-1, timestamped after 2015-07-29 cutoff, and no modern nested signature \u2014 rejected on Win10 1903+"
+            ],
+            "passes": [
+              "Signed",
+              "Signature crypto + PE hash OK"
+            ]
+          },
+          "hvci": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "Self-signed \u2014 not accepted without test-signing",
+              "Primary signature is SHA-1, timestamped after 2015-07-29 cutoff, and no modern nested signature \u2014 rejected on Win10 1903+",
+              "FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)"
+            ],
+            "passes": [
+              "Signed",
+              "Signature crypto + PE hash OK"
+            ]
+          },
+          "test_signing": {
+            "verdict": "WILL_LOAD",
+            "blockers": [],
+            "passes": [
+              "Any valid signature accepted under test-signing"
+            ]
+          },
+          "s_mode": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "No WHQL attestation EKU \u2014 S Mode / Secured-Core require WHQL-signed drivers",
+              "No Authenticode page hashes (Secured-Core requires per-page integrity)",
+              "Chain not kernel-trusted"
+            ],
+            "passes": []
+          }
+        }
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Device Access Security Audit",
+      "severity": "HIGH",
+      "description": "Uses IoCreateDevice (not IoCreateDeviceSecure); Missing FILE_DEVICE_SECURE_OPEN flag; Device is not exclusive (multiple handles allowed); Exposed via symlinks: \\DosDevices\\HackSysExtremeVulnerableDriver, \\??\\C:\\Windows\\System32\\HEVD.log; No SDDL security descriptor \u2014 default permissive ACL",
+      "location": "DriverEntry",
+      "details": {
+        "create_api": "IoCreateDevice",
+        "secure_open": "False",
+        "exclusive": "False",
+        "device_type": "unknown",
+        "sddl": "none",
+        "symlinks": [
+          "\\DosDevices\\HackSysExtremeVulnerableDriver",
+          "\\??\\C:\\Windows\\System32\\HEVD.log"
+        ],
+        "create_checks": [],
+        "issues": [
+          "uses_IoCreateDevice",
+          "no_FILE_DEVICE_SECURE_OPEN",
+          "not_exclusive",
+          "has_symlinks",
+          "no_sddl"
+        ]
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "IOCTL 0x00222003 behavior: POOL: ExAllocatePoolWithTag, ExFreePoolWithTag | VALIDATION: ProbeForRead",
+      "severity": "HIGH",
+      "description": "Handler at 0x14008522F\nSecurity checks: Returns STATUS_INVALID_PARAMETER, Buffer probing (ProbeForRead/Write)\nAPI calls (78):\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [VALIDATION] ProbeForRead \u2014 Validate user buffer for reading\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [POOL] ExAllocatePoolWithTag \u2014 Allocate tagged kernel pool memory\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\nRisk: No IRP completion detected (may leak IRP or cause hang)",
+      "location": "0x14008522F",
+      "details": {
+        "ioctl": "0x00222003",
+        "purpose": "",
+        "handler": "0x14008522F",
+        "api_calls": [
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExFreePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx"
+        ],
+        "categories": [
+          "POOL",
+          "VALIDATION",
+          "OTHER"
+        ],
+        "security_checks": [
+          "Returns STATUS_INVALID_PARAMETER",
+          "Buffer probing (ProbeForRead/Write)"
+        ],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "irp_completion": "False",
+        "inline_ops": []
+      },
+      "ioctl_code": "0x00222003"
+    },
+    {
+      "title": "IOCTL 0x00222023 behavior: OBJECT: ZwClose | POOL: ExAllocatePoolWithTag, ExFreePoolWithTag | FILE: ZwCreat",
+      "severity": "HIGH",
+      "description": "Handler at 0x1400853B1\nSecurity checks: Buffer probing (ProbeForRead/Write)\nAPI calls (100):\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [VALIDATION] ProbeForRead \u2014 Validate user buffer for reading\n  [POOL] ExAllocatePoolWithTag \u2014 Allocate tagged kernel pool memory\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\nRisk: No IRP completion detected (may leak IRP or cause hang)",
+      "location": "0x1400853B1",
+      "details": {
+        "ioctl": "0x00222023",
+        "purpose": "file write",
+        "handler": "0x1400853B1",
+        "api_calls": [
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExFreePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "RtlInitUnicodeString",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ZwCreateFile",
+          "ZwWriteFile",
+          "ZwClose",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExFreePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForWrite",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExFreePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExFreePoolWithTag",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExFreePoolWithTag",
+          "DbgPrintEx"
+        ],
+        "categories": [
+          "POOL",
+          "OBJECT",
+          "FILE",
+          "VALIDATION",
+          "OTHER"
+        ],
+        "security_checks": [
+          "Buffer probing (ProbeForRead/Write)"
+        ],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "irp_completion": "False",
+        "inline_ops": []
+      },
+      "ioctl_code": "0x00222023"
+    },
+    {
+      "title": "IOCTL 0x0022203F behavior: POOL: ExAllocatePoolWithTag, ExFreePoolWithTag | VALIDATION: ProbeForRead, Probe",
+      "severity": "HIGH",
+      "description": "Handler at 0x140085547\nSecurity checks: Buffer probing (ProbeForRead/Write)\nAPI calls (87):\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [POOL] ExAllocatePoolWithTag \u2014 Allocate tagged kernel pool memory\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [VALIDATION] ProbeForWrite \u2014 Validate user buffer for writing\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\nRisk: No IRP completion detected (may leak IRP or cause hang)",
+      "location": "0x140085547",
+      "details": {
+        "ioctl": "0x0022203F",
+        "purpose": "",
+        "handler": "0x140085547",
+        "api_calls": [
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForWrite",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExFreePoolWithTag",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExFreePoolWithTag",
+          "ExFreePoolWithTag",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForWrite",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForWrite",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ExAllocatePoolWithTag",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "ProbeForRead",
+          "DbgPrintEx",
+          "DbgPrintEx"
+        ],
+        "categories": [
+          "POOL",
+          "VALIDATION",
+          "OTHER"
+        ],
+        "security_checks": [
+          "Buffer probing (ProbeForRead/Write)"
+        ],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "irp_completion": "False",
+        "inline_ops": []
+      },
+      "ioctl_code": "0x0022203F"
+    },
+    {
+      "title": "IOCTL 0x0022205B behavior: IRP: IofCompleteRequest",
+      "severity": "INFO",
+      "description": "Handler at 0x1400856E4\nSecurity checks: NONE\nAPI calls (3):\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\n  [IRP] IofCompleteRequest \u2014 Complete an IRP (fast)",
+      "location": "0x1400856E4",
+      "details": {
+        "ioctl": "0x0022205B",
+        "purpose": "trivial (completes IRP only)",
+        "handler": "0x1400856E4",
+        "api_calls": [
+          "DbgPrintEx",
+          "DbgPrintEx",
+          "IofCompleteRequest"
+        ],
+        "categories": [
+          "OTHER",
+          "IRP"
+        ],
+        "security_checks": [],
+        "risk_factors": [],
+        "irp_completion": "True",
+        "inline_ops": []
+      },
+      "ioctl_code": "0x0022205B"
+    },
+    {
+      "title": "IOCTL 0xBAD0B0B0 behavior: No significant operations detected",
+      "severity": "HIGH",
+      "description": "Handler at 0x140086C88\nSecurity checks: NONE\nAPI calls (1):\n  [OTHER] DbgPrintEx \u2014 Imported function: DbgPrintEx\nRisk: No IRP completion detected (may leak IRP or cause hang)",
+      "location": "0x140086C88",
+      "details": {
+        "ioctl": "0xBAD0B0B0",
+        "purpose": "",
+        "handler": "0x140086C88",
+        "api_calls": [
+          "DbgPrintEx"
+        ],
+        "categories": [
+          "OTHER"
+        ],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "irp_completion": "False",
+        "inline_ops": []
+      },
+      "ioctl_code": "0xBAD0B0B0"
+    },
+    {
+      "title": "ROP/JOP gadgets found: 610 total (misc: 260, reg-control: 146, memory-read: 79, stack-pivot: 70, memory-write: 45, jmp-reg: 10)",
+      "severity": "MEDIUM",
+      "description": "Found 610 usable ROP/JOP gadgets in executable sections. Since many drivers lack ASLR, these gadgets are at predictable addresses and can be chained for kernel exploitation.\n\nTop gadgets by type:\n  [stack-pivot] (70 found):\n    0x1400010EC: leave ; call 0x140001110 ; add rsp, 0x28 ; ret\n    0x1400013A6: leave ; dec r8 ; mov byte ptr [rcx], al ; jne 0x1400013a0 ; mov rax, r11 ; ret\n    0x1400015D9: leave ; jne 0x1400015d0 ; and r8, 0xf ; je 0x1400015e8 ; movups xmmword ptr [rcx + r8 - 0x10], xmm0 ; ret\n  [memory-write] (45 found):\n    0x140001209: mov byte ptr [rcx - 1], al ; jne 0x140001200 ; mov rax, r11 ; ret\n    0x140001207: dec eax ; mov byte ptr [rcx - 1], al ; jne 0x140001200 ; mov rax, r11 ; ret\n    0x140001206: dec r8 ; mov byte ptr [rcx - 1], al ; jne 0x140001200 ; mov rax, r11 ; ret\n  [memory-read] (79 found):\n    0x14000108A: mov edi, dword ptr [rsp + 0x48] ; add rsp, 0x20 ; pop r14 ; ret\n    0x140001089: mov rdi, qword ptr [rsp + 0x48] ; add rsp, 0x20 ; pop r14 ; ret\n    0x140001088: mov rdi, qword ptr [rsp + 0x48] ; add rsp, 0x20 ; pop r14 ; ret\n  [reg-control] (146 found):\n    0x140001093: pop rsi ; ret\n    0x140001092: pop r14 ; ret\n    0x14000108F: add esp, 0x20 ; pop r14 ; ret\n  [jmp-reg] (10 found):\n    0x14000117E: add byte ptr [rax], al ; jmp rax\n    0x14000117C: add byte ptr [rax], al ; add byte ptr [rax], al ; jmp rax\n    0x14000117A: test byte ptr [rax], al ; add byte ptr [rax], al ; add byte ptr [rax], al ; jmp rax",
+      "location": "Executable sections",
+      "details": {
+        "total_gadgets": "610",
+        "by_type": {
+          "stack-pivot": 70,
+          "reg-control": 146,
+          "memory-read": 79,
+          "memory-write": 45,
+          "jmp-reg": 10,
+          "misc": 260
+        }
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: mov byte ptr [rcx - 1], al ; jne 0x140001200 ; mov rax, r11 ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001209 (4 insns). Type: memory-write. Bytes: 8841ff75f2498bc3c3",
+      "location": "0x140001209",
+      "details": {
+        "type": "memory-write",
+        "asm": "mov byte ptr [rcx - 1], al ; jne 0x140001200 ; mov rax, r11 ; ret",
+        "bytes": "8841ff75f2498bc3c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: dec eax ; mov byte ptr [rcx - 1], al ; jne 0x140001200 ; mov rax, r11 ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001207 (5 insns). Type: memory-write. Bytes: ffc88841ff75f2498bc3c3",
+      "location": "0x140001207",
+      "details": {
+        "type": "memory-write",
+        "asm": "dec eax ; mov byte ptr [rcx - 1], al ; jne 0x140001200 ; mov rax, r11 ; ret",
+        "bytes": "ffc88841ff75f2498bc3c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: dec r8 ; mov byte ptr [rcx - 1], al ; jne 0x140001200 ; mov rax, r11 ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001206 (5 insns). Type: memory-write. Bytes: 49ffc88841ff75f2498bc3c3",
+      "location": "0x140001206",
+      "details": {
+        "type": "memory-write",
+        "asm": "dec r8 ; mov byte ptr [rcx - 1], al ; jne 0x140001200 ; mov rax, r11 ; ret",
+        "bytes": "49ffc88841ff75f2498bc3c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: ror dword ptr [rcx - 1], 0xc8 ; mov byte ptr [rcx - 1], al ; jne 0x140001200 ; mov rax, r11 ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001205 (5 insns). Type: memory-write. Bytes: c149ffc88841ff75f2498bc3c3",
+      "location": "0x140001205",
+      "details": {
+        "type": "memory-write",
+        "asm": "ror dword ptr [rcx - 1], 0xc8 ; mov byte ptr [rcx - 1], al ; jne 0x140001200 ; mov rax, r11 ; ret",
+        "bytes": "c149ffc88841ff75f2498bc3c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: inc ecx ; dec r8 ; mov byte ptr [rcx - 1], al ; jne 0x140001200 ; mov rax, r11 ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001204 (6 insns). Type: memory-write. Bytes: ffc149ffc88841ff75f2498bc3c3",
+      "location": "0x140001204",
+      "details": {
+        "type": "memory-write",
+        "asm": "inc ecx ; dec r8 ; mov byte ptr [rcx - 1], al ; jne 0x140001200 ; mov rax, r11 ; ret",
+        "bytes": "ffc149ffc88841ff75f2498bc3c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: leave ; call 0x140001110 ; add rsp, 0x28 ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x1400010EC (4 insns). Type: stack-pivot. Bytes: c9e81e0000004883c428c3",
+      "location": "0x1400010EC",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "leave ; call 0x140001110 ; add rsp, 0x28 ; ret",
+        "bytes": "c9e81e0000004883c428c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: leave ; dec r8 ; mov byte ptr [rcx], al ; jne 0x1400013a0 ; mov rax, r11 ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x1400013A6 (6 insns). Type: stack-pivot. Bytes: c949ffc8880175f2498bc3c3",
+      "location": "0x1400013A6",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "leave ; dec r8 ; mov byte ptr [rcx], al ; jne 0x1400013a0 ; mov rax, r11 ; ret",
+        "bytes": "c949ffc8880175f2498bc3c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: leave ; jne 0x1400015d0 ; and r8, 0xf ; je 0x1400015e8 ; movups xmmword ptr [rcx + r8 - 0x10], xmm0 ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x1400015D9 (6 insns). Type: stack-pivot. Bytes: c975f44983e00f7406420f114401f0c3",
+      "location": "0x1400015D9",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "leave ; jne 0x1400015d0 ; and r8, 0xf ; je 0x1400015e8 ; movups xmmword ptr [rcx + r8 - 0x10], xmm0 ; ret",
+        "bytes": "c975f44983e00f7406420f114401f0c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: mov esp, dword ptr [rsp + 0x58] ; add rsp, 0x20 ; pop r15 ; pop r14 ; pop r13 ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140085A06 (6 insns). Type: stack-pivot. Bytes: 8b6424584883c420415f415e415dc3",
+      "location": "0x140085A06",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "mov esp, dword ptr [rsp + 0x58] ; add rsp, 0x20 ; pop r15 ; pop r14 ; pop r13 ; ret",
+        "bytes": "8b6424584883c420415f415e415dc3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: leave ; je 0x140085a2f ; call 0x140085774 ; add rsp, 0x28 ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140085A27 (5 insns). Type: stack-pivot. Bytes: c97405e845fdffff4883c428c3",
+      "location": "0x140085A27",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "leave ; je 0x140085a2f ; call 0x140085774 ; add rsp, 0x28 ; ret",
+        "bytes": "c97405e845fdffff4883c428c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Attack Surface Score: 40/100 [MEDIUM]",
+      "severity": "MEDIUM",
+      "description": "Moderate risk \u2014 some attack surface but exploitation may be complex\n\nScore breakdown:\n  IOCTL Exposure    : 20/20\n  Exploit Primitives: 0/25  (none)\n  Missing Mitigations: 6/15\n  Certificate Issues : 10/10\n  Dangerous Imports  : 0/10",
+      "location": "Overall Assessment",
+      "details": {
+        "score": "40",
+        "risk": "MEDIUM",
+        "primitives": [],
+        "ioctl_count": "5",
+        "method_neither_count": "4"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "YARA match: RDMSR_WRMSR_Opcodes",
+      "severity": "HIGH",
+      "description": "YARA rule 'RDMSR_WRMSR_Opcodes' matched. Strings: ['$wrmsr']",
+      "location": "Binary content",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "YARA match: IO_Port_Opcodes",
+      "severity": "HIGH",
+      "description": "YARA rule 'IO_Port_Opcodes' matched. Strings: ['$inb', '$outb', '$ind']",
+      "location": "Binary content",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "YARA match: CLI_STI_Opcodes",
+      "severity": "HIGH",
+      "description": "YARA rule 'CLI_STI_Opcodes' matched. Strings: ['$cli', '$sti']",
+      "location": "Binary content",
+      "details": {},
+      "ioctl_code": null
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+C:\Users\macin\Desktop\vuln\tools\drveye\drivertool\pe_analyzer.py:261: UserWarning: PKCS#7 certificates could not be parsed as DER, falling back to parsing as BER. In the future, this may become an exception. Error details: ValueError: error parsing asn1 value: ParseError { kind: UnknownDefinedBy, location: ["ContentInfo::content", "SignedData::content_info", "ContentInfo::content"] }
+  certs = pkcs7_mod.load_der_pkcs7_certificates(pkcs7_der)
+[36m╔═════════════════════════════════════════╗
+║   DrvEye  Windows Driver Rev&Analysis   ║
+║   [2mCredit:[0m[36m @0xDbgMan                     ║
+╚═════════════════════════════════════════╝[0m
+[*] Analysis started: AMDRyzenMasterDriver.sys
+[*] SHA-256  : 4a0d0034f6deabb9369f553d4d9f3a7aa6f87fa8f2292be576d7b42897c686bb
+[*] imphash  : 3152fa00add1f466d28c7e78ed54fdea
+[*] Architecture: x64 | Kernel Driver: Yes
+[*] Image Base: 0x140000000 | Imports: 54 | Sections: 8
+[*] VersionInfo: OriginalFilename: AMDRyzenMasterDriver.sys | CompanyName: Advanced Micro Devices | FileVersion: 1.7.0.0 | FileDescription: AMD Ryzen Master Service Driver
+[*] Mitigations ON : HIGH_ENTROPY_VA, DYNAMIC_BASE, NX_COMPAT, GUARD_CF, GS_COOKIE
+[33m[!][0m Mitigations OFF: FORCE_INTEGRITY, NO_SEH  [HVCI:NO]
+
+[*] ─── Authenticode Signature ───
+[1m[+][0m   Status    : crypto OK · anchor [ms-root-referenced] · cert expired (grandfathered by TS 2020-09-18)
+[*]   Primary   : SHA1 [✓]  signed by Advanced Micro Devices INC.
+[*]              → Symantec Class 3 SHA256 Code Signing CA
+[*]   Nested    : SHA256 [✓]
+[*]   Nested    : SHA256 [✓]
+[*]   Nested    : SHA256 [✓]
+[*]   Timestamp : 2020-09-18  [accepted (legacy TSA — bind OK)]  via Symantec Time Stamping Services Signer - G4
+[*]   Anchor    : Microsoft Code Verification Root  [kernel-trusted]
+[33m[!][0m   HVCI Prereqs: none (no WHQL/EV/page-hashes)
+[*]   Org       : Advanced Micro Devices INC.
+[*]   Serial    : 1885B7E188D8FAFD38A43D48967D7488
+[*]   Key       : RSA-2048
+[*]   Valid     : 2019-02-13 → 2022-02-13
+[*]   Thumbprint: ef03f44c216eaf43950f7f7f13c683885904f46d
+[*]   Chain (5 certs):
+[*]     [0] Symantec Time Stamping Services CA - G2 [CA] [EXPIRED]
+[*]         Issuer: Thawte Timestamping CA
+[*]         Serial: 7E93EBFB7CC64E59EA4B9A77D406FC3B
+[*]         Valid : 2012-12-21 → 2020-12-30
+[*]     [1] Symantec Time Stamping Services Signer - G4 [EXPIRED]
+[*]         Issuer: Symantec Time Stamping Services CA - G2
+[*]         Serial: ECFF438C8FEBF356E04D86A981B1A50
+[*]         Valid : 2012-10-18 → 2020-12-29
+[*]     [2] Advanced Micro Devices INC. [CodeSign] [EXPIRED]
+[*]         Issuer: Symantec Class 3 SHA256 Code Signing CA
+[*]         Serial: 1885B7E188D8FAFD38A43D48967D7488
+[*]         Valid : 2019-02-13 → 2022-02-13
+[*]     [3] Symantec Class 3 SHA256 Code Signing CA [CA] [CodeSign] [EXPIRED]
+[*]         Issuer: VeriSign Class 3 Public Primary Certification Authority - G5
+[*]         Serial: 3D78D7F9764960B2617DF4F01ECA862A
+[*]         Valid : 2013-12-10 → 2023-12-09
+[*]     [4] VeriSign Class 3 Public Primary Certification Authority - G5 [CA] [EXPIRED]
+[*]         Issuer: Microsoft Code Verification Root
+[*]         Serial: 611993E400000000001C
+[*]         Valid : 2011-02-22 → 2021-02-22
+
+[*] Scanning imports...
+
+[1m[+][0m ─── LOAD VERDICT: WILL LOAD (blocked only under HVCI) ───
+  [37mDefault Win10/11         : WILL LOAD[0m
+  [37mSecure Boot + DSE        : WILL LOAD[0m
+  [31mHVCI / Memory Integrity  : WILL NOT LOAD[0m
+      • FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+  [37mTest-signing mode        : WILL LOAD[0m
+  [31mS Mode                   : WILL NOT LOAD[0m
+      • No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+      • No Authenticode page hashes (Secured-Core requires per-page integrity)
+
+  [31mAll blockers found:[0m
+    [31m[BLOCKED][0m FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+    [31m[BLOCKED][0m No Authenticode page hashes (Secured-Core requires per-page integrity)
+    [31m[BLOCKED][0m No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+
+  [37mPasses:[0m
+    [37m[PASS][0m Any valid signature accepted under test-signing
+    [37m[PASS][0m Chain anchored (ms-root-referenced)
+    [37m[PASS][0m Counter-sig binds to primary (2020-09-18); legacy TSA crypto — Windows CryptoAPI accepts it
+    [37m[PASS][0m Signature crypto + PE hash OK
+    [37m[PASS][0m Signed
+    [37m[PASS][0m Signed 2020-09-18 (pre-expiry) — cert expiry ignored by Windows
+
+  [37mConfidence:[0m live MS trust list NOT loaded — using built-in kernel-root snapshot (run --live-check for ground truth)
+    Static checks cover signature crypto, PE hash, chain anchor, HVCI prereqs, and MS block list.
+    Not checked: live OCSP/CRL revocation, current WDAC policy, local test-signing / DSE state, page-hash integrity.
+
+[*] imports Function:
+  [!] MmMapLockedPagesSpecifyCache, MmMapIoSpace
+  [*] MmGetSystemRoutineAddress, IoCreateDevice, ZwSetValueKey
+[*] Detected IOCTL codes (45):
+    0x46414353  @0x140001411  (NEITHER, FILE_READ_DATA)  [!] raw ptr — no probe  bugs=double-fetch,length-unbounded,missing-probe
+    0x46414350  @0x1400015AE  (BUFFERED, FILE_READ_DATA)  → phys mem map  [!!HW ACCESS]  bugs=arbitrary-rw,length-unbounded
+    0x52534454  @0x140001608  (BUFFERED, FILE_READ_DATA)  → phys mem map  [!!HW ACCESS]  bugs=arbitrary-rw,length-unbounded
+    0x58534454  @0x140001691  (BUFFERED, FILE_READ_DATA)  → phys mem map  [!!HW ACCESS]  bugs=arbitrary-rw,double-fetch,length-unbounded
+    0x81112F60  @?  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user
+    0x81112F28  @?  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user
+    0x81112F0C  @?  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user
+    0x81112EE0  @0x140001DE9  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x81112EE4  @0x140001EA8  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x81112EF8  @0x140002052  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user  bugs=double-fetch
+    0x81112F00  @0x140002158  (BUFFERED, FILE_ANY_ACCESS)  → port I/O  [!] any-user  bugs=arbitrary-rw
+    0x81112F08  @0x140001F4F  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw  [UNGATED-sink]  [shares physical-rw-site with 0x81112F5C, 0x81112FA8]
+    0x81112F18  @0x140002526  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x81112F1C  @0x140002676  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw  [UNGATED-sink]
+    0x81112F20  @0x1400026EA  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user
+    0x81112F24  @0x140003532  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw
+    0x81112F2C  @0x14000349D  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw
+    0x81112F30  @0x1400027EF  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw
+    0x81112F34  @0x140002992  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw
+    0x81112F38  @0x140002B35  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw
+    0x81112F3C  @0x140002CD8  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw
+    0x81112F40  @0x140002E7B  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw
+    0x81112F44  @0x140003039  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw
+    0x81112F48  @0x1400031DA  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw
+    0x81112F5C  @0x140003603  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw  [UNGATED-sink]  [shares physical-rw-site with 0x81112F08, 0x81112FA8]
+    0x81112F88  @?  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user
+    0x81112F64  @0x140003824  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw  [UNGATED-sink]
+    0x81112F68  @0x140003D48  (BUFFERED, FILE_ANY_ACCESS)  → port I/O  [!] any-user  bugs=arbitrary-rw
+    0x81112F6C  @0x140003E08  (BUFFERED, FILE_ANY_ACCESS)  → port I/O  [!] any-user  bugs=arbitrary-rw
+    0x81112F70  @0x140003E70  (BUFFERED, FILE_ANY_ACCESS)  → port I/O  [!] any-user  bugs=arbitrary-rw
+    0x81112F74  @0x140003EF7  (BUFFERED, FILE_ANY_ACCESS)  → port I/O  [!] any-user  bugs=arbitrary-rw
+    0x81112F78  @0x140003F94  (BUFFERED, FILE_ANY_ACCESS)  → port I/O  [!] any-user  bugs=arbitrary-rw,double-fetch
+    0x81112F7C  @0x140004031  (BUFFERED, FILE_ANY_ACCESS)  → port I/O  [!] any-user  bugs=arbitrary-rw
+    0x81112F80  @0x1400037B1  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw
+    0x81112F84  @0x140003B44  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw
+    0x81112F8C  @0x140003C2C  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw
+    0x81112F90  @0x140003CB8  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw
+    0x81112FA8  @0x1400040CF  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw  [UNGATED-sink]  [shares physical-rw-site with 0x81112F08, 0x81112F5C]
+    0x81112FAC  @0x140004163  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw
+    0x81112FB0  @0x1400041C7  (BUFFERED, FILE_ANY_ACCESS)  → memory access  [!] any-user
+    0x81112FD0  @0x1400041FE  (BUFFERED, FILE_ANY_ACCESS)  → port I/O  [!] any-user  bugs=arbitrary-rw
+    0x81112FD4  @0x14000427A  (BUFFERED, FILE_ANY_ACCESS)  → port I/O  [!] any-user  bugs=arbitrary-rw
+    0x81112FD8  @0x1400042F6  (BUFFERED, FILE_ANY_ACCESS)  → port I/O  [!] any-user  bugs=arbitrary-rw
+    0x81112FF8  @0x14000330A  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw
+    0x80000005  @0x14002E5AC  (IN_DIRECT, FILE_ANY_ACCESS)  → registry access  [!] any-user  bugs=length-unbounded
+
+[*] Exploit Primitives:
+    0x81112F08 (phys mem map): physical-rw [@0x140006174 shared]
+    0x81112F1C (phys mem map): physical-rw
+    0x81112F5C (phys mem map): physical-rw [@0x140006174 shared]
+    0x81112F64 (phys mem map): physical-rw
+    0x81112FA8 (phys mem map): physical-rw [@0x140006174 shared]
+
+    (3 unique primitive implementation(s) across 5 IOCTL tags — 1 shared by multiple IOCTLs)
+
+[!] Device Access Security:
+    Creation API   : IoCreateDevice
+    Secure Open    : No
+    Exclusive      : No
+    SDDL           : D:P(A;;GW;;;BA)(A;;GR;;;BA)
+    Symlink        : \DosDevices\AMDRyzenMasterDriverV17  [user-accessible]
+    Issues (4):
+      [!] Uses Iocreatedevice
+      [*] No File Device Secure Open
+      [*] Not Exclusive
+      [*] Has Symlinks
+
+[*] ─── Device Names & Symbolic Links (2) ───
+    [*] \Device\AMDRyzenMasterDriverV17 (kernel-only)
+    [+] \DosDevices\AMDRyzenMasterDriverV17 (user-accessible)  →  CreateFile("\\.\AMDRyzenMasterDriverV17")
+
+[+] ─── User-Mode Accessible Devices (1) ───
+    [+] \\.\AMDRyzenMasterDriverV17  →  \Device\AMDRyzenMasterDriverV17
+
+[*] ─── Registry References (2) ───
+    (keys/values the driver reads — device name may be loaded here at runtime)
+    [r] Registry:\Registry\Machine\System\CurrentControlSet\Control\Class
+    [r] RegistryValue:SymbolicLink

@@ -1,0 +1,1552 @@
+{
+  "file": "samples\\HEVD\\driver\\vulnerable\\x86\\HEVD.sys",
+  "sha256": "6921c9194c79b7996e03a28cb5f60c74b8e1fb5ec0a506383ebfa2090c16f57e",
+  "imphash": "f26d0b110873a1c7d8c4f08fbeab89c5",
+  "arch": "x86",
+  "version": {},
+  "security": {
+    "HIGH_ENTROPY_VA": false,
+    "DYNAMIC_BASE": true,
+    "FORCE_INTEGRITY": false,
+    "NX_COMPAT": true,
+    "NO_SEH": false,
+    "GUARD_CF": false,
+    "GS_COOKIE": true,
+    "HVCI_COMPATIBLE": false
+  },
+  "certificate": {
+    "signed": true,
+    "win_cert_revision": "0x0200",
+    "win_cert_type": 2,
+    "cert_count": 1,
+    "certificates": [
+      {
+        "subject_cn": "HackSysTeam",
+        "subject_org": "HackSys Team",
+        "issuer_cn": "HackSysTeam",
+        "issuer_org": "HackSys Team",
+        "serial": "4e872cb53821eca8434e8c0dbb692947",
+        "not_before": "2019-06-28T15:09:31+00:00",
+        "not_after": "2029-06-28T15:19:31+00:00",
+        "expired": false,
+        "not_yet_valid": false,
+        "self_signed": true,
+        "key_type": "RSA",
+        "key_size": 2048,
+        "thumbprint_sha1": "a3a2d3c9c36cbe4b3a9a9a0cec7638f9e7c8c784",
+        "thumbprint_sha256": "cc858984845bc53c6452544db68731a7e2ff22d97cd49963a9821ebbd6cc2864",
+        "eku": [
+          "1.3.6.1.5.5.7.3.3"
+        ],
+        "has_code_signing_eku": true,
+        "signature_hash_algorithm": "sha256",
+        "is_ca": false
+      }
+    ],
+    "signer_cn": "HackSysTeam",
+    "signer_org": "HackSys Team",
+    "signer_serial": "4e872cb53821eca8434e8c0dbb692947",
+    "signer_issuer": "HackSysTeam",
+    "signer_expired": false,
+    "signer_self_signed": true,
+    "signer_key_type": "RSA",
+    "signer_key_size": 2048,
+    "signer_not_after": "2029-06-28T15:19:31+00:00",
+    "signer_thumbprint": "a3a2d3c9c36cbe4b3a9a9a0cec7638f9e7c8c784",
+    "signature_valid": true,
+    "signature_error": "",
+    "pe_hash_match": true,
+    "pe_hash_expected": "c1fc63fbe08b248d6a63d0b7e7a5697fbd70b057",
+    "pe_hash_actual": "c1fc63fbe08b248d6a63d0b7e7a5697fbd70b057",
+    "pe_hash_algorithm": "sha1",
+    "nested_signatures": [],
+    "chain_anchor": {
+      "kind": "no-ms-root",
+      "matched_thumbprint": "",
+      "matched_name": "",
+      "trusted_for_kernel": false
+    },
+    "signing_time": null,
+    "countersig_time": null,
+    "countersig_source": "",
+    "timestamp_valid": null,
+    "timestamp_binding_ok": false,
+    "timestamp_source": "",
+    "timestamp_error": "no unauth attrs",
+    "page_hashes_present": false,
+    "page_hashes_algorithm": "",
+    "has_whql_eku": false,
+    "has_ev_cert": false,
+    "eku_propagation_ok": true,
+    "eku_broken_cert_cn": ""
+  },
+  "device_names": [
+    "\\Device\\HackSysExtremeVulnerableDriver",
+    "\\DosDevices\\HackSysExtremeVulnerableDriver",
+    "\\??\\C:\\Windows\\System32\\HEVD.log"
+  ],
+  "load_verdict": {
+    "can_load": "False",
+    "blockers": [
+      "Kernel Trust Anchor",
+      "Self-Signed",
+      "HVCI",
+      "Secure Boot",
+      "Architecture"
+    ],
+    "passes": []
+  },
+  "exploit_chains": [],
+  "attack_surface_score": 34,
+  "attack_risk": "LOW",
+  "device_access": {
+    "create_api": "IoCreateDevice",
+    "secure_open": false,
+    "exclusive": false,
+    "sddl": null,
+    "symlinks": [
+      "\\DosDevices\\HackSysExtremeVulnerableDriver",
+      "\\??\\C:\\Windows\\System32\\HEVD.log"
+    ],
+    "issues": [
+      "uses_IoCreateDevice",
+      "no_FILE_DEVICE_SECURE_OPEN",
+      "not_exclusive",
+      "has_symlinks",
+      "no_sddl"
+    ]
+  },
+  "ioctls": [
+    {
+      "code": "0x6168573E",
+      "method": "METHOD_OUT_DIRECT",
+      "access": "FILE_READ_DATA",
+      "purpose": "port I/O",
+      "primitives": [],
+      "bug_classes": [
+        "arbitrary-rw"
+      ],
+      "struct_fields": [],
+      "behavior": {
+        "api_calls": [],
+        "categories": [],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "inline_ops": [
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read"
+        ]
+      }
+    },
+    {
+      "code": "0x6E55205D",
+      "method": "METHOD_IN_DIRECT",
+      "access": "FILE_ANY_ACCESS",
+      "purpose": "port I/O",
+      "primitives": [],
+      "bug_classes": [
+        "arbitrary-rw"
+      ],
+      "struct_fields": [],
+      "behavior": {
+        "api_calls": [],
+        "categories": [],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "inline_ops": [
+          "PORT_read",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write"
+        ]
+      }
+    },
+    {
+      "code": "0x13525CED9",
+      "method": "METHOD_IN_DIRECT",
+      "access": "FILE_READ_WRITE",
+      "purpose": "port I/O",
+      "primitives": [],
+      "bug_classes": [
+        "arbitrary-rw"
+      ],
+      "struct_fields": [],
+      "behavior": {
+        "api_calls": [],
+        "categories": [],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "inline_ops": [
+          "PORT_read",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write"
+        ]
+      }
+    },
+    {
+      "code": "0xBAD0B0B0",
+      "method": "METHOD_BUFFERED",
+      "access": "FILE_WRITE_DATA",
+      "purpose": "stub (no observable calls)",
+      "primitives": [],
+      "bug_classes": [],
+      "struct_fields": [],
+      "behavior": {
+        "api_calls": [],
+        "categories": [],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "inline_ops": []
+      }
+    },
+    {
+      "code": "0x6148205D",
+      "method": "METHOD_IN_DIRECT",
+      "access": "FILE_ANY_ACCESS",
+      "purpose": "stub (no observable calls)",
+      "primitives": [],
+      "bug_classes": [],
+      "struct_fields": [],
+      "behavior": {
+        "api_calls": [],
+        "categories": [],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "inline_ops": []
+      }
+    },
+    {
+      "code": "0x6E49205D",
+      "method": "METHOD_IN_DIRECT",
+      "access": "FILE_ANY_ACCESS",
+      "purpose": "",
+      "primitives": [],
+      "bug_classes": [],
+      "struct_fields": [],
+      "behavior": {}
+    },
+    {
+      "code": "0x6C65483E",
+      "method": "METHOD_OUT_DIRECT",
+      "access": "FILE_READ_DATA",
+      "purpose": "",
+      "primitives": [],
+      "bug_classes": [],
+      "struct_fields": [],
+      "behavior": {}
+    },
+    {
+      "code": "0x7845205D",
+      "method": "METHOD_IN_DIRECT",
+      "access": "FILE_ANY_ACCESS",
+      "purpose": "port I/O",
+      "primitives": [],
+      "bug_classes": [
+        "arbitrary-rw"
+      ],
+      "struct_fields": [],
+      "behavior": {
+        "api_calls": [],
+        "categories": [],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "inline_ops": [
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write"
+        ]
+      }
+    },
+    {
+      "code": "0x6D614E3E",
+      "method": "METHOD_OUT_DIRECT",
+      "access": "FILE_READ_DATA",
+      "purpose": "",
+      "primitives": [],
+      "bug_classes": [],
+      "struct_fields": [],
+      "behavior": {}
+    },
+    {
+      "code": "0x6568573E",
+      "method": "METHOD_OUT_DIRECT",
+      "access": "FILE_READ_DATA",
+      "purpose": "",
+      "primitives": [],
+      "bug_classes": [],
+      "struct_fields": [],
+      "behavior": {}
+    },
+    {
+      "code": "0x6C61563E",
+      "method": "METHOD_OUT_DIRECT",
+      "access": "FILE_READ_DATA",
+      "purpose": "port I/O",
+      "primitives": [],
+      "bug_classes": [
+        "arbitrary-rw"
+      ],
+      "struct_fields": [],
+      "behavior": {
+        "api_calls": [],
+        "categories": [],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "inline_ops": [
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_read",
+          "PORT_read",
+          "PORT_write"
+        ]
+      }
+    },
+    {
+      "code": "0x6C61433E",
+      "method": "METHOD_OUT_DIRECT",
+      "access": "FILE_READ_DATA",
+      "purpose": "",
+      "primitives": [],
+      "bug_classes": [],
+      "struct_fields": [],
+      "behavior": {}
+    },
+    {
+      "code": "0x7245205D",
+      "method": "METHOD_IN_DIRECT",
+      "access": "FILE_ANY_ACCESS",
+      "purpose": "",
+      "primitives": [],
+      "bug_classes": [],
+      "struct_fields": [],
+      "behavior": {}
+    }
+  ],
+  "findings": [
+    {
+      "title": "Dangerous import: IoCreateDevice",
+      "severity": "MEDIUM",
+      "description": "Creates device object \u2014 check if SecurityDescriptor is NULL",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "IoCreateDevice"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Dangerous import: IoCreateSymbolicLink",
+      "severity": "LOW",
+      "description": "Creates symbolic link \u2014 check accessibility",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "IoCreateSymbolicLink"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Dangerous import: IoDeleteSymbolicLink",
+      "severity": "LOW",
+      "description": "Deletes symbolic link \u2014 racy deletion enables stale-link hijack",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "IoDeleteSymbolicLink"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Dangerous import: ExAllocatePoolWithTag",
+      "severity": "LOW",
+      "description": "Pool allocation \u2014 check for size validation",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "ExAllocatePoolWithTag"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Dangerous import: ZwCreateFile",
+      "severity": "MEDIUM",
+      "description": "Kernel-mode file operations",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "ZwCreateFile"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Dangerous import: ZwWriteFile",
+      "severity": "MEDIUM",
+      "description": "Kernel-mode file write",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "ZwWriteFile"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Device name found: \\Device\\HackSysExtremeVulnerableDriver",
+      "severity": "LOW",
+      "description": "Kernel device object found",
+      "location": "String References",
+      "details": {
+        "device_name": "\\Device\\HackSysExtremeVulnerableDriver",
+        "user_accessible": "False"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Device name found: \\DosDevices\\HackSysExtremeVulnerableDriver",
+      "severity": "MEDIUM",
+      "description": "User-accessible device via symbolic link",
+      "location": "String References",
+      "details": {
+        "device_name": "\\DosDevices\\HackSysExtremeVulnerableDriver",
+        "user_accessible": "True"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Device name found: \\??\\C:\\Windows\\System32\\HEVD.log",
+      "severity": "MEDIUM",
+      "description": "User-accessible device via symbolic link",
+      "location": "String References",
+      "details": {
+        "device_name": "\\??\\C:\\Windows\\System32\\HEVD.log",
+        "user_accessible": "True"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "IOCTL 0x6168573E (METHOD_OUT_DIRECT, FILE_READ_DATA)",
+      "severity": "INFO",
+      "description": "IOCTL dispatch \u2192 handler at 0x44743B",
+      "location": "0x44743B",
+      "details": {
+        "ioctl_code": "0x6168573E",
+        "method": "METHOD_OUT_DIRECT",
+        "access": "FILE_READ_DATA",
+        "device_type": "0x6168",
+        "function": "0x5CF",
+        "handler": "0x44743B",
+        "has_probe": "False",
+        "emu_hits": ""
+      },
+      "ioctl_code": "0x6168573E"
+    },
+    {
+      "title": "IOCTL 0x6E55205D (METHOD_IN_DIRECT, FILE_ANY_ACCESS)",
+      "severity": "INFO",
+      "description": "IOCTL dispatch \u2192 handler at 0x4474E6",
+      "location": "0x4474E6",
+      "details": {
+        "ioctl_code": "0x6E55205D",
+        "method": "METHOD_IN_DIRECT",
+        "access": "FILE_ANY_ACCESS",
+        "device_type": "0x6E55",
+        "function": "0x817",
+        "handler": "0x4474E6",
+        "has_probe": "False",
+        "emu_hits": ""
+      },
+      "ioctl_code": "0x6E55205D"
+    },
+    {
+      "title": "IOCTL 0x13525CED9 (METHOD_IN_DIRECT, FILE_READ_WRITE)",
+      "severity": "INFO",
+      "description": "IOCTL dispatch \u2192 handler at 0x4474E6",
+      "location": "0x4474E6",
+      "details": {
+        "ioctl_code": "0x13525CED9",
+        "method": "METHOD_IN_DIRECT",
+        "access": "FILE_READ_WRITE",
+        "device_type": "0x3525",
+        "function": "0x3B6",
+        "handler": "0x4474E6",
+        "has_probe": "False",
+        "emu_hits": ""
+      },
+      "ioctl_code": "0x13525CED9"
+    },
+    {
+      "title": "IOCTL handler lacks ProbeForRead/ProbeForWrite",
+      "severity": "HIGH",
+      "description": "No calls to ProbeForRead or ProbeForWrite found in any IOCTL handler. User buffer access may be unvalidated.",
+      "location": "Dispatch at 0x4473E8",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "IOCTL code: 0xBAD0B0B0",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_BUFFERED, Access: FILE_WRITE_DATA",
+      "location": "0x4456ED",
+      "details": {
+        "ioctl_code": "0xBAD0B0B0",
+        "method": "METHOD_BUFFERED",
+        "handler": "0x44572E"
+      },
+      "ioctl_code": "0xBAD0B0B0"
+    },
+    {
+      "title": "IOCTL code: 0x6148205D",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_IN_DIRECT, Access: FILE_ANY_ACCESS",
+      "location": "0x4469D5",
+      "details": {
+        "ioctl_code": "0x6148205D",
+        "method": "METHOD_IN_DIRECT",
+        "handler": "0x446A56"
+      },
+      "ioctl_code": "0x6148205D"
+    },
+    {
+      "title": "IOCTL code: 0x6E49205D",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_IN_DIRECT, Access: FILE_ANY_ACCESS",
+      "location": "0x447043",
+      "details": {
+        "ioctl_code": "0x6E49205D",
+        "method": "METHOD_IN_DIRECT"
+      },
+      "ioctl_code": "0x6E49205D"
+    },
+    {
+      "title": "IOCTL code: 0x6E55205D",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_IN_DIRECT, Access: FILE_ANY_ACCESS",
+      "location": "0x447079",
+      "details": {
+        "ioctl_code": "0x6E55205D",
+        "method": "METHOD_IN_DIRECT",
+        "handler": "0x4470F4"
+      },
+      "ioctl_code": "0x6E55205D"
+    },
+    {
+      "title": "IOCTL code: 0x6C65483E",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_OUT_DIRECT, Access: FILE_READ_DATA",
+      "location": "0x4472D2",
+      "details": {
+        "ioctl_code": "0x6C65483E",
+        "method": "METHOD_OUT_DIRECT"
+      },
+      "ioctl_code": "0x6C65483E"
+    },
+    {
+      "title": "IOCTL code: 0x7845205D",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_IN_DIRECT, Access: FILE_ANY_ACCESS",
+      "location": "0x4472F1",
+      "details": {
+        "ioctl_code": "0x7845205D",
+        "method": "METHOD_IN_DIRECT",
+        "handler": "0x447364"
+      },
+      "ioctl_code": "0x7845205D"
+    },
+    {
+      "title": "IOCTL code: 0x6D614E3E",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_OUT_DIRECT, Access: FILE_READ_DATA",
+      "location": "0x44731C",
+      "details": {
+        "ioctl_code": "0x6D614E3E",
+        "method": "METHOD_OUT_DIRECT"
+      },
+      "ioctl_code": "0x6D614E3E"
+    },
+    {
+      "title": "IOCTL code: 0x6168573E",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_OUT_DIRECT, Access: FILE_READ_DATA",
+      "location": "0x4473FA",
+      "details": {
+        "ioctl_code": "0x6168573E",
+        "method": "METHOD_OUT_DIRECT",
+        "handler": "0x44743B"
+      },
+      "ioctl_code": "0x6168573E"
+    },
+    {
+      "title": "IOCTL code: 0x6568573E",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_OUT_DIRECT, Access: FILE_READ_DATA",
+      "location": "0x44741E",
+      "details": {
+        "ioctl_code": "0x6568573E",
+        "method": "METHOD_OUT_DIRECT"
+      },
+      "ioctl_code": "0x6568573E"
+    },
+    {
+      "title": "IOCTL code: 0x6C61563E",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_OUT_DIRECT, Access: FILE_READ_DATA",
+      "location": "0x447C25",
+      "details": {
+        "ioctl_code": "0x6C61563E",
+        "method": "METHOD_OUT_DIRECT",
+        "handler": "0x447C2C"
+      },
+      "ioctl_code": "0x6C61563E"
+    },
+    {
+      "title": "IOCTL code: 0x6C61433E",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_OUT_DIRECT, Access: FILE_READ_DATA",
+      "location": "0x447C4B",
+      "details": {
+        "ioctl_code": "0x6C61433E",
+        "method": "METHOD_OUT_DIRECT"
+      },
+      "ioctl_code": "0x6C61433E"
+    },
+    {
+      "title": "IOCTL code: 0x7245205D",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_IN_DIRECT, Access: FILE_ANY_ACCESS",
+      "location": "0x4481D9",
+      "details": {
+        "ioctl_code": "0x7245205D",
+        "method": "METHOD_IN_DIRECT"
+      },
+      "ioctl_code": "0x7245205D"
+    },
+    {
+      "title": "Hardcoded address: 0x403000",
+      "severity": "MEDIUM",
+      "description": "Hardcoded page-aligned address found. May be a physical memory address used with MmMapIoSpace or similar.",
+      "location": "0x40139E",
+      "details": {
+        "address": "0x403000"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Hardcoded address: 0x403000",
+      "severity": "MEDIUM",
+      "description": "Hardcoded page-aligned address found. May be a physical memory address used with MmMapIoSpace or similar.",
+      "location": "0x4013A7",
+      "details": {
+        "address": "0x403000"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Double-fetch (TOCTOU) at 0x4448B2",
+      "severity": "HIGH",
+      "description": "Two reads from [reg+0x0] at 0x444881 and 0x4448B2 with a cmp/test using the first value and the second value flowing into a sensitive sink (allocator / memcpy / deref). An attacker can race to change the buffer between check and use.",
+      "location": "0x4448B2",
+      "details": {
+        "first_read": "0x444881",
+        "second_read": "0x4448B2",
+        "offset": "0x0"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Double-fetch (TOCTOU) at 0x445F68",
+      "severity": "HIGH",
+      "description": "Two reads from [reg+-0x1c] at 0x445F54 and 0x445F68 with a cmp/test using the first value and the second value flowing into a sensitive sink (allocator / memcpy / deref). An attacker can race to change the buffer between check and use.",
+      "location": "0x445F68",
+      "details": {
+        "first_read": "0x445F54",
+        "second_read": "0x445F68",
+        "offset": "-0x1c"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Double-fetch (TOCTOU) at 0x4464A7",
+      "severity": "HIGH",
+      "description": "Two reads from [reg+0x0] at 0x446495 and 0x4464A7 with a cmp/test using the first value and the second value flowing into a sensitive sink (allocator / memcpy / deref). An attacker can race to change the buffer between check and use.",
+      "location": "0x4464A7",
+      "details": {
+        "first_read": "0x446495",
+        "second_read": "0x4464A7",
+        "offset": "0x0"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Double-fetch (TOCTOU) at 0x446881",
+      "severity": "HIGH",
+      "description": "Two reads from [reg+0x0] at 0x44686F and 0x446881 with a cmp/test using the first value and the second value flowing into a sensitive sink (allocator / memcpy / deref). An attacker can race to change the buffer between check and use.",
+      "location": "0x446881",
+      "details": {
+        "first_read": "0x44686F",
+        "second_read": "0x446881",
+        "offset": "0x0"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Missing mitigation: Signature enforcement (FORCE_INTEGRITY)",
+      "severity": "MEDIUM",
+      "description": "Signature enforcement (FORCE_INTEGRITY) is not enabled. Driver can load without a valid Authenticode signature.",
+      "location": "PE DllCharacteristics / LoadConfig",
+      "details": {
+        "mitigation": "Signature enforcement (FORCE_INTEGRITY)",
+        "flag": "FORCE_INTEGRITY"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Missing mitigation: Control Flow Guard (/guard:cf)",
+      "severity": "MEDIUM",
+      "description": "Control Flow Guard (/guard:cf) is not enabled. Indirect calls unvalidated \u2014 control-flow hijacking easier.",
+      "location": "PE DllCharacteristics / LoadConfig",
+      "details": {
+        "mitigation": "Control Flow Guard (/guard:cf)",
+        "flag": "GUARD_CF"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Missing mitigation: High-entropy ASLR (/HIGHENTROPYVA)",
+      "severity": "MEDIUM",
+      "description": "High-entropy ASLR (/HIGHENTROPYVA) is not enabled. 64-bit ASLR entropy reduced \u2014 address brute-force more feasible.",
+      "location": "PE DllCharacteristics / LoadConfig",
+      "details": {
+        "mitigation": "High-entropy ASLR (/HIGHENTROPYVA)",
+        "flag": "HIGH_ENTROPY_VA"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Driver is NOT HVCI-compatible",
+      "severity": "HIGH",
+      "description": "Driver fails HVCI checks (missing FORCE_INTEGRITY or has W+X sections). Cannot load in HVCI-enabled environments without policy bypass.",
+      "location": "PE headers",
+      "details": {
+        "hvci": "incompatible"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Kernel write gadgets found (8 instances)",
+      "severity": "HIGH",
+      "description": "Multiple 'mov [reg+offset], reg' patterns in driver code. If the register is derived from user input (e.g., IOCTL buffer), this is an arbitrary kernel memory write primitive.",
+      "location": "Code section",
+      "details": {
+        "gadgets": "0x401010: mov dword ptr [esp + 0x10], ebp; 0x401028: mov dword ptr [ebp - 0x18], esp; 0x401038: mov dword ptr [ebp - 8], eax; 0x4010F8: mov dword ptr [ebp - 0x14], eax"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "No PreviousMode / RequestorMode check detected",
+      "severity": "HIGH",
+      "description": "Driver does not import ExGetPreviousMode or KeGetPreviousMode and no inline KTHREAD.PreviousMode read was found. Without checking PreviousMode, a kernel-mode caller could be impersonated, or user-mode requests may bypass validation. IOCTLs should verify RequestorMode == UserMode before trusting input.",
+      "location": "Import Table / DriverEntry",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "IOCTL handlers missing InputBufferLength validation",
+      "severity": "HIGH",
+      "description": "The following IOCTL handlers do not appear to validate InputBufferLength before processing the buffer: 0x6168573E, 0x6E55205D, 0x13525CED9, 0xBAD0B0B0, 0x6148205D, 0x7845205D, 0x6C61563E. Without size checks, a short buffer could cause pool overread or out-of-bounds writes.",
+      "location": "IOCTL handlers",
+      "details": {
+        "ioctls": [
+          "0x6168573E",
+          "0x6E55205D",
+          "0x13525CED9",
+          "0xBAD0B0B0",
+          "0x6148205D",
+          "0x7845205D",
+          "0x6C61563E"
+        ]
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "IOCTL handlers missing NULL buffer check",
+      "severity": "MEDIUM",
+      "description": "These IOCTL handlers may not check for NULL SystemBuffer before dereferencing: 0x6168573E, 0x6E55205D, 0x13525CED9, 0xBAD0B0B0, 0x6148205D, 0x7845205D, 0x6C61563E. A zero-length IOCTL request can result in SystemBuffer=NULL, causing a kernel NULL-pointer dereference (BSOD).",
+      "location": "IOCTL handlers",
+      "details": {
+        "ioctls": [
+          "0x6168573E",
+          "0x6E55205D",
+          "0x13525CED9",
+          "0xBAD0B0B0",
+          "0x6148205D",
+          "0x7845205D",
+          "0x6C61563E"
+        ]
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "No privilege check APIs imported",
+      "severity": "MEDIUM",
+      "description": "Driver handles IOCTLs but does not import SeSinglePrivilegeCheck, SePrivilegeCheck, or SeAccessCheck. Sensitive operations should verify caller privileges beyond just device handle access rights.",
+      "location": "Import Table",
+      "details": {
+        "checked_apis": [
+          "SeAccessCheck",
+          "SeFastTraverseCheck",
+          "SePrivilegeCheck",
+          "SeSinglePrivilegeCheck"
+        ]
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "IoCreateDevice without FILE_DEVICE_SECURE_OPEN",
+      "severity": "HIGH",
+      "description": "Driver uses IoCreateDevice instead of IoCreateDeviceSecure and FILE_DEVICE_SECURE_OPEN flag was not detected. Without this flag, the device object inherits permissive default security, allowing any user to open a handle. Use IoCreateDeviceSecure with an SDDL string to restrict access.",
+      "location": "Import Table / DriverEntry",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "No SDDL security descriptor found",
+      "severity": "MEDIUM",
+      "description": "No SDDL security descriptor string detected in the binary. Drivers should apply SDDL-based ACLs to their device objects to control which users/groups can open handles.",
+      "location": "Binary strings",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "Driver has Authenticode signature",
+      "severity": "INFO",
+      "description": "PE contains a WIN_CERTIFICATE structure with embedded signature.",
+      "location": "PE Security Directory",
+      "details": {
+        "revision": "0x0200",
+        "cert_count": "1"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Signed by: HackSysTeam",
+      "severity": "INFO",
+      "description": "Subject: HackSysTeam (HackSys Team)\nIssuer: HackSysTeam\nSerial: 4e872cb53821eca8434e8c0dbb692947\nKey: RSA 2048-bit\nValid until: 2029-06-28T15:19:31+00:00",
+      "location": "Authenticode Certificate",
+      "details": {
+        "signer_cn": "HackSysTeam",
+        "signer_org": "HackSys Team",
+        "issuer": "HackSysTeam",
+        "serial": "4e872cb53821eca8434e8c0dbb692947",
+        "thumbprint": "a3a2d3c9c36cbe4b3a9a9a0cec7638f9e7c8c784"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Driver signed with SELF-SIGNED certificate",
+      "severity": "CRITICAL",
+      "description": "The signing certificate is self-signed (issuer == subject). Self-signed drivers have no trust chain and cannot be verified by the OS certificate store. This requires test-signing mode to be enabled, which is a significant security downgrade. Malware often uses self-signed certs.",
+      "location": "Authenticode Certificate",
+      "details": {
+        "signer_cn": "HackSysTeam"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "No timestamp countersignature detected",
+      "severity": "MEDIUM",
+      "description": "The Authenticode signature has no countersignature timestamp. Without a timestamp, the signature becomes invalid after the signing certificate expires. Timestamped signatures remain valid indefinitely. This affects driver loadability.",
+      "location": "Authenticode Certificate",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "PKCS#7 signature verifies cryptographically",
+      "severity": "INFO",
+      "description": "The primary Authenticode PKCS#7 signature was verified against the signer certificate's public key.",
+      "location": "Authenticode Certificate",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "Authenticode PE hash matches (binary not tampered)",
+      "severity": "INFO",
+      "description": "Recomputed sha1 hash of the PE image matches the value embedded in SpcIndirectDataContent.",
+      "location": "Authenticode Signature",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "Chain does not terminate at a Windows kernel-trusted root",
+      "severity": "HIGH",
+      "description": "The certificate chain does not chain up to any root present in the Windows kernel trust store (20 known roots checked by thumbprint). Unless a missing intermediate can be supplied by the OS at load time, Windows will not accept this driver.",
+      "location": "Certificate Chain",
+      "details": {
+        "anchor_kind": "no-ms-root"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Load restricted: Self-signed certificate",
+      "severity": "HIGH",
+      "description": "This driver is self-signed. It will only load on Windows with test-signing mode enabled (bcdedit /set testsigning on). A watermark appears on the desktop when test-signing is active.",
+      "location": "Signature Policy",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "HVCI incompatible: missing FORCE_INTEGRITY flag",
+      "severity": "HIGH",
+      "description": "This driver is NOT compatible with Hypervisor-protected Code Integrity (HVCI / Memory Integrity). On systems with HVCI enabled, Windows will BLOCK this driver from loading. Issues: missing FORCE_INTEGRITY flag.",
+      "location": "PE Headers / Sections",
+      "details": {
+        "force_integrity": "False",
+        "has_wx_sections": "False"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Driver architecture: x86 (32-bit)",
+      "severity": "MEDIUM",
+      "description": "32-bit driver \u2014 will NOT load on 64-bit Windows. Modern Windows x64 does not support 32-bit kernel drivers.",
+      "location": "PE Header",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "Load compatibility: BLOCKED \u2014 5 issue(s) prevent loading",
+      "severity": "HIGH",
+      "description": "  [BLOCKED] Kernel Trust Anchor: Chain does not terminate at a Windows kernel trust root (no-ms-root)\n  [BLOCKED] Self-Signed: Self-signed drivers require test-signing mode\n  [BLOCKED] HVCI: Blocked when Memory Integrity is ON (missing FORCE_INTEGRITY flag)\n  [BLOCKED] Secure Boot: Blocked when Secure Boot is enabled\n  [BLOCKED] Architecture: 32-bit driver cannot load on 64-bit Windows",
+      "location": "Load Policy Analysis",
+      "details": {
+        "can_load": "False",
+        "blockers": [
+          "Kernel Trust Anchor",
+          "Self-Signed",
+          "HVCI",
+          "Secure Boot",
+          "Architecture"
+        ],
+        "passes": [],
+        "matrix": {
+          "default": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "32-bit driver cannot load on 64-bit Windows",
+              "Self-signed \u2014 not accepted without test-signing",
+              "Primary signature is SHA-1, timestamped after 2015-07-29 cutoff, and no modern nested signature \u2014 rejected on Win10 1903+"
+            ],
+            "passes": [
+              "Signed",
+              "Signature crypto + PE hash OK"
+            ]
+          },
+          "secure_boot": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "32-bit driver cannot load on 64-bit Windows",
+              "Self-signed \u2014 not accepted without test-signing",
+              "Primary signature is SHA-1, timestamped after 2015-07-29 cutoff, and no modern nested signature \u2014 rejected on Win10 1903+"
+            ],
+            "passes": [
+              "Signed",
+              "Signature crypto + PE hash OK"
+            ]
+          },
+          "hvci": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "32-bit driver cannot load on 64-bit Windows",
+              "Self-signed \u2014 not accepted without test-signing",
+              "Primary signature is SHA-1, timestamped after 2015-07-29 cutoff, and no modern nested signature \u2014 rejected on Win10 1903+",
+              "FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)"
+            ],
+            "passes": [
+              "Signed",
+              "Signature crypto + PE hash OK"
+            ]
+          },
+          "test_signing": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "32-bit driver cannot load on 64-bit Windows"
+            ],
+            "passes": [
+              "Any valid signature accepted under test-signing"
+            ]
+          },
+          "s_mode": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "32-bit driver cannot load on 64-bit Windows",
+              "No WHQL attestation EKU \u2014 S Mode / Secured-Core require WHQL-signed drivers",
+              "No Authenticode page hashes (Secured-Core requires per-page integrity)",
+              "Chain not kernel-trusted"
+            ],
+            "passes": []
+          }
+        }
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Device Access Security Audit",
+      "severity": "HIGH",
+      "description": "Uses IoCreateDevice (not IoCreateDeviceSecure); Missing FILE_DEVICE_SECURE_OPEN flag; Device is not exclusive (multiple handles allowed); Exposed via symlinks: \\DosDevices\\HackSysExtremeVulnerableDriver, \\??\\C:\\Windows\\System32\\HEVD.log; No SDDL security descriptor \u2014 default permissive ACL",
+      "location": "DriverEntry",
+      "details": {
+        "create_api": "IoCreateDevice",
+        "secure_open": "False",
+        "exclusive": "False",
+        "device_type": "unknown",
+        "sddl": "none",
+        "symlinks": [
+          "\\DosDevices\\HackSysExtremeVulnerableDriver",
+          "\\??\\C:\\Windows\\System32\\HEVD.log"
+        ],
+        "create_checks": [],
+        "issues": [
+          "uses_IoCreateDevice",
+          "no_FILE_DEVICE_SECURE_OPEN",
+          "not_exclusive",
+          "has_symlinks",
+          "no_sddl"
+        ]
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "IOCTL 0x6148205D behavior: No significant operations detected",
+      "severity": "HIGH",
+      "description": "Handler at 0x446A56\nSecurity checks: NONE\nAPI calls (0):\n\nRisk: No IRP completion detected (may leak IRP or cause hang)",
+      "location": "0x446A56",
+      "details": {
+        "ioctl": "0x6148205D",
+        "purpose": "stub (no observable calls)",
+        "handler": "0x446A56",
+        "api_calls": [],
+        "categories": [],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "irp_completion": "False",
+        "inline_ops": []
+      },
+      "ioctl_code": "0x6148205D"
+    },
+    {
+      "title": "IOCTL 0x6168573E behavior: INLINE: PORT_read, PORT_write",
+      "severity": "HIGH",
+      "description": "Handler at 0x44743B\nSecurity checks: NONE\nAPI calls (0):\n\nRisk: No IRP completion detected (may leak IRP or cause hang)",
+      "location": "0x44743B",
+      "details": {
+        "ioctl": "0x6168573E",
+        "purpose": "port I/O",
+        "handler": "0x44743B",
+        "api_calls": [],
+        "categories": [],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "irp_completion": "False",
+        "inline_ops": [
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read"
+        ]
+      },
+      "ioctl_code": "0x6168573E"
+    },
+    {
+      "title": "IOCTL 0x6C61563E behavior: INLINE: PORT_read, PORT_write",
+      "severity": "HIGH",
+      "description": "Handler at 0x447C2C\nSecurity checks: NONE\nAPI calls (0):\n\nRisk: No IRP completion detected (may leak IRP or cause hang)",
+      "location": "0x447C2C",
+      "details": {
+        "ioctl": "0x6C61563E",
+        "purpose": "port I/O",
+        "handler": "0x447C2C",
+        "api_calls": [],
+        "categories": [],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "irp_completion": "False",
+        "inline_ops": [
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_read",
+          "PORT_read",
+          "PORT_write"
+        ]
+      },
+      "ioctl_code": "0x6C61563E"
+    },
+    {
+      "title": "IOCTL 0x6E55205D behavior: INLINE: PORT_read, PORT_write",
+      "severity": "HIGH",
+      "description": "Handler at 0x4474E6\nSecurity checks: NONE\nAPI calls (0):\n\nRisk: No IRP completion detected (may leak IRP or cause hang)",
+      "location": "0x4474E6",
+      "details": {
+        "ioctl": "0x6E55205D",
+        "purpose": "port I/O",
+        "handler": "0x4474E6",
+        "api_calls": [],
+        "categories": [],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "irp_completion": "False",
+        "inline_ops": [
+          "PORT_read",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write"
+        ]
+      },
+      "ioctl_code": "0x6E55205D"
+    },
+    {
+      "title": "IOCTL 0x7845205D behavior: INLINE: PORT_read, PORT_write",
+      "severity": "HIGH",
+      "description": "Handler at 0x447364\nSecurity checks: NONE\nAPI calls (0):\n\nRisk: No IRP completion detected (may leak IRP or cause hang)",
+      "location": "0x447364",
+      "details": {
+        "ioctl": "0x7845205D",
+        "purpose": "port I/O",
+        "handler": "0x447364",
+        "api_calls": [],
+        "categories": [],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "irp_completion": "False",
+        "inline_ops": [
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write"
+        ]
+      },
+      "ioctl_code": "0x7845205D"
+    },
+    {
+      "title": "IOCTL 0xBAD0B0B0 behavior: No significant operations detected",
+      "severity": "HIGH",
+      "description": "Handler at 0x44572E\nSecurity checks: NONE\nAPI calls (0):\n\nRisk: No IRP completion detected (may leak IRP or cause hang)",
+      "location": "0x44572E",
+      "details": {
+        "ioctl": "0xBAD0B0B0",
+        "purpose": "stub (no observable calls)",
+        "handler": "0x44572E",
+        "api_calls": [],
+        "categories": [],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "irp_completion": "False",
+        "inline_ops": []
+      },
+      "ioctl_code": "0xBAD0B0B0"
+    },
+    {
+      "title": "IOCTL 0x13525CED9 behavior: INLINE: PORT_read, PORT_write",
+      "severity": "HIGH",
+      "description": "Handler at 0x4474E6\nSecurity checks: NONE\nAPI calls (0):\n\nRisk: No IRP completion detected (may leak IRP or cause hang)",
+      "location": "0x4474E6",
+      "details": {
+        "ioctl": "0x13525CED9",
+        "purpose": "port I/O",
+        "handler": "0x4474E6",
+        "api_calls": [],
+        "categories": [],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "irp_completion": "False",
+        "inline_ops": [
+          "PORT_read",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_write",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write",
+          "PORT_read",
+          "PORT_write"
+        ]
+      },
+      "ioctl_code": "0x13525CED9"
+    },
+    {
+      "title": "ROP/JOP gadgets found: 161 total (misc: 56, memory-write: 41, reg-control: 31, stack-pivot: 25, jmp-reg: 8)",
+      "severity": "MEDIUM",
+      "description": "Found 161 usable ROP/JOP gadgets in executable sections. Since many drivers lack ASLR, these gadgets are at predictable addresses and can be chained for kernel exploitation.\n\nTop gadgets by type:\n  [stack-pivot] (25 found):\n    0x401054: mov esp, ebp ; pop ebp ; push ecx ; ret\n    0x401053: pop ebx ; mov esp, ebp ; pop ebp ; push ecx ; ret\n    0x401052: pop esi ; pop ebx ; mov esp, ebp ; pop ebp ; push ecx ; ret\n  [memory-write] (41 found):\n    0x40103F: mov dword ptr [0], eax ; ret\n    0x40103E: mov dword ptr fs:[0], eax ; ret\n    0x40103B: lea eax, [ebp - 0x10] ; mov dword ptr fs:[0], eax ; ret\n  [reg-control] (31 found):\n    0x401056: pop ebp ; push ecx ; ret\n    0x40119A: pop ebp ; ret\n    0x4012CE: pop ebx ; ret\n  [jmp-reg] (8 found):\n    0x401361: xor edi, edi ; jmp esi\n    0x40135F: xor edx, edx ; xor edi, edi ; jmp esi\n    0x40135E: leave ; xor edx, edx ; xor edi, edi ; jmp esi",
+      "location": "Executable sections",
+      "details": {
+        "total_gadgets": "161",
+        "by_type": {
+          "stack-pivot": 25,
+          "reg-control": 31,
+          "memory-write": 41,
+          "jmp-reg": 8,
+          "misc": 56
+        }
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: mov dword ptr [0], eax ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x40103F (2 insns). Type: memory-write. Bytes: a300000000c3",
+      "location": "0x40103F",
+      "details": {
+        "type": "memory-write",
+        "asm": "mov dword ptr [0], eax ; ret",
+        "bytes": "a300000000c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: mov dword ptr fs:[0], eax ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x40103E (2 insns). Type: memory-write. Bytes: 64a300000000c3",
+      "location": "0x40103E",
+      "details": {
+        "type": "memory-write",
+        "asm": "mov dword ptr fs:[0], eax ; ret",
+        "bytes": "64a300000000c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: lea eax, [ebp - 0x10] ; mov dword ptr fs:[0], eax ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x40103B (3 insns). Type: memory-write. Bytes: 8d45f064a300000000c3",
+      "location": "0x40103B",
+      "details": {
+        "type": "memory-write",
+        "asm": "lea eax, [ebp - 0x10] ; mov dword ptr fs:[0], eax ; ret",
+        "bytes": "8d45f064a300000000c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: clc ; lea eax, [ebp - 0x10] ; mov dword ptr fs:[0], eax ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x40103A (4 insns). Type: memory-write. Bytes: f88d45f064a300000000c3",
+      "location": "0x40103A",
+      "details": {
+        "type": "memory-write",
+        "asm": "clc ; lea eax, [ebp - 0x10] ; mov dword ptr fs:[0], eax ; ret",
+        "bytes": "f88d45f064a300000000c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: inc ebp ; clc ; lea eax, [ebp - 0x10] ; mov dword ptr fs:[0], eax ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x401039 (5 insns). Type: memory-write. Bytes: 45f88d45f064a300000000c3",
+      "location": "0x401039",
+      "details": {
+        "type": "memory-write",
+        "asm": "inc ebp ; clc ; lea eax, [ebp - 0x10] ; mov dword ptr fs:[0], eax ; ret",
+        "bytes": "45f88d45f064a300000000c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: mov esp, ebp ; pop ebp ; push ecx ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x401054 (4 insns). Type: stack-pivot. Bytes: 8be55d51c3",
+      "location": "0x401054",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "mov esp, ebp ; pop ebp ; push ecx ; ret",
+        "bytes": "8be55d51c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: pop ebx ; mov esp, ebp ; pop ebp ; push ecx ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x401053 (5 insns). Type: stack-pivot. Bytes: 5b8be55d51c3",
+      "location": "0x401053",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "pop ebx ; mov esp, ebp ; pop ebp ; push ecx ; ret",
+        "bytes": "5b8be55d51c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: pop esi ; pop ebx ; mov esp, ebp ; pop ebp ; push ecx ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x401052 (6 insns). Type: stack-pivot. Bytes: 5e5b8be55d51c3",
+      "location": "0x401052",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "pop esi ; pop ebx ; mov esp, ebp ; pop ebp ; push ecx ; ret",
+        "bytes": "5e5b8be55d51c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: mov esp, ebp ; pop ebp ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x401198 (3 insns). Type: stack-pivot. Bytes: 8be55dc3",
+      "location": "0x401198",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "mov esp, ebp ; pop ebp ; ret",
+        "bytes": "8be55dc3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: pop ebx ; mov esp, ebp ; pop ebp ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x401197 (4 insns). Type: stack-pivot. Bytes: 5b8be55dc3",
+      "location": "0x401197",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "pop ebx ; mov esp, ebp ; pop ebp ; ret",
+        "bytes": "5b8be55dc3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Attack Surface Score: 34/100 [LOW]",
+      "severity": "LOW",
+      "description": "Low risk \u2014 limited attack surface with reasonable mitigations\n\nScore breakdown:\n  IOCTL Exposure    : 14/20\n  Exploit Primitives: 0/25  (none)\n  Missing Mitigations: 6/15\n  Certificate Issues : 10/10\n  Dangerous Imports  : 0/10",
+      "location": "Overall Assessment",
+      "details": {
+        "score": "34",
+        "risk": "LOW",
+        "primitives": [],
+        "ioctl_count": "13",
+        "method_neither_count": "0"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "YARA match: RDMSR_WRMSR_Opcodes",
+      "severity": "HIGH",
+      "description": "YARA rule 'RDMSR_WRMSR_Opcodes' matched. Strings: ['$wrmsr']",
+      "location": "Binary content",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "YARA match: IO_Port_Opcodes",
+      "severity": "HIGH",
+      "description": "YARA rule 'IO_Port_Opcodes' matched. Strings: ['$inb', '$outb', '$ind']",
+      "location": "Binary content",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "YARA match: CLI_STI_Opcodes",
+      "severity": "HIGH",
+      "description": "YARA rule 'CLI_STI_Opcodes' matched. Strings: ['$cli', '$sti']",
+      "location": "Binary content",
+      "details": {},
+      "ioctl_code": null
+    }
+  ]
+}

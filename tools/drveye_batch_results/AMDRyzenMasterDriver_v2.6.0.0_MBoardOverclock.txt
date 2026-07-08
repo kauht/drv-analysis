@@ -1,0 +1,183 @@
+C:\Users\macin\Desktop\vuln\tools\drveye\drivertool\pe_analyzer.py:261: UserWarning: PKCS#7 certificates could not be parsed as DER, falling back to parsing as BER. In the future, this may become an exception. Error details: ValueError: error parsing asn1 value: ParseError { kind: UnknownDefinedBy, location: ["ContentInfo::content", "SignedData::content_info", "ContentInfo::content"] }
+  certs = pkcs7_mod.load_der_pkcs7_certificates(pkcs7_der)
+[36m╔═════════════════════════════════════════╗
+║   DrvEye  Windows Driver Rev&Analysis   ║
+║   [2mCredit:[0m[36m @0xDbgMan                     ║
+╚═════════════════════════════════════════╝[0m
+[*] Analysis started: AMDRyzenMasterDriver.sys
+[*] SHA-256  : 0fd8b87d79828282a2b24c0680ecf6717c3bc284582af552ecea8d2e79c91b4b
+[*] imphash  : c17332e61f39a2a3a1a4513b1619d231
+[*] Architecture: x64 | Kernel Driver: Yes
+[*] Image Base: 0x140000000 | Imports: 55 | Sections: 8
+[*] VersionInfo: OriginalFilename: AMDRyzenMasterDriver.sys | CompanyName: Advanced Micro Devices | FileVersion: 2.6.0.0 | FileDescription: AMD Ryzen Master Service Driver
+[*] Mitigations ON : HIGH_ENTROPY_VA, DYNAMIC_BASE, NX_COMPAT, GUARD_CF, GS_COOKIE
+[33m[!][0m Mitigations OFF: FORCE_INTEGRITY, NO_SEH  [HVCI:NO]
+
+[*] ─── Authenticode Signature ───
+[1m[+][0m   Status    : crypto OK · anchor [ms-root-referenced] · cert expired (grandfathered by TS 2024-04-29)
+[*]   Primary   : SHA256 [✓]  signed by Advanced Micro Devices Inc.
+[*]              → Sectigo RSA Code Signing CA
+[*]   Nested    : SHA256 [✓]
+[*]   Timestamp : 2024-04-29  [verified]  via DigiCert Timestamp 2023
+[*]   Anchor    : Microsoft Code Verification Root  [kernel-trusted]
+[33m[!][0m   HVCI Prereqs: none (no WHQL/EV/page-hashes)
+[*]   Org       : Advanced Micro Devices Inc.
+[*]   Serial    : 535091E6CAB13AF393B51EAD0825F627
+[*]   Key       : RSA-2048
+[*]   Valid     : 2021-05-11 → 2024-05-10
+[*]   Thumbprint: 26f54ee84758ba716117321707bb08b3274a578a
+[*]   Chain (6 certs):
+[*]     [0] Advanced Micro Devices Inc. [CodeSign] [EXPIRED]
+[*]         Issuer: Sectigo RSA Code Signing CA
+[*]         Serial: 535091E6CAB13AF393B51EAD0825F627
+[*]         Valid : 2021-05-11 → 2024-05-10
+[*]     [1] DigiCert Trusted Root G4 [CA]
+[*]         Issuer: DigiCert Assured ID Root CA
+[*]         Serial: E9B188EF9D02DE7EFDB50E20840185A
+[*]         Valid : 2022-08-01 → 2031-11-09
+[*]     [2] Sectigo RSA Code Signing CA [CA] [CodeSign]
+[*]         Issuer: USERTrust RSA Certification Authority
+[*]         Serial: 1DA248306F9B2618D082E0967D33D36A
+[*]         Valid : 2018-11-02 → 2030-12-31
+[*]     [3] USERTrust RSA Certification Authority [CA] [CodeSign] [EXPIRED]
+[*]         Issuer: Microsoft Code Verification Root
+[*]         Serial: 3300000044B73FFCEF5ACFA27A000000000044
+[*]         Valid : 2015-07-22 → 2025-07-22
+[*]     [4] DigiCert Trusted G4 RSA4096 SHA256 TimeStamping CA [CA]
+[*]         Issuer: DigiCert Trusted Root G4
+[*]         Serial: 73637B724547CD847ACFD28662A5E5B
+[*]         Valid : 2022-03-23 → 2037-03-22
+[*]     [5] DigiCert Timestamp 2023
+[*]         Issuer: DigiCert Trusted G4 RSA4096 SHA256 TimeStamping CA
+[*]         Serial: 544AFF3949D0839A6BFDB3F5FE56116
+[*]         Valid : 2023-07-14 → 2034-10-13
+
+[*] Scanning imports...
+
+[1m[+][0m ─── LOAD VERDICT: WILL LOAD (blocked only under HVCI) ───
+  [37mDefault Win10/11         : WILL LOAD[0m
+  [37mSecure Boot + DSE        : WILL LOAD[0m
+  [31mHVCI / Memory Integrity  : WILL NOT LOAD[0m
+      • FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+  [37mTest-signing mode        : WILL LOAD[0m
+  [31mS Mode                   : WILL NOT LOAD[0m
+      • No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+      • No Authenticode page hashes (Secured-Core requires per-page integrity)
+
+  [31mAll blockers found:[0m
+    [31m[BLOCKED][0m FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+    [31m[BLOCKED][0m No Authenticode page hashes (Secured-Core requires per-page integrity)
+    [31m[BLOCKED][0m No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+
+  [37mPasses:[0m
+    [37m[PASS][0m Any valid signature accepted under test-signing
+    [37m[PASS][0m Chain anchored (ms-root-referenced)
+    [37m[PASS][0m Signature crypto + PE hash OK
+    [37m[PASS][0m Signed
+    [37m[PASS][0m Signed 2024-04-29 (pre-expiry) — cert expiry ignored by Windows
+
+  [37mConfidence:[0m live MS trust list NOT loaded — using built-in kernel-root snapshot (run --live-check for ground truth)
+    Static checks cover signature crypto, PE hash, chain anchor, HVCI prereqs, and MS block list.
+    Not checked: live OCSP/CRL revocation, current WDAC policy, local test-signing / DSE state, page-hash integrity.
+
+[*] imports Function:
+  [!] MmMapIoSpace
+  [*] IoCreateDevice, ZwSetValueKey, MmGetSystemRoutineAddress
+[*] Detected IOCTL codes (65):
+    0x46414353  @0x140001478  (NEITHER, FILE_READ_DATA)  [!] raw ptr — no probe  bugs=double-fetch,length-unbounded,missing-probe
+    0x46414350  @0x140001613  (BUFFERED, FILE_READ_DATA)  → phys mem map  [!!HW ACCESS]  bugs=arbitrary-rw
+    0x52534454  @0x14000166D  (BUFFERED, FILE_READ_DATA)  → phys mem map  [!!HW ACCESS]  bugs=arbitrary-rw
+    0x58534454  @0x1400016FC  (BUFFERED, FILE_READ_DATA)  → phys mem map  [!!HW ACCESS]  bugs=arbitrary-rw,double-fetch
+    0x81112FF8  @?  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user
+    0x81112EE0  @0x140001CE9  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x81112EE4  @0x140001E02  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x81112F08  @0x140001FCC  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw  [UNGATED-sink]  [shares physical-rw-site with 0x00540208, 0x81113004 +1]
+    0x81112F18  @0x1400020A5  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user
+    0x81112F24  @0x1400022C3  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user
+    0x81112FFC  @0x14000237C  (BUFFERED, FILE_ANY_ACCESS)  → process access  [!] any-user
+    0x81113000  @0x140002509  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x81113004  @0x14000252E  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw  [UNGATED-sink]  [shares physical-rw-site with 0x00540208, 0x81112F08 +1]
+    0x81113008  @0x1400025E6  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw  [UNGATED-sink]  [shares physical-rw-site with 0x00540208, 0x81112F08 +1]
+    0x00380904  @?  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user
+    0x002D0803  @?  (NEITHER, FILE_ANY_ACCESS)  [!] raw ptr — no probe  [!] any-user
+    0x00240503  @?  (NEITHER, FILE_ANY_ACCESS)  [!] raw ptr — no probe  [!] any-user
+    0x00190001  @0x14000450C  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00190101  @0x1400044FD  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00190201  @0x1400044EE  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x001E0004  @0x1400045CC  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x001E0005  @0x1400045CC  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00240003  @0x1400044D0  (NEITHER, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] raw ptr — no probe  [!] any-user  bugs=missing-probe
+    0x00240603  @0x1400044C1  (NEITHER, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] raw ptr — no probe  [!] any-user  bugs=missing-probe
+    0x00240802  @0x14000451B  (OUT_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00240803  @0x140004494  (NEITHER, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] raw ptr — no probe  [!] any-user  bugs=missing-probe
+    0x00240902  @0x14000452A  (OUT_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00240903  @0x1400044A3  (NEITHER, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] raw ptr — no probe  [!] any-user  bugs=missing-probe
+    0x00380005  @?  (IN_DIRECT, FILE_ANY_ACCESS)  [!] any-user
+    0x002D0903  @0x140004590  (NEITHER, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] raw ptr — no probe  [!] any-user  bugs=missing-probe
+    0x00370001  @0x140004548  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00370002  @0x140004557  (OUT_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00370003  @0x140004566  (NEITHER, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] raw ptr — no probe  [!] any-user  bugs=missing-probe
+    0x00370005  @0x140004575  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00380505  @0x140004476  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00380605  @0x140004467  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00380705  @0x140004458  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00380804  @0x1400045A8  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00380805  @0x140004449  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00540002  @?  (OUT_DIRECT, FILE_ANY_ACCESS)  [!] any-user
+    0x004C0005  @?  (IN_DIRECT, FILE_ANY_ACCESS)  [!] any-user
+    0x00380905  @0x14000443A  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00400005  @0x1400044DF  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00450004  @0x1400045B4  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00450005  @0x1400045C0  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x004C0003  @0x1400043D1  (NEITHER, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] raw ptr — no probe  [!] any-user  bugs=missing-probe
+    0x004C0004  @0x1400043E0  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x004C0006  @0x1400043FE  (OUT_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x004C0007  @0x14000440D  (NEITHER, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] raw ptr — no probe  [!] any-user  bugs=missing-probe
+    0x004C0008  @0x14000441C  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x004C0009  @0x14000442B  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00540001  @0x14000434A  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00540103  @?  (NEITHER, FILE_ANY_ACCESS)  [!] raw ptr — no probe  [!] any-user
+    0x00540003  @0x140004377  (NEITHER, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] raw ptr — no probe  [!] any-user  bugs=missing-probe
+    0x00540004  @0x140004395  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00540005  @0x1400043B3  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00540100  @0x14000432C  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00540101  @0x14000433B  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00540102  @0x140004368  (OUT_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00540104  @0x1400043A4  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00540105  @0x1400043C2  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00540108  @0x1400045F0  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x00540208  @0x1400045FC  (BUFFERED, FILE_ANY_ACCESS)  → phys mem map  [!!HW ACCESS]  [!] any-user  bugs=arbitrary-rw  [gated]  [shares physical-rw-site with 0x81112F08, 0x81113004 +1]
+    0x005D0008  @0x1400045E4  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x80000005  @0x14002C8E8  (IN_DIRECT, FILE_ANY_ACCESS)  → registry access  [!] any-user  bugs=length-unbounded
+
+[*] Exploit Primitives:
+    0x00540208 (phys mem map): physical-rw [@0x140004671 shared]
+    0x81112F08 (phys mem map): physical-rw [@0x140004671 shared]
+    0x81113004 (phys mem map): physical-rw [@0x140004671 shared]
+    0x81113008 (phys mem map): physical-rw [@0x140004671 shared]
+
+    (1 unique primitive implementation(s) across 4 IOCTL tags — 1 shared by multiple IOCTLs)
+
+[!] Device Access Security:
+    Creation API   : IoCreateDevice
+    Secure Open    : No
+    Exclusive      : No
+    SDDL           : D:P(A;;GW;;;BA)(A;;GR;;;BA)
+    Symlink        : \DosDevices\AMDRyzenMasterDriverV26  [user-accessible]
+    Issues (4):
+      [!] Uses Iocreatedevice
+      [*] No File Device Secure Open
+      [*] Not Exclusive
+      [*] Has Symlinks
+
+[*] ─── Device Names & Symbolic Links (2) ───
+    [*] \Device\AMDRyzenMasterDriverV26 (kernel-only)
+    [+] \DosDevices\AMDRyzenMasterDriverV26 (user-accessible)  →  CreateFile("\\.\AMDRyzenMasterDriverV26")
+
+[+] ─── User-Mode Accessible Devices (1) ───
+    [+] \\.\AMDRyzenMasterDriverV26  →  \Device\AMDRyzenMasterDriverV26
+
+[*] ─── Registry References (2) ───
+    (keys/values the driver reads — device name may be loaded here at runtime)
+    [r] Registry:\Registry\Machine\System\CurrentControlSet\Control\Class
+    [r] RegistryValue:SymbolicLink

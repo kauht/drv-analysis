@@ -1,0 +1,992 @@
+{
+  "file": "samples\\colorful\\drivers\\app\\iGameAPI\\Notebook\\NotebookSDK\\Clevo\\ClevoDCHUDriver\\AcpiBridge.sys",
+  "sha256": "be879af2ef1beaa3ad041c30abd103c5e9e872d23ea8442b57682bb0d06ea153",
+  "imphash": "1ad45a4baf63cb935683b85e648d37e4",
+  "arch": "x64",
+  "version": {
+    "CompanyName": "Insyde Software Corporation",
+    "FileDescription": "Insyde Acpi Bridge Driver",
+    "FileVersion": "1.0.0.7",
+    "InternalName": "AcpiBridge.sys",
+    "LegalCopyright": "Copyright (C) 2021, Insyde Software Corporation. All rights reserved.",
+    "OriginalFilename": "AcpiBridge.sys",
+    "ProductName": "Insyde Acpi Bridge Driver",
+    "ProductVersion": "1.0.0.7"
+  },
+  "security": {
+    "HIGH_ENTROPY_VA": true,
+    "DYNAMIC_BASE": true,
+    "FORCE_INTEGRITY": false,
+    "NX_COMPAT": true,
+    "NO_SEH": false,
+    "GUARD_CF": true,
+    "GS_COOKIE": true,
+    "HVCI_COMPATIBLE": false
+  },
+  "certificate": {
+    "signed": true,
+    "win_cert_revision": "0x0200",
+    "win_cert_type": 2,
+    "cert_count": 3,
+    "certificates": [
+      {
+        "subject_cn": "Insyde Software Corp.",
+        "subject_org": "Insyde Software Corp.",
+        "issuer_cn": "Insyde Software Corp.",
+        "issuer_org": "Insyde Software Corp.",
+        "serial": "2c4fe2755163848f4ad99fff4fb05390",
+        "not_before": "2021-09-01T11:26:09+00:00",
+        "not_after": "2024-09-01T11:36:09+00:00",
+        "expired": true,
+        "not_yet_valid": false,
+        "self_signed": true,
+        "key_type": "RSA",
+        "key_size": 2048,
+        "thumbprint_sha1": "2141a820167734f86acccb08ac17710e46f29c98",
+        "thumbprint_sha256": "5b1a89a84363fcc2d2bf45ac11819b773f46e3179e91bad3f8b29157db94ca6f",
+        "eku": [
+          "1.3.6.1.5.5.7.3.3"
+        ],
+        "has_code_signing_eku": true,
+        "signature_hash_algorithm": "sha256",
+        "is_ca": false
+      },
+      {
+        "subject_cn": "DigiCert Timestamp 2021",
+        "subject_org": "DigiCert, Inc.",
+        "issuer_cn": "DigiCert SHA2 Assured ID Timestamping CA",
+        "issuer_org": "DigiCert Inc",
+        "serial": "d424ae0be3a88ff604021ce1400f0dd",
+        "not_before": "2021-01-01T00:00:00+00:00",
+        "not_after": "2031-01-06T00:00:00+00:00",
+        "expired": false,
+        "not_yet_valid": false,
+        "self_signed": false,
+        "key_type": "RSA",
+        "key_size": 2048,
+        "thumbprint_sha1": "e1d782a8e191beef6bca1691b5aab494a6249bf3",
+        "thumbprint_sha256": "b3109006bc0ad98307915729e04403415c83e3292b614f26964c8d3571ecf5a9",
+        "eku": [
+          "1.3.6.1.5.5.7.3.8"
+        ],
+        "has_code_signing_eku": false,
+        "signature_hash_algorithm": "sha256",
+        "is_ca": false
+      },
+      {
+        "subject_cn": "DigiCert SHA2 Assured ID Timestamping CA",
+        "subject_org": "DigiCert Inc",
+        "issuer_cn": "DigiCert Assured ID Root CA",
+        "issuer_org": "DigiCert Inc",
+        "serial": "aa125d6d6321b7e41e405da3697c215",
+        "not_before": "2016-01-07T12:00:00+00:00",
+        "not_after": "2031-01-07T12:00:00+00:00",
+        "expired": false,
+        "not_yet_valid": false,
+        "self_signed": false,
+        "key_type": "RSA",
+        "key_size": 2048,
+        "thumbprint_sha1": "3ba63a6e4841355772debef9cdcf4d5af353a297",
+        "thumbprint_sha256": "ca8d0f4736454aecbec5deec80998c9ebf41d06c728f3c76cca24151bc62d463",
+        "eku": [
+          "1.3.6.1.5.5.7.3.8"
+        ],
+        "has_code_signing_eku": false,
+        "signature_hash_algorithm": "sha256",
+        "is_ca": true
+      }
+    ],
+    "timestamp_signer": "DigiCert Timestamp 2021",
+    "timestamp_issuer": "DigiCert SHA2 Assured ID Timestamping CA",
+    "signer_cn": "Insyde Software Corp.",
+    "signer_org": "Insyde Software Corp.",
+    "signer_serial": "2c4fe2755163848f4ad99fff4fb05390",
+    "signer_issuer": "Insyde Software Corp.",
+    "signer_expired": true,
+    "signer_self_signed": true,
+    "signer_key_type": "RSA",
+    "signer_key_size": 2048,
+    "signer_not_after": "2024-09-01T11:36:09+00:00",
+    "signer_thumbprint": "2141a820167734f86acccb08ac17710e46f29c98",
+    "signature_valid": true,
+    "signature_error": "",
+    "pe_hash_match": true,
+    "pe_hash_expected": "e06f07490438245ef0b72381e004dafb18579896609313826ae705231fffbba0",
+    "pe_hash_actual": "e06f07490438245ef0b72381e004dafb18579896609313826ae705231fffbba0",
+    "pe_hash_algorithm": "sha256",
+    "nested_signatures": [
+      {
+        "digest_algorithm_oid": "2.16.840.1.101.3.4.2.1",
+        "digest_algorithm": "sha256",
+        "signature_valid": true,
+        "signature_error": "",
+        "pe_hash_algorithm": "sha256",
+        "pe_hash_match": true,
+        "pe_hash_expected": "e06f07490438245ef0b72381e004dafb18579896609313826ae705231fffbba0",
+        "pe_hash_actual": "e06f07490438245ef0b72381e004dafb18579896609313826ae705231fffbba0"
+      },
+      {
+        "digest_algorithm_oid": "2.16.840.1.101.3.4.2.1",
+        "digest_algorithm": "sha256",
+        "signature_valid": true,
+        "signature_error": "",
+        "pe_hash_algorithm": "sha256",
+        "pe_hash_match": true,
+        "pe_hash_expected": "e06f07490438245ef0b72381e004dafb18579896609313826ae705231fffbba0",
+        "pe_hash_actual": "e06f07490438245ef0b72381e004dafb18579896609313826ae705231fffbba0"
+      },
+      {
+        "digest_algorithm_oid": "2.16.840.1.101.3.4.2.1",
+        "digest_algorithm": "sha256",
+        "signature_valid": true,
+        "signature_error": "",
+        "pe_hash_algorithm": "sha256",
+        "pe_hash_match": true,
+        "pe_hash_expected": "e06f07490438245ef0b72381e004dafb18579896609313826ae705231fffbba0",
+        "pe_hash_actual": "e06f07490438245ef0b72381e004dafb18579896609313826ae705231fffbba0"
+      },
+      {
+        "digest_algorithm_oid": "2.16.840.1.101.3.4.2.1",
+        "digest_algorithm": "sha256",
+        "signature_valid": true,
+        "signature_error": "",
+        "pe_hash_algorithm": "sha256",
+        "pe_hash_match": true,
+        "pe_hash_expected": "e06f07490438245ef0b72381e004dafb18579896609313826ae705231fffbba0",
+        "pe_hash_actual": "e06f07490438245ef0b72381e004dafb18579896609313826ae705231fffbba0"
+      },
+      {
+        "digest_algorithm_oid": "2.16.840.1.101.3.4.2.1",
+        "digest_algorithm": "sha256",
+        "signature_valid": true,
+        "signature_error": "",
+        "pe_hash_algorithm": "sha256",
+        "pe_hash_match": true,
+        "pe_hash_expected": "e06f07490438245ef0b72381e004dafb18579896609313826ae705231fffbba0",
+        "pe_hash_actual": "e06f07490438245ef0b72381e004dafb18579896609313826ae705231fffbba0"
+      },
+      {
+        "digest_algorithm_oid": "2.16.840.1.101.3.4.2.1",
+        "digest_algorithm": "sha256",
+        "signature_valid": true,
+        "signature_error": "",
+        "pe_hash_algorithm": "sha256",
+        "pe_hash_match": true,
+        "pe_hash_expected": "e06f07490438245ef0b72381e004dafb18579896609313826ae705231fffbba0",
+        "pe_hash_actual": "e06f07490438245ef0b72381e004dafb18579896609313826ae705231fffbba0"
+      }
+    ],
+    "chain_anchor": {
+      "kind": "no-ms-root",
+      "matched_thumbprint": "",
+      "matched_name": "",
+      "trusted_for_kernel": false
+    },
+    "signing_time": null,
+    "countersig_time": "2021-09-01T11:36:19Z",
+    "countersig_source": "counter-sig",
+    "timestamp_valid": true,
+    "timestamp_binding_ok": true,
+    "timestamp_source": "counter-sig",
+    "timestamp_error": "",
+    "page_hashes_present": false,
+    "page_hashes_algorithm": "",
+    "has_whql_eku": false,
+    "has_ev_cert": false,
+    "eku_propagation_ok": true,
+    "eku_broken_cert_cn": ""
+  },
+  "device_names": [],
+  "load_verdict": {
+    "can_load": "False",
+    "blockers": [
+      "Kernel Trust Anchor",
+      "Self-Signed",
+      "HVCI",
+      "Secure Boot"
+    ],
+    "passes": [
+      "Timestamp"
+    ]
+  },
+  "exploit_chains": [],
+  "attack_surface_score": 28,
+  "attack_risk": "LOW",
+  "device_access": {
+    "create_api": "Unknown",
+    "secure_open": false,
+    "exclusive": false,
+    "sddl": null,
+    "symlinks": [],
+    "issues": []
+  },
+  "ioctls": [
+    {
+      "code": "0x00322400",
+      "method": "METHOD_BUFFERED",
+      "access": "FILE_ANY_ACCESS",
+      "purpose": "",
+      "primitives": [],
+      "bug_classes": [],
+      "struct_fields": [],
+      "behavior": {
+        "api_calls": [
+          "ExFreePoolWithTag",
+          "ExAllocatePoolWithTag",
+          "ExFreePoolWithTag"
+        ],
+        "categories": [
+          "POOL"
+        ],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "inline_ops": []
+      }
+    },
+    {
+      "code": "0x00322404",
+      "method": "METHOD_BUFFERED",
+      "access": "FILE_ANY_ACCESS",
+      "purpose": "object access",
+      "primitives": [],
+      "bug_classes": [],
+      "struct_fields": [],
+      "behavior": {
+        "api_calls": [
+          "ObfDereferenceObject",
+          "ObReferenceObjectByHandle"
+        ],
+        "categories": [
+          "OBJECT",
+          "OTHER"
+        ],
+        "security_checks": [
+          "Object reference by handle (may validate AccessMode)"
+        ],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "inline_ops": []
+      }
+    },
+    {
+      "code": "0x00322408",
+      "method": "METHOD_BUFFERED",
+      "access": "FILE_ANY_ACCESS",
+      "purpose": "stub (no observable calls)",
+      "primitives": [],
+      "bug_classes": [],
+      "struct_fields": [],
+      "behavior": {
+        "api_calls": [],
+        "categories": [],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "inline_ops": []
+      }
+    },
+    {
+      "code": "0x0032240C",
+      "method": "METHOD_BUFFERED",
+      "access": "FILE_ANY_ACCESS",
+      "purpose": "",
+      "primitives": [],
+      "bug_classes": [],
+      "struct_fields": [],
+      "behavior": {
+        "api_calls": [
+          "RtlInitUnicodeString",
+          "RtlInitUnicodeString"
+        ],
+        "categories": [
+          "OTHER"
+        ],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "inline_ops": []
+      }
+    }
+  ],
+  "findings": [
+    {
+      "title": "Dangerous import: MmGetSystemRoutineAddress",
+      "severity": "MEDIUM",
+      "description": "Resolves kernel export by name \u2014 used in DSE bypass to find CI!g_CiOptions",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "MmGetSystemRoutineAddress"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Dangerous import: ExAllocatePoolWithTag",
+      "severity": "LOW",
+      "description": "Pool allocation \u2014 check for size validation",
+      "location": "Import Table (ntoskrnl.exe)",
+      "details": {
+        "dll": "ntoskrnl.exe",
+        "function": "ExAllocatePoolWithTag"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "WDF (Windows Driver Framework) driver detected",
+      "severity": "INFO",
+      "description": "Driver uses WDF framework (detected imports: WdfVersionBind). IOCTL dispatch uses EvtIoDeviceControl callback via WdfIoQueueCreate rather than DriverObject->MajorFunction[].",
+      "location": "Import Table",
+      "details": {
+        "wdf_imports": "WdfVersionBind"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "IOCTL code: 0x00322400",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_BUFFERED, Access: FILE_ANY_ACCESS",
+      "location": "0x1400078F1",
+      "details": {
+        "ioctl_code": "0x00322400",
+        "method": "METHOD_BUFFERED",
+        "handler": "0x140007941"
+      },
+      "ioctl_code": "0x00322400"
+    },
+    {
+      "title": "IOCTL code: 0x00322404",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_BUFFERED, Access: FILE_ANY_ACCESS",
+      "location": "0x1400078F9",
+      "details": {
+        "ioctl_code": "0x00322404",
+        "method": "METHOD_BUFFERED",
+        "handler": "0x140007934"
+      },
+      "ioctl_code": "0x00322404"
+    },
+    {
+      "title": "IOCTL code: 0x00322408",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_BUFFERED, Access: FILE_ANY_ACCESS",
+      "location": "0x1400078FE",
+      "details": {
+        "ioctl_code": "0x00322408",
+        "method": "METHOD_BUFFERED",
+        "handler": "0x140007922"
+      },
+      "ioctl_code": "0x00322408"
+    },
+    {
+      "title": "IOCTL code: 0x0032240C",
+      "severity": "MEDIUM",
+      "description": "Method: METHOD_BUFFERED, Access: FILE_ANY_ACCESS",
+      "location": "0x140007903",
+      "details": {
+        "ioctl_code": "0x0032240C",
+        "method": "METHOD_BUFFERED",
+        "handler": "0x140007910"
+      },
+      "ioctl_code": "0x0032240C"
+    },
+    {
+      "title": "Hardcoded address: 0x2080000",
+      "severity": "MEDIUM",
+      "description": "Hardcoded page-aligned address found. May be a physical memory address used with MmMapIoSpace or similar.",
+      "location": "0x140002131",
+      "details": {
+        "address": "0x2080000"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Missing mitigation: Signature enforcement (FORCE_INTEGRITY)",
+      "severity": "MEDIUM",
+      "description": "Signature enforcement (FORCE_INTEGRITY) is not enabled. Driver can load without a valid Authenticode signature.",
+      "location": "PE DllCharacteristics / LoadConfig",
+      "details": {
+        "mitigation": "Signature enforcement (FORCE_INTEGRITY)",
+        "flag": "FORCE_INTEGRITY"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Driver is NOT HVCI-compatible",
+      "severity": "HIGH",
+      "description": "Driver fails HVCI checks (missing FORCE_INTEGRITY or has W+X sections). Cannot load in HVCI-enabled environments without policy bypass.",
+      "location": "PE headers",
+      "details": {
+        "hvci": "incompatible"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Kernel write gadgets found (8 instances)",
+      "severity": "HIGH",
+      "description": "Multiple 'mov [reg+offset], reg' patterns in driver code. If the register is derived from user input (e.g., IOCTL buffer), this is an arbitrary kernel memory write primitive.",
+      "location": "Code section",
+      "details": {
+        "gadgets": "0x140001003: mov qword ptr [rax + 8], rbx; 0x140001007: mov qword ptr [rax + 0x10], rbp; 0x14000100B: mov qword ptr [rax + 0x18], rsi; 0x14000100F: mov qword ptr [rax + 0x20], rdi"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Hidden function with purpose 'runtime resolve' at 0x140007501",
+      "severity": "HIGH",
+      "description": "Function at 0x140007501 performs 'runtime resolve' but is not reachable via the normal DriverEntry \u2192 MajorFunction call graph.  It may be invoked via a timer, DPC, work item, or kernel callback \u2014 a hidden secondary attack path.",
+      "location": "0x140007501",
+      "details": {
+        "purpose": "runtime resolve",
+        "function": "0x140007501"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Hidden function with purpose 'runtime resolve' at 0x140008018",
+      "severity": "HIGH",
+      "description": "Function at 0x140008018 performs 'runtime resolve' but is not reachable via the normal DriverEntry \u2192 MajorFunction call graph.  It may be invoked via a timer, DPC, work item, or kernel callback \u2014 a hidden secondary attack path.",
+      "location": "0x140008018",
+      "details": {
+        "purpose": "runtime resolve",
+        "function": "0x140008018"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "No PreviousMode / RequestorMode check detected",
+      "severity": "HIGH",
+      "description": "Driver does not import ExGetPreviousMode or KeGetPreviousMode and no inline KTHREAD.PreviousMode read was found. Without checking PreviousMode, a kernel-mode caller could be impersonated, or user-mode requests may bypass validation. IOCTLs should verify RequestorMode == UserMode before trusting input.",
+      "location": "Import Table / DriverEntry",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "IOCTL handlers missing InputBufferLength validation",
+      "severity": "HIGH",
+      "description": "The following IOCTL handlers do not appear to validate InputBufferLength before processing the buffer: 0x00322400, 0x00322404, 0x00322408, 0x0032240C. Without size checks, a short buffer could cause pool overread or out-of-bounds writes.",
+      "location": "IOCTL handlers",
+      "details": {
+        "ioctls": [
+          "0x00322400",
+          "0x00322404",
+          "0x00322408",
+          "0x0032240C"
+        ]
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "IOCTL handlers missing NULL buffer check",
+      "severity": "MEDIUM",
+      "description": "These IOCTL handlers may not check for NULL SystemBuffer before dereferencing: 0x00322400, 0x00322404, 0x00322408, 0x0032240C. A zero-length IOCTL request can result in SystemBuffer=NULL, causing a kernel NULL-pointer dereference (BSOD).",
+      "location": "IOCTL handlers",
+      "details": {
+        "ioctls": [
+          "0x00322400",
+          "0x00322404",
+          "0x00322408",
+          "0x0032240C"
+        ]
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "No privilege check APIs imported",
+      "severity": "MEDIUM",
+      "description": "Driver handles IOCTLs but does not import SeSinglePrivilegeCheck, SePrivilegeCheck, or SeAccessCheck. Sensitive operations should verify caller privileges beyond just device handle access rights.",
+      "location": "Import Table",
+      "details": {
+        "checked_apis": [
+          "SeAccessCheck",
+          "SeFastTraverseCheck",
+          "SePrivilegeCheck",
+          "SeSinglePrivilegeCheck"
+        ]
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Driver has Authenticode signature",
+      "severity": "INFO",
+      "description": "PE contains a WIN_CERTIFICATE structure with embedded signature.",
+      "location": "PE Security Directory",
+      "details": {
+        "revision": "0x0200",
+        "cert_count": "3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Signed by: Insyde Software Corp.",
+      "severity": "INFO",
+      "description": "Subject: Insyde Software Corp. (Insyde Software Corp.)\nIssuer: Insyde Software Corp.\nSerial: 2c4fe2755163848f4ad99fff4fb05390\nKey: RSA 2048-bit\nValid until: 2024-09-01T11:36:09+00:00",
+      "location": "Authenticode Certificate",
+      "details": {
+        "signer_cn": "Insyde Software Corp.",
+        "signer_org": "Insyde Software Corp.",
+        "issuer": "Insyde Software Corp.",
+        "serial": "2c4fe2755163848f4ad99fff4fb05390",
+        "thumbprint": "2141a820167734f86acccb08ac17710e46f29c98"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Signing certificate EXPIRED (valid until 2024-09-01T11:36:09+00:00)",
+      "severity": "HIGH",
+      "description": "The code-signing certificate has expired. While drivers with a valid timestamp counter-signature remain valid after expiry, an expired cert without a timestamp means the signature is no longer trusted. This is also common in BYOVD \u2014 old vulnerable drivers with expired certs that were signed before revocation.",
+      "location": "Authenticode Certificate",
+      "details": {
+        "not_after": "2024-09-01T11:36:09+00:00"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Driver signed with SELF-SIGNED certificate",
+      "severity": "CRITICAL",
+      "description": "The signing certificate is self-signed (issuer == subject). Self-signed drivers have no trust chain and cannot be verified by the OS certificate store. This requires test-signing mode to be enabled, which is a significant security downgrade. Malware often uses self-signed certs.",
+      "location": "Authenticode Certificate",
+      "details": {
+        "signer_cn": "Insyde Software Corp."
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "PKCS#7 signature verifies cryptographically",
+      "severity": "INFO",
+      "description": "The primary Authenticode PKCS#7 signature was verified against the signer certificate's public key.",
+      "location": "Authenticode Certificate",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "Authenticode PE hash matches (binary not tampered)",
+      "severity": "INFO",
+      "description": "Recomputed sha256 hash of the PE image matches the value embedded in SpcIndirectDataContent.",
+      "location": "Authenticode Signature",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "Nested signature(s) present: sha256, sha256, sha256, sha256, sha256, sha256",
+      "severity": "INFO",
+      "description": "The primary signature is dual-signed \u2014 a second (typically SHA-256) signature is nested via MsSpcNestedSignature. Windows on modern Windows 10+ / HVCI prefers the SHA-256 side for verification.",
+      "location": "Authenticode Signature",
+      "details": {
+        "count": "6",
+        "algorithms": [
+          "sha256",
+          "sha256",
+          "sha256",
+          "sha256",
+          "sha256",
+          "sha256"
+        ],
+        "any_invalid": "False",
+        "any_pe_hash_bad": "False"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Chain does not terminate at a Windows kernel-trusted root",
+      "severity": "HIGH",
+      "description": "The certificate chain does not chain up to any root present in the Windows kernel trust store (20 known roots checked by thumbprint). Unless a missing intermediate can be supplied by the OS at load time, Windows will not accept this driver.",
+      "location": "Certificate Chain",
+      "details": {
+        "anchor_kind": "no-ms-root"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Load restricted: Self-signed certificate",
+      "severity": "HIGH",
+      "description": "This driver is self-signed. It will only load on Windows with test-signing mode enabled (bcdedit /set testsigning on). A watermark appears on the desktop when test-signing is active.",
+      "location": "Signature Policy",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "HVCI incompatible: missing FORCE_INTEGRITY flag",
+      "severity": "HIGH",
+      "description": "This driver is NOT compatible with Hypervisor-protected Code Integrity (HVCI / Memory Integrity). On systems with HVCI enabled, Windows will BLOCK this driver from loading. Issues: missing FORCE_INTEGRITY flag.",
+      "location": "PE Headers / Sections",
+      "details": {
+        "force_integrity": "False",
+        "has_wx_sections": "False"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Driver architecture: x64",
+      "severity": "INFO",
+      "description": "64-bit driver \u2014 loads on x64 Windows",
+      "location": "PE Header",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "Load compatibility: BLOCKED \u2014 4 issue(s) prevent loading",
+      "severity": "HIGH",
+      "description": "  [BLOCKED] Kernel Trust Anchor: Chain does not terminate at a Windows kernel trust root (no-ms-root)\n  [BLOCKED] Self-Signed: Self-signed drivers require test-signing mode\n  [BLOCKED] HVCI: Blocked when Memory Integrity is ON (missing FORCE_INTEGRITY flag)\n  [BLOCKED] Secure Boot: Blocked when Secure Boot is enabled\n  [PASS] Timestamp: Expired cert but timestamped by DigiCert Timestamp 2021",
+      "location": "Load Policy Analysis",
+      "details": {
+        "can_load": "False",
+        "blockers": [
+          "Kernel Trust Anchor",
+          "Self-Signed",
+          "HVCI",
+          "Secure Boot"
+        ],
+        "passes": [
+          "Timestamp"
+        ],
+        "matrix": {
+          "default": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "Self-signed \u2014 not accepted without test-signing"
+            ],
+            "passes": [
+              "Signed",
+              "Signature crypto + PE hash OK"
+            ]
+          },
+          "secure_boot": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "Self-signed \u2014 not accepted without test-signing"
+            ],
+            "passes": [
+              "Signed",
+              "Signature crypto + PE hash OK"
+            ]
+          },
+          "hvci": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "Self-signed \u2014 not accepted without test-signing",
+              "FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)"
+            ],
+            "passes": [
+              "Signed",
+              "Signature crypto + PE hash OK"
+            ]
+          },
+          "test_signing": {
+            "verdict": "WILL_LOAD",
+            "blockers": [],
+            "passes": [
+              "Any valid signature accepted under test-signing"
+            ]
+          },
+          "s_mode": {
+            "verdict": "WILL_NOT_LOAD",
+            "blockers": [
+              "No WHQL attestation EKU \u2014 S Mode / Secured-Core require WHQL-signed drivers",
+              "No Authenticode page hashes (Secured-Core requires per-page integrity)",
+              "Chain not kernel-trusted"
+            ],
+            "passes": []
+          }
+        }
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Device Access Security Audit",
+      "severity": "LOW",
+      "description": "Device access security looks reasonable. API: Unknown, Secure Open: False, Exclusive: False",
+      "location": "DriverEntry",
+      "details": {
+        "create_api": "Unknown",
+        "secure_open": "False",
+        "exclusive": "False",
+        "device_type": "unknown",
+        "sddl": "none",
+        "symlinks": [],
+        "create_checks": [],
+        "issues": []
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "IOCTL 0x00322400 behavior: POOL: ExAllocatePoolWithTag, ExFreePoolWithTag",
+      "severity": "HIGH",
+      "description": "Handler at 0x140007941\nSecurity checks: NONE\nAPI calls (3):\n  [POOL] ExFreePoolWithTag \u2014 Free tagged kernel pool memory\n  [POOL] ExAllocatePoolWithTag \u2014 Allocate tagged kernel pool memory\n  [POOL] ExFreePoolWithTag \u2014 Free tagged kernel pool memory\nRisk: No IRP completion detected (may leak IRP or cause hang)",
+      "location": "0x140007941",
+      "details": {
+        "ioctl": "0x00322400",
+        "purpose": "",
+        "handler": "0x140007941",
+        "api_calls": [
+          "ExFreePoolWithTag",
+          "ExAllocatePoolWithTag",
+          "ExFreePoolWithTag"
+        ],
+        "categories": [
+          "POOL"
+        ],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "irp_completion": "False",
+        "inline_ops": []
+      },
+      "ioctl_code": "0x00322400"
+    },
+    {
+      "title": "IOCTL 0x00322404 behavior: OBJECT: ObReferenceObjectByHandle",
+      "severity": "HIGH",
+      "description": "Handler at 0x140007934\nSecurity checks: Object reference by handle (may validate AccessMode)\nAPI calls (2):\n  [OTHER] ObfDereferenceObject \u2014 Imported function: ObfDereferenceObject\n  [OBJECT] ObReferenceObjectByHandle \u2014 Reference kernel object from handle\nRisk: No IRP completion detected (may leak IRP or cause hang)",
+      "location": "0x140007934",
+      "details": {
+        "ioctl": "0x00322404",
+        "purpose": "object access",
+        "handler": "0x140007934",
+        "api_calls": [
+          "ObfDereferenceObject",
+          "ObReferenceObjectByHandle"
+        ],
+        "categories": [
+          "OBJECT",
+          "OTHER"
+        ],
+        "security_checks": [
+          "Object reference by handle (may validate AccessMode)"
+        ],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "irp_completion": "False",
+        "inline_ops": []
+      },
+      "ioctl_code": "0x00322404"
+    },
+    {
+      "title": "IOCTL 0x00322408 behavior: No significant operations detected",
+      "severity": "HIGH",
+      "description": "Handler at 0x140007922\nSecurity checks: NONE\nAPI calls (0):\n\nRisk: No IRP completion detected (may leak IRP or cause hang)",
+      "location": "0x140007922",
+      "details": {
+        "ioctl": "0x00322408",
+        "purpose": "stub (no observable calls)",
+        "handler": "0x140007922",
+        "api_calls": [],
+        "categories": [],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "irp_completion": "False",
+        "inline_ops": []
+      },
+      "ioctl_code": "0x00322408"
+    },
+    {
+      "title": "IOCTL 0x0032240C behavior: No significant operations detected",
+      "severity": "HIGH",
+      "description": "Handler at 0x140007910\nSecurity checks: NONE\nAPI calls (2):\n  [OTHER] RtlInitUnicodeString \u2014 Imported function: RtlInitUnicodeString\n  [OTHER] RtlInitUnicodeString \u2014 Imported function: RtlInitUnicodeString\nRisk: No IRP completion detected (may leak IRP or cause hang)",
+      "location": "0x140007910",
+      "details": {
+        "ioctl": "0x0032240C",
+        "purpose": "",
+        "handler": "0x140007910",
+        "api_calls": [
+          "RtlInitUnicodeString",
+          "RtlInitUnicodeString"
+        ],
+        "categories": [
+          "OTHER"
+        ],
+        "security_checks": [],
+        "risk_factors": [
+          "No IRP completion detected (may leak IRP or cause hang)"
+        ],
+        "irp_completion": "False",
+        "inline_ops": []
+      },
+      "ioctl_code": "0x0032240C"
+    },
+    {
+      "title": "ROP/JOP gadgets found: 611 total (misc: 185, reg-control: 158, memory-read: 127, memory-write: 101, stack-pivot: 30, jmp-reg: 10)",
+      "severity": "MEDIUM",
+      "description": "Found 611 usable ROP/JOP gadgets in executable sections. Since many drivers lack ASLR, these gadgets are at predictable addresses and can be chained for kernel exploitation.\n\nTop gadgets by type:\n  [stack-pivot] (30 found):\n    0x140001124: pop rsp ; ret\n    0x140001288: pop rsp ; pop rdi ; ret\n    0x140001643: mov esp, ebx ; pop r15 ; pop r14 ; pop rdi ; ret\n  [memory-write] (101 found):\n    0x140001C8F: mov dword ptr [rcx + 0x18], eax ; ret\n    0x140001C8E: mov qword ptr [r9 + 0x18], rax ; ret\n    0x140001C8D: sub al, 0x49 ; mov dword ptr [rcx + 0x18], eax ; ret\n  [memory-read] (127 found):\n    0x14000111B: mov edi, dword ptr [rsp + 0x68] ; add rsp, 0x40 ; pop r12 ; ret\n    0x14000111A: mov rdi, qword ptr [rsp + 0x68] ; add rsp, 0x40 ; pop r12 ; ret\n    0x140001118: and al, 0x60 ; mov rdi, qword ptr [rsp + 0x68] ; add rsp, 0x40 ; pop r12 ; ret\n  [reg-control] (158 found):\n    0x140001123: pop r12 ; ret\n    0x140001122: pop r12 ; ret\n    0x140001120: add esp, 0x40 ; pop r12 ; ret\n  [jmp-reg] (10 found):\n    0x1400025FE: add byte ptr [rax], al ; jmp rax\n    0x1400025FC: add byte ptr [rax], al ; add byte ptr [rax], al ; jmp rax\n    0x1400025FA: test byte ptr [rax], al ; add byte ptr [rax], al ; add byte ptr [rax], al ; jmp rax",
+      "location": "Executable sections",
+      "details": {
+        "total_gadgets": "611",
+        "by_type": {
+          "stack-pivot": 30,
+          "reg-control": 158,
+          "memory-read": 127,
+          "memory-write": 101,
+          "jmp-reg": 10,
+          "misc": 185
+        }
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: mov dword ptr [rcx + 0x18], eax ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001C8F (2 insns). Type: memory-write. Bytes: 894118c3",
+      "location": "0x140001C8F",
+      "details": {
+        "type": "memory-write",
+        "asm": "mov dword ptr [rcx + 0x18], eax ; ret",
+        "bytes": "894118c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: mov qword ptr [r9 + 0x18], rax ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001C8E (2 insns). Type: memory-write. Bytes: 49894118c3",
+      "location": "0x140001C8E",
+      "details": {
+        "type": "memory-write",
+        "asm": "mov qword ptr [r9 + 0x18], rax ; ret",
+        "bytes": "49894118c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: sub al, 0x49 ; mov dword ptr [rcx + 0x18], eax ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001C8D (3 insns). Type: memory-write. Bytes: 2c49894118c3",
+      "location": "0x140001C8D",
+      "details": {
+        "type": "memory-write",
+        "asm": "sub al, 0x49 ; mov dword ptr [rcx + 0x18], eax ; ret",
+        "bytes": "2c49894118c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: sub al, 0x49 ; mov dword ptr [rcx + 0x18], eax ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001C8C (3 insns). Type: memory-write. Bytes: 412c49894118c3",
+      "location": "0x140001C8C",
+      "details": {
+        "type": "memory-write",
+        "asm": "sub al, 0x49 ; mov dword ptr [rcx + 0x18], eax ; ret",
+        "bytes": "412c49894118c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [memory-write]: mov dword ptr [rcx + 0x2c], eax ; mov qword ptr [r9 + 0x18], rax ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001C8B (3 insns). Type: memory-write. Bytes: 89412c49894118c3",
+      "location": "0x140001C8B",
+      "details": {
+        "type": "memory-write",
+        "asm": "mov dword ptr [rcx + 0x2c], eax ; mov qword ptr [r9 + 0x18], rax ; ret",
+        "bytes": "89412c49894118c3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: pop rsp ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001124 (2 insns). Type: stack-pivot. Bytes: 5cc3",
+      "location": "0x140001124",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "pop rsp ; ret",
+        "bytes": "5cc3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: pop rsp ; pop rdi ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001288 (3 insns). Type: stack-pivot. Bytes: 5c5fc3",
+      "location": "0x140001288",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "pop rsp ; pop rdi ; ret",
+        "bytes": "5c5fc3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: mov esp, ebx ; pop r15 ; pop r14 ; pop rdi ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001643 (5 insns). Type: stack-pivot. Bytes: 8be3415f415e5fc3",
+      "location": "0x140001643",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "mov esp, ebx ; pop r15 ; pop r14 ; pop rdi ; ret",
+        "bytes": "8be3415f415e5fc3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: mov rsp, r11 ; pop r15 ; pop r14 ; pop rdi ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001642 (5 insns). Type: stack-pivot. Bytes: 498be3415f415e5fc3",
+      "location": "0x140001642",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "mov rsp, r11 ; pop r15 ; pop r14 ; pop rdi ; ret",
+        "bytes": "498be3415f415e5fc3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "ROP gadget [stack-pivot]: jae 0x140001672 ; mov rsp, r11 ; pop r15 ; pop r14 ; pop rdi ; ret",
+      "severity": "MEDIUM",
+      "description": "Gadget at 0x140001640 (6 insns). Type: stack-pivot. Bytes: 7330498be3415f415e5fc3",
+      "location": "0x140001640",
+      "details": {
+        "type": "stack-pivot",
+        "asm": "jae 0x140001672 ; mov rsp, r11 ; pop r15 ; pop r14 ; pop rdi ; ret",
+        "bytes": "7330498be3415f415e5fc3"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "Attack Surface Score: 28/100 [LOW]",
+      "severity": "LOW",
+      "description": "Low risk \u2014 limited attack surface with reasonable mitigations\n\nScore breakdown:\n  IOCTL Exposure    : 12/20\n  Exploit Primitives: 0/25  (none)\n  Missing Mitigations: 4/15\n  Certificate Issues : 10/10\n  Dangerous Imports  : 0/10",
+      "location": "Overall Assessment",
+      "details": {
+        "score": "28",
+        "risk": "LOW",
+        "primitives": [],
+        "ioctl_count": "4",
+        "method_neither_count": "0"
+      },
+      "ioctl_code": null
+    },
+    {
+      "title": "YARA match: RDMSR_WRMSR_Opcodes",
+      "severity": "HIGH",
+      "description": "YARA rule 'RDMSR_WRMSR_Opcodes' matched. Strings: ['$rdmsr', '$wrmsr']",
+      "location": "Binary content",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "YARA match: IO_Port_Opcodes",
+      "severity": "HIGH",
+      "description": "YARA rule 'IO_Port_Opcodes' matched. Strings: ['$inb', '$outb', '$ind']",
+      "location": "Binary content",
+      "details": {},
+      "ioctl_code": null
+    },
+    {
+      "title": "YARA match: CLI_STI_Opcodes",
+      "severity": "HIGH",
+      "description": "YARA rule 'CLI_STI_Opcodes' matched. Strings: ['$cli', '$sti']",
+      "location": "Binary content",
+      "details": {},
+      "ioctl_code": null
+    }
+  ]
+}

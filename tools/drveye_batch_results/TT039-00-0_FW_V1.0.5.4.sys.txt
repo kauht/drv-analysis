@@ -1,0 +1,6 @@
+[36m╔═════════════════════════════════════════╗
+║   DrvEye  Windows Driver Rev&Analysis   ║
+║   [2mCredit:[0m[36m @0xDbgMan                     ║
+╚═════════════════════════════════════════╝[0m
+[*] Analysis started: TT039-00-0_FW_V1.0.5.4.sys
+[33m[!][0m Invalid PE file: 'DOS Header magic not found.'

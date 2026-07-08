@@ -1,0 +1,96 @@
+C:\Users\macin\Desktop\vuln\tools\drveye\drivertool\pe_analyzer.py:261: UserWarning: PKCS#7 certificates could not be parsed as DER, falling back to parsing as BER. In the future, this may become an exception. Error details: ValueError: error parsing asn1 value: ParseError { kind: UnknownDefinedBy, location: ["ContentInfo::content", "SignedData::content_info", "ContentInfo::content"] }
+  certs = pkcs7_mod.load_der_pkcs7_certificates(pkcs7_der)
+[36m╔═════════════════════════════════════════╗
+║   DrvEye  Windows Driver Rev&Analysis   ║
+║   [2mCredit:[0m[36m @0xDbgMan                     ║
+╚═════════════════════════════════════════╝[0m
+[*] Analysis started: AcpiBridge.sys
+[*] SHA-256  : be879af2ef1beaa3ad041c30abd103c5e9e872d23ea8442b57682bb0d06ea153
+[*] imphash  : 1ad45a4baf63cb935683b85e648d37e4
+[*] Architecture: x64 | Kernel Driver: Yes
+[*] Image Base: 0x140000000 | Imports: 19 | Sections: 8
+[*] VersionInfo: OriginalFilename: AcpiBridge.sys | CompanyName: Insyde Software Corporation | FileVersion: 1.0.0.7 | FileDescription: Insyde Acpi Bridge Driver
+[*] Mitigations ON : HIGH_ENTROPY_VA, DYNAMIC_BASE, NX_COMPAT, GUARD_CF, GS_COOKIE
+[33m[!][0m Mitigations OFF: FORCE_INTEGRITY, NO_SEH  [HVCI:NO]
+
+[*] ─── Authenticode Signature ───
+[33m[!][0m   Status    : crypto OK · anchor UNTRUSTED [no-ms-root] · cert expired (grandfathered by TS 2021-09-01) · SELF-SIGNED
+[*]   Primary   : SHA256 [✓]  signed by Insyde Software Corp.
+[*]              → Insyde Software Corp.
+[*]   Nested    : SHA256 [✓]
+[*]   Nested    : SHA256 [✓]
+[*]   Nested    : SHA256 [✓]
+[*]   Nested    : SHA256 [✓]
+[*]   Nested    : SHA256 [✓]
+[*]   Nested    : SHA256 [✓]
+[*]   Timestamp : 2021-09-01  [verified]  via DigiCert Timestamp 2021
+[*]   Anchor    : —  [NOT kernel-trusted]
+[33m[!][0m   HVCI Prereqs: none (no WHQL/EV/page-hashes)
+[*]   Org       : Insyde Software Corp.
+[*]   Serial    : 2C4FE2755163848F4AD99FFF4FB05390
+[*]   Key       : RSA-2048
+[*]   Valid     : 2021-09-01 → 2024-09-01
+[*]   Thumbprint: 2141a820167734f86acccb08ac17710e46f29c98
+[*]   Chain (3 certs):
+[*]     [0] Insyde Software Corp. [CodeSign] [EXPIRED]
+[*]         Issuer: Insyde Software Corp.
+[*]         Serial: 2C4FE2755163848F4AD99FFF4FB05390
+[*]         Valid : 2021-09-01 → 2024-09-01
+[*]     [1] DigiCert Timestamp 2021
+[*]         Issuer: DigiCert SHA2 Assured ID Timestamping CA
+[*]         Serial: D424AE0BE3A88FF604021CE1400F0DD
+[*]         Valid : 2021-01-01 → 2031-01-06
+[*]     [2] DigiCert SHA2 Assured ID Timestamping CA [CA]
+[*]         Issuer: DigiCert Assured ID Root CA
+[*]         Serial: AA125D6D6321B7E41E405DA3697C215
+[*]         Valid : 2016-01-07 → 2031-01-07
+
+[*] Scanning imports...
+
+[33m[!][0m ─── LOAD VERDICT: WILL LOAD only under test-signing ───
+  [31mDefault Win10/11         : WILL NOT LOAD[0m
+      • Self-signed — not accepted without test-signing
+  [31mSecure Boot + DSE        : WILL NOT LOAD[0m
+      • Self-signed — not accepted without test-signing
+  [31mHVCI / Memory Integrity  : WILL NOT LOAD[0m
+      • Self-signed — not accepted without test-signing
+      • FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+  [37mTest-signing mode        : WILL LOAD[0m
+  [31mS Mode                   : WILL NOT LOAD[0m
+      • No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+      • No Authenticode page hashes (Secured-Core requires per-page integrity)
+      • Chain not kernel-trusted
+
+  [31mAll blockers found:[0m
+    [31m[BLOCKED][0m Chain not kernel-trusted
+    [31m[BLOCKED][0m FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+    [31m[BLOCKED][0m No Authenticode page hashes (Secured-Core requires per-page integrity)
+    [31m[BLOCKED][0m No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+    [31m[BLOCKED][0m Self-signed — not accepted without test-signing
+
+  [37mPasses:[0m
+    [37m[PASS][0m Any valid signature accepted under test-signing
+    [37m[PASS][0m Signature crypto + PE hash OK
+    [37m[PASS][0m Signed
+
+  [37mConfidence:[0m live MS trust list NOT loaded — using built-in kernel-root snapshot (run --live-check for ground truth)
+    Static checks cover signature crypto, PE hash, chain anchor, HVCI prereqs, and MS block list.
+    Not checked: live OCSP/CRL revocation, current WDAC policy, local test-signing / DSE state, page-hash integrity.
+
+[*] imports Function:
+  [*] MmGetSystemRoutineAddress
+[*] Detected IOCTL codes (4):
+    0x00322400  @0x140007941  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user
+    0x00322404  @0x140007934  (BUFFERED, FILE_ANY_ACCESS)  → object access  [!] any-user
+    0x00322408  @0x140007922  (BUFFERED, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x0032240C  @0x140007910  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user
+
+[+] Device Access Security:
+    Creation API   : Unknown
+    Secure Open    : No
+    Exclusive      : No
+    SDDL           : None (default permissive ACL)
+
+[*] ─── Device Names & Symbolic Links (0) ───
+[33m[!][0m     No device names recovered (may be runtime-constructed or obfuscated)
+    Hint: pass --device NAME to set the symbolic-link manually

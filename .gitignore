@@ -1,0 +1,30 @@
+# Build outputs
+build/
+.xmake/
+.objs/
+.deps/
+*.pdb
+*.ilk
+*.exe
+*.dll
+*.obj
+
+# Local environment
+vm/
+.claude/
+
+# Documentation (local research notes)
+*.md
+
+# Large sample files and binaries
+samples/
+hunting/
+
+# IDE and OS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db

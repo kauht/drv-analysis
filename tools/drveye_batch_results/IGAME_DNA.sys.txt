@@ -1,0 +1,125 @@
+C:\Users\macin\Desktop\vuln\tools\drveye\drivertool\pe_analyzer.py:261: UserWarning: PKCS#7 certificates could not be parsed as DER, falling back to parsing as BER. In the future, this may become an exception. Error details: ValueError: error parsing asn1 value: ParseError { kind: UnknownDefinedBy, location: ["ContentInfo::content", "SignedData::content_info", "ContentInfo::content"] }
+  certs = pkcs7_mod.load_der_pkcs7_certificates(pkcs7_der)
+[36m╔═════════════════════════════════════════╗
+║   DrvEye  Windows Driver Rev&Analysis   ║
+║   [2mCredit:[0m[36m @0xDbgMan                     ║
+╚═════════════════════════════════════════╝[0m
+[*] Analysis started: IGAME_DNA.sys
+[*] SHA-256  : 4420460d71481426334e221d9a3fa1d4ff2f493c88cb5791ce46961faaa725db
+[*] imphash  : f350be16b08d199c671b5458c548aed1
+[*] Architecture: x64 | Kernel Driver: Yes
+[*] Image Base: 0x140000000 | Imports: 104 | Sections: 9
+[*] VersionInfo: OriginalFilename: IGAME_DNA.sys | CompanyName: Shenzhen Hemei Inc. | FileVersion: 10.0.2020.0630 | FileDescription: iGame DNA USB Audio Driver
+[*] Mitigations ON : HIGH_ENTROPY_VA, DYNAMIC_BASE, NX_COMPAT, GUARD_CF, GS_COOKIE
+[33m[!][0m Mitigations OFF: FORCE_INTEGRITY, NO_SEH  [HVCI:NO]
+
+[*] ─── Authenticode Signature ───
+[1m[+][0m   Status    : crypto OK · anchor [ms-root-referenced] · cert expired (grandfathered by TS 2022-12-19)
+[*]   Primary   : SHA256 [✓]  signed by Microsoft Windows Hardware Compatibility Publisher
+[*]              → Microsoft Windows Third Party Component CA 2012
+[*]   Timestamp : 2022-12-19  [verified]  (RFC3161)
+[*]   Anchor    : Microsoft Root Certificate Authority 2010  [kernel-trusted]
+[*]   HVCI Prereqs: WHQL EKU
+[*]   Org       : Microsoft Corporation
+[*]   Serial    : 33000000DC341A520FBBCF3D8C0000000000DC
+[*]   Key       : RSA-2048
+[*]   Valid     : 2022-03-10 → 2023-03-08
+[*]   Thumbprint: 426510225a68b9260814230b37e289bfe0566f28
+[*]   Chain (2 certs):
+[*]     [0] Microsoft Windows Hardware Compatibility Publisher [CodeSign] [EXPIRED]
+[*]         Issuer: Microsoft Windows Third Party Component CA 2012
+[*]         Serial: 33000000DC341A520FBBCF3D8C0000000000DC
+[*]         Valid : 2022-03-10 → 2023-03-08
+[*]     [1] Microsoft Windows Third Party Component CA 2012 [CA]
+[*]         Issuer: Microsoft Root Certificate Authority 2010
+[*]         Serial: 610BAAC1000000000009
+[*]         Valid : 2012-04-18 → 2027-04-18
+
+[*] Scanning imports...
+
+[1m[+][0m ─── LOAD VERDICT: WILL LOAD (blocked only under HVCI) ───
+  [37mDefault Win10/11         : WILL LOAD[0m
+  [37mSecure Boot + DSE        : WILL LOAD[0m
+  [31mHVCI / Memory Integrity  : WILL NOT LOAD[0m
+      • FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+  [37mTest-signing mode        : WILL LOAD[0m
+  [31mS Mode                   : WILL NOT LOAD[0m
+      • No Authenticode page hashes (Secured-Core requires per-page integrity)
+
+  [31mAll blockers found:[0m
+    [31m[BLOCKED][0m FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+    [31m[BLOCKED][0m No Authenticode page hashes (Secured-Core requires per-page integrity)
+
+  [37mPasses:[0m
+    [37m[PASS][0m Any valid signature accepted under test-signing
+    [37m[PASS][0m Chain anchored (ms-root-referenced)
+    [37m[PASS][0m Signature crypto + PE hash OK
+    [37m[PASS][0m Signed
+    [37m[PASS][0m Signed 2022-12-19 (pre-expiry) — cert expiry ignored by Windows
+    [37m[PASS][0m WHQL attestation EKU present
+    [37m[PASS][0m WHQL attestation EKU present (Secured-Core ready)
+
+  [37mConfidence:[0m live MS trust list NOT loaded — using built-in kernel-root snapshot (run --live-check for ground truth)
+    Static checks cover signature crypto, PE hash, chain anchor, HVCI prereqs, and MS block list.
+    Not checked: live OCSP/CRL revocation, current WDAC policy, local test-signing / DSE state, page-hash integrity.
+
+[*] imports Function:
+  [!] MmMapLockedPagesSpecifyCache
+  [*] ZwCreateFile, ZwSetValueKey
+[*] Detected IOCTL codes (26):
+    0x4086232B  @?  (NEITHER, FILE_ANY_ACCESS)  [!] raw ptr — no probe  [!] any-user
+    0x46493031  @0x14000AB2E  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x46493033  @0x14000B246  (NEITHER, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] raw ptr — no probe  [!] any-user  bugs=missing-probe
+    0x49493031  @0x14000F0C1  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x49493032  @0x14000F2E5  (OUT_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x756E6547  @0x140010F37  (NEITHER, FILE_READ_DATA)  → stub (no observable calls)  [!] raw ptr — no probe  bugs=missing-probe
+    0x49656E69  @0x140010F43  (IN_DIRECT, FILE_READ_DATA)  → stub (no observable calls)
+    0x80000001  @?  (IN_DIRECT, FILE_ANY_ACCESS)  [!] any-user
+    0x001D6000  @0x1402D893F  (BUFFERED, FILE_READ_DATA)  bugs=double-fetch
+    0x001D6004  @0x1402D892F  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)
+    0x001D600C  @0x1402D8922  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)
+    0x001D6010  @0x1402D8900  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001D6018  @0x1402D88B8  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001D6028  @0x1402D8A96  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001D6034  @0x1402D8A55  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001D6058  @0x1402D8A00  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)
+    0x80000005  @0x1402D8A48  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x001DA02C  @0x1402D8C34  (BUFFERED, FILE_WRITE_DATA)  bugs=double-fetch,length-bounded
+    0x001DA030  @0x1402D8C0A  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)
+    0x001DA03C  @0x1402D8BED  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)
+    0x001DA040  @0x1402D8B9C  (BUFFERED, FILE_WRITE_DATA)  bugs=double-fetch
+    0x001DA044  @0x1402D8B76  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001DA050  @0x1402D8DCE  (BUFFERED, FILE_WRITE_DATA)  → trivial (completes IRP only)  bugs=double-fetch
+    0x001DA054  @0x1402D8DC6  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)
+    0x5433A5A2  @?  (OUT_DIRECT, FILE_WRITE_DATA)
+    0x002B1100  @?  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user
+
+[!] Device Access Security:
+    Creation API   : Unknown
+    Secure Open    : No
+    Exclusive      : No
+    SDDL           : None (default permissive ACL)
+    Symlink        : DeviceInterface:{A1FE1944-3A40-4EEE-89C3-CF87E70F88E5}  [user-accessible]
+    Symlink        : DeviceInterface:{31935F15-D670-43D0-A02E-ACDE91ED8F35}  [user-accessible]
+    Symlink        : DeviceInterface:{64E22C0F-F12B-4BF5-8C31-94351B8A9BA1}  [user-accessible]
+    Issues (2):
+      [*] Has Symlinks
+      [*] Device Interface No Security
+
+[*] ─── Device Names & Symbolic Links (6) ───
+    [*] DeviceInterface:{A1FE1944-3A40-4EEE-89C3-CF87E70F88E5} (device interface GUID — use SetupDiGetClassDevs)
+    [~] \Callback\StreamEngineAddr%p (format template — constructed at runtime)
+    [~] \Callback\AudioHalAddr%p (format template — constructed at runtime)
+    [~] \Callback\CyclicControlAddr%p (format template — constructed at runtime)
+    [*] DeviceInterface:{31935F15-D670-43D0-A02E-ACDE91ED8F35} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{64E22C0F-F12B-4BF5-8C31-94351B8A9BA1} (device interface GUID — use SetupDiGetClassDevs)
+
+[*] ─── Registry References (7) ───
+    (keys/values the driver reads — device name may be loaded here at runtime)
+    [r] Registry:\Registry\Machine\SYSTEM\CurrentControlSet\Enum\%s\%s\%s
+    [r] Registry:\Registry\Machine\Enum\%s\%s\%s
+    [r] Registry:\Registry\Machine\SYSTEM\CurrentControlSet\Enum\%s\%s
+    [r] Registry:\Registry\Machine\Enum\%s\%s
+    [r] Registry:\Registry\Machine\Software\Wow6432Node\Creative Tech\Sound Blaster Cinema 2
+    [r] Registry:\Registry\Machine\SOFTWARE
+    [r] Registry:\Registry\Machine\SOFTWARE\WOW6432Node

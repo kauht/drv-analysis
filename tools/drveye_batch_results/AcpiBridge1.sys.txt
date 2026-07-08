@@ -1,0 +1,71 @@
+C:\Users\macin\Desktop\vuln\tools\drveye\drivertool\pe_analyzer.py:261: UserWarning: PKCS#7 certificates could not be parsed as DER, falling back to parsing as BER. In the future, this may become an exception. Error details: ValueError: error parsing asn1 value: ParseError { kind: UnknownDefinedBy, location: ["ContentInfo::content", "SignedData::content_info", "ContentInfo::content"] }
+  certs = pkcs7_mod.load_der_pkcs7_certificates(pkcs7_der)
+[36m╔═════════════════════════════════════════╗
+║   DrvEye  Windows Driver Rev&Analysis   ║
+║   [2mCredit:[0m[36m @0xDbgMan                     ║
+╚═════════════════════════════════════════╝[0m
+[*] Analysis started: AcpiBridge1.sys
+[*] SHA-256  : 7df6f31b6fe60d678ba3f791796ed6b47c44551dc725caa7ac29b84f17b15edb
+[*] imphash  : a77ebeda9d3f2f9480960861f1630586
+[*] Architecture: x64 | Kernel Driver: Yes
+[*] Image Base: 0x140000000 | Imports: 13 | Sections: 7
+[*] Mitigations ON : HIGH_ENTROPY_VA, DYNAMIC_BASE, NX_COMPAT, GUARD_CF, GS_COOKIE
+[33m[!][0m Mitigations OFF: FORCE_INTEGRITY, NO_SEH  [HVCI:NO]
+
+[*] ─── Authenticode Signature ───
+[33m[!][0m   Status    : crypto OK · anchor UNTRUSTED [no-ms-root] · SELF-SIGNED
+[*]   Primary   : SHA256 [✓]  signed by WDKTestCert Hank_Chen,133026725859398562
+[*]              → WDKTestCert Hank_Chen,133026725859398562
+[*]   Nested    : SHA256 [✓]
+[*]   Nested    : SHA256 [✓]
+[33m[!][0m   Timestamp : none
+[*]   Anchor    : —  [NOT kernel-trusted]
+[*]   HVCI Prereqs: page-hashes:sha256
+[*]   Serial    : 617ABBA8886B3A864924326B6F7567CA
+[*]   Key       : RSA-2048
+[*]   Valid     : 2022-07-19 → 2032-07-19
+[*]   Thumbprint: 0cd05ba47242b20493e417e243a6a406088ae263
+
+[*] Scanning imports...
+
+[33m[!][0m ─── LOAD VERDICT: WILL LOAD only under test-signing ───
+  [31mDefault Win10/11         : WILL NOT LOAD[0m
+      • Self-signed — not accepted without test-signing
+  [31mSecure Boot + DSE        : WILL NOT LOAD[0m
+      • Self-signed — not accepted without test-signing
+  [31mHVCI / Memory Integrity  : WILL NOT LOAD[0m
+      • Self-signed — not accepted without test-signing
+      • FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+  [37mTest-signing mode        : WILL LOAD[0m
+  [31mS Mode                   : WILL NOT LOAD[0m
+      • No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+      • Chain not kernel-trusted
+
+  [31mAll blockers found:[0m
+    [31m[BLOCKED][0m Chain not kernel-trusted
+    [31m[BLOCKED][0m FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+    [31m[BLOCKED][0m No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+    [31m[BLOCKED][0m Self-signed — not accepted without test-signing
+
+  [37mPasses:[0m
+    [37m[PASS][0m Any valid signature accepted under test-signing
+    [37m[PASS][0m Page hashes present (sha256)
+    [37m[PASS][0m Signature crypto + PE hash OK
+    [37m[PASS][0m Signed
+
+  [37mConfidence:[0m live MS trust list NOT loaded — using built-in kernel-root snapshot (run --live-check for ground truth)
+    Static checks cover signature crypto, PE hash, chain anchor, HVCI prereqs, and MS block list.
+    Not checked: live OCSP/CRL revocation, current WDAC policy, local test-signing / DSE state, page-hash integrity.
+
+[*] imports Function:
+  [*] MmGetSystemRoutineAddress
+
+[+] Device Access Security:
+    Creation API   : Unknown
+    Secure Open    : No
+    Exclusive      : No
+    SDDL           : None (default permissive ACL)
+
+[*] ─── Device Names & Symbolic Links (0) ───
+[33m[!][0m     No device names recovered (may be runtime-constructed or obfuscated)
+    Hint: pass --device NAME to set the symbolic-link manually

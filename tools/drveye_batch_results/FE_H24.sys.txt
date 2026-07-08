@@ -1,0 +1,156 @@
+C:\Users\macin\Desktop\vuln\tools\drveye\drivertool\pe_analyzer.py:261: UserWarning: PKCS#7 certificates could not be parsed as DER, falling back to parsing as BER. In the future, this may become an exception. Error details: ValueError: error parsing asn1 value: ParseError { kind: UnknownDefinedBy, location: ["ContentInfo::content", "SignedData::content_info", "ContentInfo::content"] }
+  certs = pkcs7_mod.load_der_pkcs7_certificates(pkcs7_der)
+[36m╔═════════════════════════════════════════╗
+║   DrvEye  Windows Driver Rev&Analysis   ║
+║   [2mCredit:[0m[36m @0xDbgMan                     ║
+╚═════════════════════════════════════════╝[0m
+[*] Analysis started: FE_H24.sys
+[*] SHA-256  : d096a238e80e2661087fcfeee84ec158e4155fc21cfa5e11cd0a56021681355b
+[*] imphash  : f9d54ea0e3bfd5859660828e25a1051a
+[*] Architecture: x64 | Kernel Driver: Yes
+[*] Image Base: 0x140000000 | Imports: 113 | Sections: 9
+[*] VersionInfo: OriginalFilename: FE_H24.sys | CompanyName: C-Media Electronics, Inc. | FileVersion: 10.0.2603.1200 | FileDescription: USB Gaming Headset Driver
+[*] Mitigations ON : HIGH_ENTROPY_VA, DYNAMIC_BASE, NX_COMPAT, GUARD_CF, GS_COOKIE
+[33m[!][0m Mitigations OFF: FORCE_INTEGRITY, NO_SEH  [HVCI:NO]
+
+[*] ─── Authenticode Signature ───
+[33m[!][0m   Status    : crypto OK · anchor UNTRUSTED [no-ms-root] · SELF-SIGNED
+[*]   Primary   : SHA256 [✓]  signed by WDKTestCert DESKTOP-EMPB1EL$,134073963055245640
+[*]              → WDKTestCert DESKTOP-EMPB1EL$,134073963055245640
+[*]   Nested    : SHA256 [✓]
+[33m[!][0m   Timestamp : none
+[*]   Anchor    : —  [NOT kernel-trusted]
+[*]   HVCI Prereqs: page-hashes:sha256
+[*]   Serial    : 7A2E50C3BD5329A44D00DA02A181CF2B
+[*]   Key       : RSA-2048
+[*]   Valid     : 2025-11-12 → 2035-11-12
+[*]   Thumbprint: e72769288e94d784683f5e605830abba6a2e3a33
+
+[*] Scanning imports...
+
+[33m[!][0m ─── LOAD VERDICT: WILL LOAD only under test-signing ───
+  [31mDefault Win10/11         : WILL NOT LOAD[0m
+      • Self-signed — not accepted without test-signing
+  [31mSecure Boot + DSE        : WILL NOT LOAD[0m
+      • Self-signed — not accepted without test-signing
+  [31mHVCI / Memory Integrity  : WILL NOT LOAD[0m
+      • Self-signed — not accepted without test-signing
+      • FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+  [37mTest-signing mode        : WILL LOAD[0m
+  [31mS Mode                   : WILL NOT LOAD[0m
+      • No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+      • Chain not kernel-trusted
+
+  [31mAll blockers found:[0m
+    [31m[BLOCKED][0m Chain not kernel-trusted
+    [31m[BLOCKED][0m FORCE_INTEGRITY flag not set (HVCI requires it on the PE header)
+    [31m[BLOCKED][0m No WHQL attestation EKU — S Mode / Secured-Core require WHQL-signed drivers
+    [31m[BLOCKED][0m Self-signed — not accepted without test-signing
+
+  [37mPasses:[0m
+    [37m[PASS][0m Any valid signature accepted under test-signing
+    [37m[PASS][0m Page hashes present (sha256)
+    [37m[PASS][0m Signature crypto + PE hash OK
+    [37m[PASS][0m Signed
+
+  [37mConfidence:[0m live MS trust list NOT loaded — using built-in kernel-root snapshot (run --live-check for ground truth)
+    Static checks cover signature crypto, PE hash, chain anchor, HVCI prereqs, and MS block list.
+    Not checked: live OCSP/CRL revocation, current WDAC policy, local test-signing / DSE state, page-hash integrity.
+
+[*] imports Function:
+  [!] MmMapLockedPagesSpecifyCache
+  [*] ZwCreateFile, ZwSetValueKey, MmGetSystemRoutineAddress
+[*] Detected IOCTL codes (27):
+    0x46493031  @0x1400043FE  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x46493033  @0x140004B16  (NEITHER, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] raw ptr — no probe  [!] any-user  bugs=missing-probe
+    0x49493031  @0x140008991  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x49493032  @0x140008BB5  (OUT_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x756E6547  @0x14000A537  (NEITHER, FILE_READ_DATA)  → stub (no observable calls)  [!] raw ptr — no probe  bugs=missing-probe
+    0x49656E69  @0x14000A543  (IN_DIRECT, FILE_READ_DATA)  → stub (no observable calls)
+    0x80000001  @?  (IN_DIRECT, FILE_ANY_ACCESS)  [!] any-user
+    0x001D6000  @0x1402DBA72  (BUFFERED, FILE_READ_DATA)  bugs=double-fetch
+    0x001D6004  @0x1402DBA62  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)
+    0x001D600C  @0x1402DBA55  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)
+    0x001D6010  @0x1402DBA33  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001D6018  @0x1402DB9EB  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001D6028  @0x1402DBBC9  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001D6034  @0x1402DBB88  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001D6058  @0x1402DBB33  (BUFFERED, FILE_READ_DATA)  → stub (no observable calls)
+    0x80000005  @0x1402DBB7B  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+    0x001DA02C  @0x1402DBD67  (BUFFERED, FILE_WRITE_DATA)  bugs=double-fetch,length-bounded
+    0x001DA030  @0x1402DBD3D  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)
+    0x001DA03C  @0x1402DBD20  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)
+    0x001DA040  @0x1402DBCCF  (BUFFERED, FILE_WRITE_DATA)  bugs=double-fetch
+    0x001DA044  @0x1402DBCA9  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)  bugs=double-fetch
+    0x001DA050  @0x1402DBF26  (BUFFERED, FILE_WRITE_DATA)  bugs=double-fetch
+    0x001DA054  @0x1402DBF1E  (BUFFERED, FILE_WRITE_DATA)  → stub (no observable calls)
+    0x5433A5A2  @?  (OUT_DIRECT, FILE_WRITE_DATA)
+    0x002B1100  @?  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user
+    0x000A089C  @0x1402F66F1  (BUFFERED, FILE_ANY_ACCESS)  [!] any-user  bugs=double-fetch,length-unbounded
+    0x000A089D  @0x1402F66DC  (IN_DIRECT, FILE_ANY_ACCESS)  → stub (no observable calls)  [!] any-user
+
+[!] Device Access Security:
+    Creation API   : Unknown
+    Secure Open    : No
+    Exclusive      : No
+    SDDL           : None (default permissive ACL)
+    Symlink        : DeviceInterface:{A0171700-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A0171701-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A0171702-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A0171703-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A0171704-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A0171705-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A0171706-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A0171707-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A0171708-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A0171709-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A017170A-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A017170B-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A017170C-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A017170D-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A017170E-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A017170F-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A0171710-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A0171711-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A0171712-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A0171713-3444-4039-85EE-CF7BC5657DD0}  [user-accessible]
+    Symlink        : DeviceInterface:{A1FE1944-3A40-4EEE-89C3-CF87E70F88E5}  [user-accessible]
+    Symlink        : DeviceInterface:{2B3EF972-CE5E-4ACA-9217-B152E011A8C0}  [user-accessible]
+    Symlink        : DeviceInterface:{936F6BB9-7FC5-4FFA-9DB4-B817505559ED}  [user-accessible]
+    Issues (2):
+      [*] Has Symlinks
+      [*] Device Interface No Security
+
+[*] ─── Device Names & Symbolic Links (26) ───
+    [*] DeviceInterface:{A0171700-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A0171701-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A0171702-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A0171703-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A0171704-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A0171705-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A0171706-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A0171707-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A0171708-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A0171709-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A017170A-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A017170B-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A017170C-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A017170D-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A017170E-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A017170F-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A0171710-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A0171711-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A0171712-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A0171713-3444-4039-85EE-CF7BC5657DD0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{A1FE1944-3A40-4EEE-89C3-CF87E70F88E5} (device interface GUID — use SetupDiGetClassDevs)
+    [~] \Callback\StreamEngineAddr%p (format template — constructed at runtime)
+    [~] \Callback\AudioHalAddr%p (format template — constructed at runtime)
+    [~] \Callback\CyclicControlAddr%p (format template — constructed at runtime)
+    [*] DeviceInterface:{2B3EF972-CE5E-4ACA-9217-B152E011A8C0} (device interface GUID — use SetupDiGetClassDevs)
+    [*] DeviceInterface:{936F6BB9-7FC5-4FFA-9DB4-B817505559ED} (device interface GUID — use SetupDiGetClassDevs)
+
+[*] ─── Registry References (3) ───
+    (keys/values the driver reads — device name may be loaded here at runtime)
+    [r] Registry:\Registry\Machine\Software\Wow6432Node\Creative Tech\Sound Blaster Cinema 2
+    [r] Registry:\Registry\Machine\SOFTWARE
+    [r] Registry:\Registry\Machine\SOFTWARE\WOW6432Node
