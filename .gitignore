@@ -13,9 +13,10 @@ build/
 vm/
 .claude/
 
-# Documentation (local research notes, but allow README)
+# Documentation (local research notes, but allow project docs)
 *.md
 !README.md
+!DRIVER_HUNTING_GUIDE.md
 
 # Large sample files and binaries
 samples/
